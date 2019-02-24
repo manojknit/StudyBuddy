@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "studybuddyangularappf60fce8c",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "studybuddyapi",
+    "apiName": "studybuddyangularapp054b9fc9",
+    "functionArns": [
+        {
+            "lambdaFunction": "studybuddyangularappf60fce8c"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "studybuddyangularapp-20190223153853-authRole",
+        "unAuthRoleName": "studybuddyangularapp-20190223153853-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "studybuddyangularappf60fce8c",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

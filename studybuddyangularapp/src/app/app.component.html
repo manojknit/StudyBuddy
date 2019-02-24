@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<h1>
+  {{title}}
+</h1>
+
+<mat-form-field>
+  <input matInput placeholder="Simple Input" [(ngModel)]="title">
+</mat-form-field>
+
+<mat-icon>home</mat-icon>
+
+<button mat-raised-button>I'm a button</button>
+
+<mat-form-field>
+  <mat-select placeholder="I'm a select" [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let item of items" [value]="item.value">
+      {{item.view}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+-->
+<!--3 tabs-->
+<!-- Container #1 (see wireframe) -->
+
+
+<mat-toolbar layout="row" >
+  <h1>Study Buddy</h1>
+</mat-toolbar>
+
+<!-- Container #2 -->
+<div flex layout="row">
+
+<!-- Container #3 -->
+    <mat-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+      <mat-list>
+        <mat-list-item> Pepper </mat-list-item>
+        <mat-list-item> Salt </mat-list-item>
+        <mat-list-item> Paprika </mat-list-item>
+       </mat-list>
+    </mat-sidenav>
+
+<!-- Container #4 -->
+    <mat-card flex id="content">
+
+
+
+      <!--<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}" ng-src="videosrchere" type="video/mp4">
+        <video width="640" height="264" src="https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/democlapapp.m3u8" controls autoplay  type="application/x-mpegURL">-->
+
+
+          <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="268"
+          data-setup='{}'>
+            <source src="https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/democlapapp.m3u8" type="application/x-mpegURL">
+          </video>
+
+
+
+    </mat-card>
+
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,5 @@
+{
+    "tableName": "studybuddytb",
+    "partitionKeyName": "name",
+    "partitionKeyType": "S"
+}
