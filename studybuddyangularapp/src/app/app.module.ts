@@ -7,9 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UploadcourseComponent } from './uploadcourse/uploadcourse.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadcourseComponent
   ],
   imports: [
     BrowserModule,
