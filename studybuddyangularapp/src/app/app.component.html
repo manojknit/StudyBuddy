@@ -23,41 +23,14 @@
 <!--3 tabs-->
 <!-- Container #1 (see wireframe) -->
 
-
 <mat-toolbar layout="row" >
   <h1>Study Buddy</h1>
 </mat-toolbar>
 
 <!-- Container #2 -->
 <div flex layout="row">
-
-<!-- Container #3 -->
-    <mat-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-      <mat-list>
-        <mat-list-item> Pepper </mat-list-item>
-        <mat-list-item> Salt </mat-list-item>
-        <mat-list-item> Paprika </mat-list-item>
-       </mat-list>
-    </mat-sidenav>
-
-<!-- Container #4 -->
-    <mat-card flex id="content">
-
-
-
-      <!--<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}" ng-src="videosrchere" type="video/mp4">
-        <video width="640" height="264" src="https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/democlapapp.m3u8" controls autoplay  type="application/x-mpegURL">-->
-
-
-          <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="268"
-          data-setup='{}'>
-            <source src="https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/democlapapp.m3u8" type="application/x-mpegURL">
-          </video>
-
-
-
-    </mat-card>
-
+    <app-playbackcourse></app-playbackcourse>
+    <app-uploadcourse></app-uploadcourse>
 </div>
 
 

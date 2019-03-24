@@ -8,10 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UploadcourseComponent } from './uploadcourse/uploadcourse.component';
+import { PlaybackcourseComponent } from './playbackcourse/playbackcourse.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UploadcourseComponent
+    UploadcourseComponent,
+    PlaybackcourseComponent
   ],
   imports: [
     BrowserModule,
