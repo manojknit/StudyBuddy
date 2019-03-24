@@ -1,0 +1,21 @@
+.example-container {
+    height: 50%;
+    width: 100%;
+    margin: 10px;
+  }
+  #sbsidename {
+    width: 10%;
+  }
+
+  .midcontent{
+      align-content: center;
+      width: 100%;
+      text-align: center; 
+  }
+
+  #my_video_1{
+    width: 100%; 
+  }
+
+  /** Video **/
+  

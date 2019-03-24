@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/auth/cognito91e70e68-cloudformation-template.yml",
 				"logicalId": "authcognito91e70e68"
 			},
-			"lastPushTimeStamp": "2019-02-24T00:07:42.918Z",
+			"lastPushTimeStamp": "2019-03-24T23:18:12.595Z",
 			"output": {
 				"AppClientSecret": "125c28g89e4i3jvm0r9i39knev3sc7o5kqdjr0j6ua5upprk4icm",
 				"UserPoolId": "us-east-1_zu2vwu8bH",
@@ -29,7 +29,7 @@
 				"IdentityPoolName": "cognito91e70e68_identitypool_91e70e68",
 				"UserPoolName": "cognito91e70e68_userpool_91e70e68"
 			},
-			"lastPushDirHash": "/nw3gYaTHyHmpasVIgIfDZnmQj0="
+			"lastPushDirHash": "SEdzvAOtNkqMSWEPr0I2MZkl4vA="
 		}
 	},
 	"storage": {
@@ -40,7 +40,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/storage/studybuddytb-cloudformation-template.json",
 				"logicalId": "storagestudybuddytb"
 			},
-			"lastPushTimeStamp": "2019-02-24T00:07:42.918Z",
+			"lastPushTimeStamp": "2019-03-24T23:18:12.586Z",
 			"output": {
 				"PartitionKeyName": "name",
 				"Region": "us-east-1",
@@ -49,6 +49,20 @@
 				"Name": "studybuddytb"
 			},
 			"lastPushDirHash": "02FmwsBqN/ZOysyc6FwIq/L6uIk="
+		},
+		"studdybuddys3": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storagestuddybuddys3"
+			},
+			"lastPushTimeStamp": "2019-03-24T23:18:12.595Z",
+			"output": {
+				"BucketName": "studybuddys3uploadtemp",
+				"Region": "us-east-1"
+			},
+			"lastPushDirHash": "gtUPI9ohudGzwLIxLweX2xO/x3E="
 		}
 	},
 	"function": {
@@ -73,7 +87,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/function/studybuddyangularappf60fce8c-cloudformation-template.json",
 				"logicalId": "functionstudybuddyangularappf60fce8c"
 			},
-			"lastPushTimeStamp": "2019-02-24T00:07:42.918Z",
+			"lastPushTimeStamp": "2019-03-24T23:18:12.593Z",
 			"output": {
 				"Region": "us-east-1",
 				"Arn": "arn:aws:lambda:us-east-1:494875521123:function:studybuddyangularappf60fce8c",
@@ -100,7 +114,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/api/studybuddyapi-cloudformation-template.json",
 				"logicalId": "apistudybuddyapi"
 			},
-			"lastPushTimeStamp": "2019-02-24T00:07:42.918Z",
+			"lastPushTimeStamp": "2019-03-24T23:18:12.593Z",
 			"output": {
 				"ApiName": "studybuddyapi",
 				"RootUrl": "https://opfj2b424e.execute-api.us-east-1.amazonaws.com/Prod"
@@ -116,7 +130,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/hosting/template.json",
 				"logicalId": "hostingS3AndCloudFront"
 			},
-			"lastPushTimeStamp": "2019-02-24T00:07:42.918Z",
+			"lastPushTimeStamp": "2019-03-24T23:18:12.594Z",
 			"output": {
 				"CloudFrontSecureURL": "https://d2foz5d7kqj92d.cloudfront.net",
 				"S3BucketSecureURL": "https://tudybuddyangularapp.s3.amazonaws.com",

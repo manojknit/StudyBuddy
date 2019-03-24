@@ -1,3 +1,11 @@
 <p>
   uploadcourse works!
 </p>
+<p *ngIf="errorMsg" style="color:red">{{errorMsg}}</p>
+
+<!-- Form with submit method and template variable (#fileInput) -->
+<label for="imageUpload">Image Upload</label>
+  <!--<input type="file" (change)="fileEvent($event)" name="imageUpload" id="imageUpload"/>-->
+
+  <button (click)="onClickMe($event)">Click me!</button>
+

@@ -84,7 +84,7 @@
 				"TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/auth/cognito91e70e68-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognito91e70e68_identitypool_91e70e68",
-					"allowUnauthenticatedIdentities": false,
+					"allowUnauthenticatedIdentities": true,
 					"thirdPartyAuth": false,
 					"lambdaLogPolicy": "cognito91e70e68_lambda_log_policy",
 					"openIdLambdaRoleName": "cognito91e70e68_openid_lambda_role",
@@ -136,6 +136,21 @@
 					"tableName": "studybuddytb",
 					"partitionKeyName": "name",
 					"partitionKeyType": "S"
+				}
+			}
+		},
+		"storagestuddybuddys3": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/studybuddyangularapp-20190223153853-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"Parameters": {
+					"bucketName": "studybuddys3uploadtemp",
+					"authPolicyName": "s3_amplify_e3ee39fe",
+					"unauthPolicyName": "s3_amplify_e3ee39fe",
+					"authRoleName": "studybuddyangularapp-20190223153853-authRole",
+					"unauthRoleName": "studybuddyangularapp-20190223153853-unauthRole",
+					"authPermissions": "rw",
+					"unauthPermissions": "rw"
 				}
 			}
 		},

@@ -1,0 +1,9 @@
+{
+    "bucketName": "studybuddys3uploadtemp",
+    "authPolicyName": "s3_amplify_e3ee39fe",
+    "unauthPolicyName": "s3_amplify_e3ee39fe",
+    "authRoleName": "studybuddyangularapp-20190223153853-authRole",
+    "unauthRoleName": "studybuddyangularapp-20190223153853-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": "rw"
+}
