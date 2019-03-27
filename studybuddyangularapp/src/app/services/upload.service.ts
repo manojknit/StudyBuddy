@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UploadService {
 
   uri = 'http://localhost:4000/video';
+  //ng g service business --spec=false
 
   constructor(private http: HttpClient) { }
 
@@ -29,8 +30,8 @@ export class UploadService {
     const contentType = file.type;
     const bucket = new S3(
           {
-              accessKeyId: 'AKI',
-              secretAccessKey: '7jxc9J',
+              accessKeyId: 'AKIA',
+              secretAccessKey: '7jxc',
               region: 'us-east-1'
           }
       );

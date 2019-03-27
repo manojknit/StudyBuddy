@@ -31,7 +31,7 @@
 <div class="container-fluid">
 <!-- Form with submit method and template variable (#fileInput) -->
 <label class="btn btn-default">
-  <input type="file" (change)="selectFile($event)">
+  <input type="file" accept="video/*" (change)="selectFile($event)">
 </label>
 
 <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>

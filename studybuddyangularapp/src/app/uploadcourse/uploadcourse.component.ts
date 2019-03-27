@@ -32,9 +32,13 @@ export class UploadcourseComponent implements OnInit {
 
   upload() {
     const file = this.selectedFiles.item(0);
+    //var formData = new FormData();
+    //formData.append(file, file.name.replace(/[\W_]+/g, ''));
     this.route.params.subscribe(params => {
     this.uploadService.uploadFile(file, params['id']);
-      });
+  });
+    //Redirect to courses
+    this.router.navigate(["/course"],);
     }
   selectFile(event) {
     this.selectedFiles = event.target.files;

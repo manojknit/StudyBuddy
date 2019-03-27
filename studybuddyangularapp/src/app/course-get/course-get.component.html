@@ -13,7 +13,7 @@
       <td>Course Description</td>
       <td>Category</td>
       <td>Rating</td>
-      <td colspan="3" style="align-content: center; text-align: center;">Actions</td>
+      <td colspan="4" style="align-content: center; text-align: center;">Actions</td>
   </tr>
   </thead>
 
@@ -28,6 +28,9 @@
           <td><a (click) = "deleteCourse(Course._id)" class="btn btn-danger">Delete</a></td>
           <td><a [routerLink]="['upload', Course._id]" class="btn btn-primary" routerLinkActive="active">
                 Upload Videos
-          </a></tr>
+          </a></td>
+          <td><a [routerLink]="['video', Course._id]" class="btn btn-primary" routerLinkActive="active">
+                Watch
+          </a></td></tr>
   </tbody>
 </table>

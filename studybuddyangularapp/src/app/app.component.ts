@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
+import * as $ from 'jquery';
 import { NavigationCancel,
         Event,
         NavigationEnd,
@@ -33,4 +34,8 @@ export class AppComponent {
       this._loadingBar.stop();
     }
   }
+
+  ngOnInit() {
+    $('body').addClass('df');
+    }
 }

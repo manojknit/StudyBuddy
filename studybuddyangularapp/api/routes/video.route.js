@@ -19,11 +19,26 @@ videoRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 videoRoutes.route('/').get(function (req, res) {
-    Course.find(function (err, video){
+  Video.find(function (err, video){
     if(err){
       console.log(err);
     }
     else {
+      res.json(video);
+    }
+  });
+});
+
+// Get videos by course id
+//https://mongoosejs.com/docs/2.7.x/docs/finding-documents.html
+videoRoutes.route('/getbycourseid/:id').get(function (req, res) {
+  let id = req.params.id;
+  Video.find({ 'CourseId': id }, function (err, video){
+    if(err){
+      console.log(err);
+    }
+    else {
+      console.log(video);
       res.json(video);
     }
   });
