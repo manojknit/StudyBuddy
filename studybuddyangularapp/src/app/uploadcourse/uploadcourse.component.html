@@ -1,11 +1,38 @@
-<p>
-  uploadcourse works!
-</p>
+<h3>Course - Video Upload</h3>
 <p *ngIf="errorMsg" style="color:red">{{errorMsg}}</p>
 
+
+  <!-- <button (click)="onClickMe($event)">Click me!</button> -->
+  <!-- <div class="container-fluid">
+    <h2>Course Registration Form</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>UserName</label>
+    <input type="text" formControlName="userName" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Course Title</label>
+    <input type="text" formControlName="courseTitle" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Course Description</label>
+    <input type="text" formControlName="courseDescription" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input type="text" formControlName="category" class="form-control">
+  </div>
+  <button class="btn btn-primary" type="submit" (click)="onClickMe($event)">Register</button> 
+</form>
+{{registrationForm.status | json}}
+{{registrationForm.value | json}}
+</div> -->
+
+<div class="container-fluid">
 <!-- Form with submit method and template variable (#fileInput) -->
-<label for="imageUpload">Image Upload</label>
-  <!--<input type="file" (change)="fileEvent($event)" name="imageUpload" id="imageUpload"/>-->
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
 
-  <button (click)="onClickMe($event)">Click me!</button>
-
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</div>
