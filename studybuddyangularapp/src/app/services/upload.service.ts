@@ -1,21 +1,36 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
 
-  constructor() { }
+  uri = 'http://localhost:4000/video';
+
+  constructor(private http: HttpClient) { }
+
+  addVideo(courseid, filename) {
+    const obj = {
+      CourseId: courseid,
+      VideoTitle: filename,
+      VideoFileName: filename
+    };
+    console.log(obj);
+    this.http.post(`${this.uri}/add`, obj)
+        .subscribe(res => console.log('Done'));
+  }
 
 //https://medium.com/ramsatt/angular-7-upload-file-to-amazon-s3-bucket-ba27022bad54
-  uploadFile(file) {
+  uploadFile(file, courseid) {
+    this.addVideo(courseid, file.name);
     const contentType = file.type;
     const bucket = new S3(
           {
-              accessKeyId: 'AKIA',
-              secretAccessKey: '7jxc9',
+              accessKeyId: 'AKI',
+              secretAccessKey: '7jxc9J',
               region: 'us-east-1'
           }
       );

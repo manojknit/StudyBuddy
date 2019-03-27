@@ -5,7 +5,10 @@ const express = require('express'),
     mongoose = require('mongoose'),
     config = require('./DB');
 
+//Add for table
 const courseRoute = require('./routes/course.route');
+const videoRoute = require('./routes/video.route');
+
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   () => {console.log('Database is connected') },
@@ -16,6 +19,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/course', courseRoute);
+app.use('/video', videoRoute);
+
 const port = process.env.PORT || 4000;
 
 const server = app.listen(port, function(){

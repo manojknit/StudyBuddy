@@ -20,11 +20,11 @@ export class UploadcourseComponent implements OnInit {
   });
   //constructor() { }
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private uploadService: UploadService) {
-     }
+      private router: Router,
+      private uploadService: UploadService) {}
   //constructor(private uploadService: UploadService) { }
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onClickMe(event: any) {
     this.errorMsg += event.target.value + ' | ';
@@ -32,7 +32,9 @@ export class UploadcourseComponent implements OnInit {
 
   upload() {
     const file = this.selectedFiles.item(0);
-    this.uploadService.uploadFile(file);
+    this.route.params.subscribe(params => {
+    this.uploadService.uploadFile(file, params['id']);
+      });
     }
   selectFile(event) {
     this.selectedFiles = event.target.files;
