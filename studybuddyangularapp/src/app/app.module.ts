@@ -16,6 +16,10 @@ import { CourseEditComponent } from './course-edit/course-edit.component';
 import { CourseService } from './services/course.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { CourseMybucketComponent } from './course-mybucket/course-mybucket.component';
+import { CourseBuyComponent } from './course-buy/course-buy.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     PlaybackcourseComponent,
     CourseGetComponent,
     CourseAddComponent,
-    CourseEditComponent
+    CourseEditComponent,
+    HomeComponent,
+    CourseDetailComponent,
+    CourseMybucketComponent,
+    CourseBuyComponent
   ],
   imports: [
     SlimLoadingBarModule,
