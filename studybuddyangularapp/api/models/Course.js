@@ -17,7 +17,11 @@ let Course = new Schema({
   },
   course_rating: {
     type: Number
-  }
+  },
+  tenantid: {type: String},
+  fee: {type: Number},
+  short_text: {type: String},
+  instructions: {type: String}
 },{
     collection: 'course'
 });

@@ -13,6 +13,10 @@
       <td>Course Description</td>
       <td>Category</td>
       <td>Rating</td>
+      <td>Tenant Id</td>
+      <td>Fee</td>
+      <td>Short Text</td>
+      <td>Instructions</td>
       <td colspan="4" style="align-content: center; text-align: center;">Actions</td>
   </tr>
   </thead>
@@ -24,8 +28,12 @@
           <td>{{ Course.course_desc }}</td>
           <td>{{ Course.category }}</td>
           <td>{{ Course.course_rating }}</td>
+          <td>{{ Course.tenantid }}</td>
+          <td>{{ Course.fee }}</td>
+          <td>{{ Course.short_text }}</td>
+          <td>{{ Course.instructions }}</td>
           <td><a [routerLink]="['edit', Course._id]" class="btn btn-primary">Edit</a></td>
-          <td><a (click) = "deleteCourse(Course._id)" class="btn btn-danger">Delete</a></td>
+          <td><a (click) = "deleteCourse(Course._id)" class="btn btn-primary">Delete</a></td>
           <td><a [routerLink]="['upload', Course._id]" class="btn btn-primary" routerLinkActive="active">
                 Upload Videos
           </a></td>

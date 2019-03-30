@@ -48,6 +48,10 @@ courseRoutes.route('/update/:id').post(function (req, res) {
         course.course_desc = req.body.course_desc;
         course.category = req.body.category;
         course.course_rating = req.body.course_rating;
+        course.tenantid = req.body.tenantid;
+        course.fee = req.body.fee;
+        course.short_text = req.body.short_text;
+        course.instructions = req.body.instructions;
 
         course.save().then(course => {
           res.json('Update complete');

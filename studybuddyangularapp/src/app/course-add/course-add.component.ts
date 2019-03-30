@@ -20,12 +20,16 @@ export class CourseAddComponent implements OnInit {
       course_title: ['', Validators.required ],
       course_desc: ['', Validators.required ],
       category: ['', Validators.required ],
-      course_rating: ['', Validators.required ]
+      course_rating: ['', Validators.required ],
+      tenantid: ['', Validators.required ],
+      fee: ['', Validators.required ],
+      short_text: ['', Validators.required ],
+      instructions: ['', Validators.required ]
     });
   }
 
-  addCourse(user_name, course_title, course_desc, category, course_rating) {
-    this.bs.addCourse(user_name, course_title, course_desc, category, course_rating);
+  addCourse(user_name, course_title, course_desc, category, course_rating, tenantid, fee, short_text, instructions) {
+    this.bs.addCourse(user_name, course_title, course_desc, category, course_rating,  tenantid, fee, short_text, instructions);
   }
 
   ngOnInit() {

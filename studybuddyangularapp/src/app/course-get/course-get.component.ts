@@ -22,7 +22,7 @@ export class CourseGetComponent implements OnInit {
     });
   }
 
-  deleteBusiness(id) {
+  deleteCourse(id) {
     this.bs.deleteCourse(id).subscribe(res => {
       console.log('Deleted');
     });

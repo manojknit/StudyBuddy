@@ -26,7 +26,11 @@ export class CourseEditComponent implements OnInit {
       course_title: ['', Validators.required ],
       course_desc: ['', Validators.required ],
       category: ['', Validators.required ],
-      course_rating: ['', Validators.required ]
+      course_rating: ['', Validators.required ],
+      tenantid: ['', Validators.required ],
+      fee: ['', Validators.required ],
+      short_text: ['', Validators.required ],
+      instructions: ['', Validators.required ]
       });
     }
 
@@ -39,9 +43,9 @@ export class CourseEditComponent implements OnInit {
     });
   }
 
-  updateCourse(user_name, course_title, course_desc, category, course_rating) {
+  updateCourse(user_name, course_title, course_desc, category, course_rating, tenantid, fee, short_text, instructions) {
    this.route.params.subscribe(params => {
-      this.bs.updateCourse(user_name, course_title, course_desc, category, course_rating, params['id']);
+      this.bs.updateCourse(user_name, course_title, course_desc, category, course_rating, tenantid, fee, short_text, instructions, params['id']);
       this.router.navigate(['course']);
    });
 }

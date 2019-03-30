@@ -6,4 +6,8 @@ export default class Course {
     course_desc: String;
     category: String;
     course_rating: Number;
+    tenantid: String;
+    fee: Number;
+    short_text: String;
+    instructions: String;
   }
