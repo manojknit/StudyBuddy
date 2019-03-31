@@ -29,6 +29,7 @@
 
 <mat-toolbar layout="row" >
   <span><h1>Study Buddy</h1></span>
+  <!-- <amplify-authenticator></amplify-authenticator> -->
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
@@ -43,10 +44,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="course" class="nav-link" routerLinkActive="active">
+            <a *ngIf="signedIn" routerLink="course" class="nav-link" routerLinkActive="active">
               Courses
             </a>
           </li> 
+          <li class="nav-item">
+              <a class="nav-link" (click)="onLoginClick()">
+                Login
+              </a>
+              {{useremail}}
+            </li> 
         </ul>
       </div>
     </nav>

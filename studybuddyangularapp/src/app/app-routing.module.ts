@@ -8,7 +8,11 @@ import { PlaybackcourseComponent } from './playbackcourse/playbackcourse.compone
 
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/course', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: '/course',
+    pathMatch: 'full'
+  },
   {
     path: 'course/create',
     component: CourseAddComponent
@@ -39,5 +43,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
 
