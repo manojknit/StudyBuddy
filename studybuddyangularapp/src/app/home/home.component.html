@@ -1,3 +1,69 @@
-<p>
-  home works!
-</p>
+<section  class="homepage-slider" id="home-slider">   
+        <img height = "80%" src="assets/banner7.png" alt="education" style="filter:brightness(100%)"/>
+</section>
+
+<section class="main-content">
+  <div class="row">
+    <div class="span12">
+      <div class="row">
+        <div class="span12">
+          <h4 class="title">
+            <span class="pull-left"><span class="text"><span class="line">Feature <strong>Courses</strong></span></span></span>
+            <span class="pull-right">
+              <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+            </span>
+          </h4>
+          <div id="myCarousel" class="myCarousel carousel slide">
+            <div class="carousel-inner">
+              <div class="active item">
+                <ul class="thumbnails">
+                    <li class="span3" *ngFor="let Course of courses">
+                        <div class="product-box">
+                            <a [routerLink]="['courseDetail', Course._id]">
+                              <img src="assets/cyber-security.jpg" alt="{{ Course.course_title }}" />
+                              <b>{{ Course.course_title }}</b>
+                              <p class="category" style="color:red"><del>{{ Course.fee }}</del> $10</p>
+                            </a>
+                          </div>
+                    </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/>
+      
+      <div class="row feature_box">
+        <div class="span4">
+          <div class="service">
+            <div class="responsive">
+              <img src="assets/feature_img_2.png" alt="" />
+              <h4>LATEST <strong>COURSES</strong></h4>
+              <p>Be ahead of time</p>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="service">
+            <div class="customize">
+              <img src="assets/feature_img_1.png" alt="" />
+              <h4>COST <strong>EFFECTIVE</strong></h4>
+              <p>Pay 10% of the cost as compared to a school.</p>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="service">
+            <div class="support">
+              <img src="assets/feature_img_3.png" alt="" />
+              <h4>STAY <strong>CONNECTED</strong></h4>
+              <p>Chat online, Mobile Notification, Alexa Skill</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

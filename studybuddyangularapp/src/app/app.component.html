@@ -22,9 +22,36 @@
 -->
 <!--3 tabs-->
 <!-- Container #1 (see wireframe) -->
+<div id="top-bar" class="container">
+  <div class="row">
+    <div class="span4">
+      <form method="POST" class="search_form">
+        <input type="text" class="input-block-level search-query" Placeholder="eg. AWS">
+      </form>
+    </div>
+    <div class="span8">
+      <div class="account pull-right">
+        <ul class="user-menu">
+          <li><a href="register.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div id="wrapper" class="container">
+  <section class="navbar main-menu">
+    <div class="navbar-inner main-menu">
+      <a href="index.html" class="logo pull-left"><img src="assets/sb.png" height="13%" width="13%"/></a>
+      <nav id="menu" class="pull-right">
+        <ul>
+          <li><a href="">My Courses</a>
 
+          </li>
+          <li><a href="">All Courses</a></li>
+          <li><a href="">Chat</a>
 
+<<<<<<< HEAD
 <ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 
 <mat-toolbar layout="row" >
@@ -54,20 +81,51 @@
               </a>
               {{useremail}}
             </li> 
+=======
+          </li>
+          <li><a href="">Leaderboard</a></li>
+>>>>>>> 1f36a99e24a01a822c087b096e323005045d6d0a
         </ul>
-      </div>
-    </nav>
-  </span>
-</mat-toolbar>
+      </nav>
+    </div>
+  </section>
+  </div>
+  <div>
 
-
-<br />
-<!-- Container #2 -->
-<!-- 
-<div flex layout="row">
-  <app-playbackcourse></app-playbackcourse>
-  <app-uploadcourse></app-uploadcourse> 
-</div>-->
 <div class="container">
   <router-outlet></router-outlet>
+</div>
+
+<div class="container">
+  <section id="footer-bar">
+    <div class="row">
+      <div class="span3">
+        <h4>Navigation</h4>
+        <ul class="nav">
+          <li><a href="">Homepage</a></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="span4">
+        <h4></h4>
+        <br/>
+        <br/>
+        <ul class="nav">
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="span5">
+        <img src="assets/sb.png" class="site_logo" height="50%" width="50%" alt="">
+        <p>An academic project developed for SJSU CMPE 295A/CMPE 295B</p>
+        <p> By</p>
+        <p>Gyanesh, Madhu, Manoj, Shalini & Yamini</p>
+      </div>
+    </div>
+  </section>
+  <section id="copyright">
+    <span>Copyright Team - StudyBuddy</span>
+  </section>
+
 </div>

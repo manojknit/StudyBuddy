@@ -1,3 +1,93 @@
-<p>
-  course-detail works!
-</p>
+<section class="header_text sub">
+  <!--<img class="pageBanner" src="assets/banner5_small.png" height="10%"  width="100%" alt="New products" >-->
+    <h4><span>Course Detail</span></h4>
+</section>
+<section class="main-content">				
+  <div class="row">						
+    <div class="span9">
+      <div class="row">
+        <div class="span4">
+          <img alt="cyber security" src="assets/cyber-security.jpg">										
+        </div>
+        <div class="span5">
+          <address>
+            <strong>Course: </strong> <span>{{course.course_title}}</span><br>
+            <strong>Course Code: </strong> <span>CB-{{course._id}}</span><br>
+            <strong>Course Rating: </strong> <span>{{course.course_rating}}</span><br>
+            <strong>Instructor: </strong> <span>Dr. David</span><br>
+          </address>									
+          <h4><strong>Tution: $10</strong></h4>
+                          
+                          <div class="span5">
+          <form class="form-inline">
+            <br/>
+
+            <!--<button class="btn btn-success" type="submit">Enroll & Pay Now</button>-->
+            <div id="paypal-checkout-btn"></div>
+          </form>
+        </div>		
+        </div>
+                  
+      </div>
+      <div class="row">
+        <div class="span9">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="/courseDetail#about">About</a></li>
+            <li class=""><a href="/courseDetail#syllabus">Syllabus</a></li>
+            <li class=""><a href="/courseDetail#instruction">Instruction</a></li>
+            <li class=""><a href="/courseDetail#reviews">Reviews</a></li>
+            <li class=""><a href="/courseDetail#recommendation">Recommendation</a></li>
+          </ul>							 
+          <div class="tab-content">
+            <div class="tab-pane active" id="about">{{course.course_desc}}
+              </div>
+              <br/><br/><br/>
+              <!--<div class="tab-pane active" id="syllabus">
+                                  <b>Chapter 1 :</b> Multifacet Cybersecurity Problems: <br/>
+
+                                  <b>Chapter 2 : </b>CIA : Confidentiality , Integrity and Authentication<br/>
+
+                                  <b>Chapter 3: </b>Encryption and Data Security<br/>
+
+                                  <b>Chapter 4: </b>Certificates and Digital Signatures<br/>
+
+                                  <b>Chapter 5: </b>Network Security - Intrusion detection and Prevention<br/>
+
+                                  <b>Chapter 6: </b>Access Control and auditing<br/>
+
+                                  <b>Chapter 7: </b>Hacking Techniques<br/>
+
+                                  <b>Chapter 8: </b>Secure programming
+              </div>
+                              
+              <div class="tab-pane active" id="instruction">
+                                  Learing assessments are at the end of each chapter, please make sure you do them and submit to make sure you understand the material.
+                              <br/>
+
+                                    Please follow the instructions of chapter 1 Labs you received as part of enrolling this class and complete the labs before end of this week
+              </div>
+                              
+              <div class="tab-pane active" id="reviews">
+                                  <b>Elan: <font color="orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></font></b>
+                                  <br/>
+                                  I am a software engineer working on IoT devices with embedded linux and I found this course very valuable as it real covers lot of ground.
+
+                                  <br/><br/>
+                                  
+                                  <b>Marie:<font color="orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span></font></b><br/>
+
+                                  Coming from system administration background, my current role as manager of team now includes to manage few security projects in my team  I found this course to be very helpful to come upto speed on essentials of cybersecurity.
+                                  <br/><br/>
+                                  
+                                  <b>
+                                      Surya:<font color="orange"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></font></b><br/>
+
+                                  My manager recommened to take this training during my intership at my current project and company, I enjoyed the couse, content and the instructure very much.
+              </div>
+            -->            
+          </div>							
+        </div>						
+      </div>
+    </div>
+  </div>
+</section>
