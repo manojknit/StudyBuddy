@@ -24,14 +24,14 @@ export class UploadService {
         .subscribe(res => console.log('Done'));
   }
 
-//https://medium.com/ramsatt/angular-7-upload-file-to-amazon-s3-bucket-ba27022bad54
+  //https://medium.com/ramsatt/angular-7-upload-file-to-amazon-s3-bucket-ba27022bad54
   uploadFile(file, courseid) {
     this.addVideo(courseid, file.name);
     const contentType = file.type;
     const bucket = new S3(
           {
               accessKeyId: 'AKIA',
-              secretAccessKey: '7jxc9J',
+              secretAccessKey: '7jxc',
               region: 'us-east-1'
           }
       );

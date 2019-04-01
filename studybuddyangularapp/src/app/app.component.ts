@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AmplifyService } from 'aws-amplify-angular';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 import * as $ from 'jquery';
@@ -14,26 +14,58 @@ import { NavigationCancel,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy  {
   title = 'Study Buddy';
   signedIn: boolean;
+  isAdmin: boolean;
   user: any;
+  role: any;
   greeting: string;
   useremail: any;
+  Auth1: AmplifyService;
 
-  constructor(private _loadingBar: SlimLoadingBarService, private amplifyService: AmplifyService, private _router: Router) {
+  constructor(private loadingBar: SlimLoadingBarService, private amplifyService: AmplifyService, private _router: Router) {
+    
+    this.loadingBar.start();
+    this.isAdmin = false;
+    this.Auth1 = amplifyService;
+  //   this.Auth1.auth().currentAuthenticatedUser()
+  // .then(data => console.log('data' + JSON.stringify(data)))
+  // .catch(err => console.log(err));
+
+    this.Auth1.auth().currentAuthenticatedUser({
+    bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
+    .catch(err => console.log(err));
+
     console.log('App Component');
-    this.amplifyService.authStateChange$
+    this.Auth1.authStateChange$
             .subscribe(authState => {
                 this.signedIn = authState.state === 'signedIn';
                 if (!authState.user) {
+                    localStorage.clear();
                     this.user = null;
                     this.useremail = null;
                 } else {
                     this.user = authState.user;
                     this.useremail = this.user.attributes.email;
                     console.log('Greeting=' + this.greeting + 'email=' + this.useremail);
+                    // Set item:
+                    if ( this.useremail == 'erpatel@gmail.com')  //Set Admin
+                    {
+                      this.role = 'admin';
+                      this.isAdmin = true;
+                    }
+                    else
+                    { 
+                      this.role = 'user';
+                      this.isAdmin = false;
+                    }
+                    let myObj = { name: this.user , email: this.useremail, role: this.role };
+                    localStorage.removeItem('user');
+                    localStorage.setItem('user', JSON.stringify(myObj));
+                    //let item = JSON.parse(localStorage.getItem(key)); //in ngOnInit() 
                 }
+                this.loadingBar.complete();
         });
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
@@ -41,24 +73,30 @@ export class AppComponent {
   }
   private navigationInterceptor(event: Event): void {
     if (event instanceof NavigationStart) {
-      this._loadingBar.start();
+      this.loadingBar.start();
     }
     if (event instanceof NavigationEnd) {
-      this._loadingBar.complete();
+      this.loadingBar.complete();
     }
     if (event instanceof NavigationCancel) {
-      this._loadingBar.stop();
+      this.loadingBar.stop();
     }
     if (event instanceof NavigationError) {
-      this._loadingBar.stop();
+      this.loadingBar.stop();
     }
   }
 
-  //ngOnInit() {$('body').addClass('df');}
+  ngOnInit() {
+    //$('body').addClass('df');
+    console.log('oninit' + this.role );
+  }
 
-    onLoginClick() {
+  ngOnDestroy() {
+    localStorage.removeItem('user'); // localStorage.clear();
+  }
+  onLoginClick() {
       const URL = 'https://studybuddy.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=3ka7920q49t5u0thkp189u5dma&redirect_uri=http://localhost:4200';
       window.location.assign(URL);
 
-    }
+  }
 }

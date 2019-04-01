@@ -13,7 +13,8 @@ declare let paypal: any;
 export class CourseDetailComponent implements OnInit {
 
   paypalLoad: boolean = true;
-  
+  angForm: any;
+  addScript: boolean;
   finalAmount: number = 10;
 
   course: any = {};

@@ -11,22 +11,15 @@ import { CourseMybucketComponent} from './course-mybucket/course-mybucket.compon
 
 
 const routes: Routes = [
-<<<<<<< HEAD
-  {
-    path: '',
-    redirectTo: '/course',
+  { path: '',
+    component: HomeComponent,
     pathMatch: 'full'
-=======
-  { path: '',  
-    component: HomeComponent, 
-    pathMatch: 'full' 
   },
-  { path: 'courseDetail/:id',  
+  { path: 'courseDetail/:id',
     component: CourseDetailComponent
   },
-  { path: 'courseBucket/',  
+  { path: 'courseBucket/',
     component: CourseMybucketComponent
->>>>>>> 1f36a99e24a01a822c087b096e323005045d6d0a
   },
   {
     path: 'course/create',
