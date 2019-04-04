@@ -11,5 +11,5 @@ public class VideoPlayerConfig {
     public static final int MIN_PLAYBACK_RESUME_BUFFER = 5000;
 
    // public static final String DEFAULT_VIDEO_URL = "https://androidwave.com/media/androidwave-video-3.mp4";
-   public static final String DEFAULT_VIDEO_URL = "https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/democlapapp.m3u8";
+
 }

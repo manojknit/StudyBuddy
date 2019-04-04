@@ -60,7 +60,7 @@ public class MycoursesAdapter extends RecyclerView.Adapter<MycoursesAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return 5;
+        return courseList.size();
     }
 
 
