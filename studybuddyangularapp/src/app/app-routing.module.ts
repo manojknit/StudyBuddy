@@ -8,7 +8,7 @@ import { PlaybackcourseComponent } from './playbackcourse/playbackcourse.compone
 import { HomeComponent } from './home/home.component';
 import { CourseDetailComponent} from './course-detail/course-detail.component';
 import { CourseMybucketComponent} from './course-mybucket/course-mybucket.component';
-
+import { CourseBuyComponent} from './course-buy/course-buy.component';
 
 const routes: Routes = [
   { path: '',
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'courseDetail/:id',
     component: CourseDetailComponent
   },
-  { path: 'courseBucket/',
+  { path: 'myCourses',
     component: CourseMybucketComponent
   },
   {

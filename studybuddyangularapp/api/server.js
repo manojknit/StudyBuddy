@@ -8,6 +8,7 @@ const express = require('express'),
 //Add for table
 const courseRoute = require('./routes/course.route');
 const videoRoute = require('./routes/video.route');
+const courseuserRoute = require('./routes/courseuser.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/course', courseRoute);
 app.use('/video', videoRoute);
+app.use('/courseuser', courseuserRoute);
 
 const port = process.env.PORT || 4000;
 
