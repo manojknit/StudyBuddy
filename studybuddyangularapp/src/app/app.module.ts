@@ -24,6 +24,7 @@ import { CourseBuyComponent } from './course-buy/course-buy.component';
 
 import { CustomReuseStrategy } from './app.customreusestrategy';
 import { RouteReuseStrategy } from '@angular/router';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RouteReuseStrategy } from '@angular/router';
     HomeComponent,
     CourseDetailComponent,
     CourseMybucketComponent,
-    CourseBuyComponent
+    CourseBuyComponent,
+    LeaderboardComponent
   ],
   imports: [
     SlimLoadingBarModule,
