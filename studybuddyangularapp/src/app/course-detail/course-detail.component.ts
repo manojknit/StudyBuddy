@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { CourseService } from '../services/course.service';
+import { CourseUserService } from '../services/course-user.service';
 
 declare let paypal: any;
 
@@ -25,6 +26,7 @@ export class CourseDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private bs: CourseService,
+    private cus: CourseUserService,
     private fb: FormBuilder) {
       this.createForm();
      }
@@ -49,7 +51,9 @@ export class CourseDetailComponent implements OnInit {
       this.bs.editCourse(params['id']).subscribe(res => {
         this.course = res;
         this.course_id = params['id'];
-
+        let user = JSON.parse(localStorage.getItem("user")); 
+        this.user_name = user.email;
+        console.log("id : " + this.course_id + "  && user_name : " + this.user_name);
       });
     });
   }
@@ -77,6 +81,13 @@ export class CourseDetailComponent implements OnInit {
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then((payment) => {
         //Do something when payment is successful.
+        var DateObj = new Date();
+
+        let date1 = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
+        console.log("Again : id : " + this.course_id + "  && user_name : " + this.user_name);
+        this.cus.addCourseUser(this.user_name, this.course_id, date1);
+        console.log("date is " + date1);
+        console.log("data saved!!!");
         alert("Payment Successful");
         //save the details in the DB
       })

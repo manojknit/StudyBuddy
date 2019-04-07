@@ -1,4 +1,7 @@
-<h3>Courses</h3>
+<section class="header_text sub">
+  <!--<img class="pageBanner" src="assets/banner5_small.png" height="10%"  width="100%" alt="New products" >-->
+    <h4><span>Courses</span></h4>
+</section>
  <div style="display: flex; justify-content: flex-end">
             <a routerLink="create" class="btn btn-success" routerLinkActive="active">
                 Create Course
@@ -8,16 +11,16 @@
 <table class="table table-hover">
   <thead>
   <tr>
-      <td>User Name</td>
-      <td>Course Title</td>
-      <td>Course Description</td>
-      <td>Category</td>
-      <td>Rating</td>
-      <td>Tenant Id</td>
-      <td>Fee</td>
-      <td>Short Text</td>
-      <td>Instructions</td>
-      <td colspan="4" style="align-content: center; text-align: center;">Actions</td>
+      <th>User Name</th>
+      <th>Course Title</th>
+      <!--<td>Course Description</td>-->
+      <th>Category</th>
+      <th>Rating</th>
+      <!--<th>Tenant Id</th>-->
+      <th>Fee</th>
+      <th>Short Text</th>
+      <th>Instructions</th>
+      <th colspan="4" style="align-content: center; text-align: center;">Actions</th>
   </tr>
   </thead>
 
@@ -25,20 +28,18 @@
       <tr *ngFor="let Course of courses">
           <td>{{ Course.user_name }}</td>
           <td>{{ Course.course_title }}</td>
-          <td>{{ Course.course_desc }}</td>
+         <!--<td>{{ Course.course_desc }}</td>-->
           <td>{{ Course.category }}</td>
           <td>{{ Course.course_rating }}</td>
-          <td>{{ Course.tenantid }}</td>
+          <!--<td>{{ Course.tenantid }}</td>-->
           <td>{{ Course.fee }}</td>
           <td>{{ Course.short_text }}</td>
           <td>{{ Course.instructions }}</td>
-          <td><a [routerLink]="['edit', Course._id]" class="btn btn-primary">Edit</a></td>
-          <td><a (click) = "deleteCourse(Course._id)" class="btn btn-primary">Delete</a></td>
-          <td><a [routerLink]="['upload', Course._id]" class="btn btn-primary" routerLinkActive="active">
-                Upload
+          <td><a [routerLink]="['edit', Course._id]"><span class="fa fa-edit fa-2x"></span></a></td>
+          <td><a (click) = "deleteCourse(Course._id)" ><span class="fa fa-trash fa-2x"></span></a></td>
+          <td><a [routerLink]="['upload', Course._id]" routerLinkActive="active"><span class="fa fa-upload fa-lg"></span>
           </a></td>
-          <td><a [routerLink]="['video', Course._id]" class="btn btn-primary" routerLinkActive="active">
-                Watch
+          <td><a [routerLink]="['video', Course._id]" routerLinkActive="active"><span class="fa fa-play fa-lg"></span>
           </a></td></tr>
   </tbody>
 </table>

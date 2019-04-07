@@ -2,7 +2,7 @@ import 'hammerjs';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import Amplify, {Auth} from 'aws-amplify';
-import amplify from './aws-exports';
+import amplify from './aws-exports.js';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
