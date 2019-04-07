@@ -93,16 +93,14 @@ section.header_text{
 	border-bottom:1px solid #fff;
 }
 section.homepage-slider{
-	/*border-bottom:1px dotted #eb4800;*/
+	border-bottom:1px dotted #eb4800;
 	padding-bottom:1px;
 	position: relative;
 	top:0;
 	z-index:99;
-	align-self: center;
-	/*padding-left: 70px;*/
-	/*border-bottom:2px solid #ddd;*/	
-	/*background-color:#efeeed;*/
-	/*min-height:100px;*/
+	border-bottom:2px solid #ddd;	
+	background-color:#efeeed;
+	min-height:100px;
 }
 section.homepage-slider div.intro{
 	position:absolute;

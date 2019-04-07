@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { CourseDetailComponent} from './course-detail/course-detail.component';
 import { CourseMybucketComponent} from './course-mybucket/course-mybucket.component';
 import { CourseBuyComponent} from './course-buy/course-buy.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const routes: Routes = [
   { path: '',
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'course/video/:id/play/:videoid',
     component: PlaybackcourseComponent
+  },
+  {
+    path: 'leaderboard',
+    component: LeaderboardComponent
   }
 ];
 

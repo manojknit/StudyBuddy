@@ -1,6 +1,8 @@
 package msse.com.studybuddyapp;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Movie;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,15 +13,18 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
+import msse.com.studybuddyapp.apiasynctasks.FetchCoursesTask;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import msse.com.studybuddyapp.adapter.MycoursesAdapter;
+import msse.com.studybuddyapp.listener.RecyclerTouchListener;
 import msse.com.studybuddyapp.model.Course;
 
 public class HomeActivity extends AppCompatActivity {
@@ -30,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    ArrayList<Course> returnValues = new ArrayList<Course>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         t.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         nv = (NavigationView)findViewById(R.id.nav_view);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -67,16 +74,32 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_free_courses);
       //  frrecRecyclerView = (RecyclerView) findViewById(R.id.rv_in_demand);
-        courseList = new ArrayList<>();
-        courseadapter = new MycoursesAdapter(this, courseList);
+        courseList = new ArrayList<Course>();
+
+        fetch();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(15), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(courseadapter);
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView,  new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Course course = courseList.get(position);
+                Toast.makeText(getApplicationContext(), course.getCourse_name() + " is selected!", Toast.LENGTH_SHORT).show();
+                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), VideoPlayerConfig.DEFAULT_VIDEO_URL);
+                startActivity(mIntent);
+            }
 
-        prepareCourses();
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+      //  prepareCourses();
+
     }
 
     private void prepareCourses() {
@@ -160,5 +183,28 @@ public class HomeActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    public void fetch(){
+        FetchCoursesTask fetchCoursesTask = new FetchCoursesTask();
+
+        try {
+            courseList = fetchCoursesTask.execute().get();
+          /*  MyContact FetchedData = (MyContact) returnValues.toArray()[0];
+
+            editText_fname.setText(FetchedData.getFirst_name());
+            editText_lname.setText(FetchedData.getLast_name());
+            editText_phonenumber.setText(FetchedData.getPhone_nubmer());
+            */
+            Log.d("log fetch value", courseList.toString() + courseList.size() );
+            Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
+            courseadapter = new MycoursesAdapter(this, courseList);
+            courseadapter.notifyDataSetChanged();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
 }
