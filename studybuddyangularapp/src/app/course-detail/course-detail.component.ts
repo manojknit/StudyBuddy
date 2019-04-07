@@ -16,6 +16,9 @@ export class CourseDetailComponent implements OnInit {
   angForm: any;
   addScript: boolean;
   finalAmount: number = 10;
+  course_id: string;
+  user_name: string;
+
 
   course: any = {};
 
@@ -41,9 +44,12 @@ export class CourseDetailComponent implements OnInit {
       }
 
   ngOnInit() {
+    
     this.route.params.subscribe(params => {
       this.bs.editCourse(params['id']).subscribe(res => {
         this.course = res;
+        this.course_id = params['id'];
+
       });
     });
   }
@@ -55,8 +61,8 @@ export class CourseDetailComponent implements OnInit {
       production: '<your-production-key here>'
     },
     style: {
-      size: 'large',
-      color: 'blue'
+      size: 'large'
+      /*,color: 'blue'*/
     },
     commit: true,
     payment: (data, actions) => {
@@ -72,7 +78,7 @@ export class CourseDetailComponent implements OnInit {
       return actions.payment.execute().then((payment) => {
         //Do something when payment is successful.
         alert("Payment Successful");
-        this.router.navigate(['/courseBucket', 5]);
+        //save the details in the DB
       })
     }
   };

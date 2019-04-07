@@ -97,6 +97,5 @@ export class AppComponent implements OnInit, OnDestroy  {
   onLoginClick() {
       const URL = 'https://studybuddy.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=3ka7920q49t5u0thkp189u5dma&redirect_uri=http://localhost:4200';
       window.location.assign(URL);
-
   }
 }

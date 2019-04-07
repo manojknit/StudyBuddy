@@ -32,7 +32,8 @@
     <div class="span8">
       <div class="account pull-right">
         <ul class="user-menu">
-          <li><a (click)="onLoginClick()">Login</a></li>
+          <li *ngIf="!signedIn" ><a (click)="onLoginClick()">Login</a></li>
+          <li *ngIf="signedIn">Logout</li>
           <li><i *ngIf="signedIn" class="fa fa-users"></i>
             {{useremail}}</li>
         </ul>
@@ -45,7 +46,7 @@
   <ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
   <section class="navbar main-menu">
     <div class="navbar-inner main-menu">
-      <a href="index.html" class="logo pull-left"><img src="assets/sb.png" height="13%" width="13%"/></a>
+      <a href="index.html" class="logo pull-left"><img src="assets/sb_logo.png" height="83%" width="83%"/></a>
       <nav id="menu" class="pull-right">
         <ul>
           <li>
@@ -93,7 +94,7 @@
         </ul>
       </div>
       <div class="span5">
-        <img src="assets/sb.png" class="site_logo" height="50%" width="50%" alt="">
+        <br/>
         <p>An academic project developed for SJSU CMPE 295A/CMPE 295B</p>
         <p> By</p>
         <p>Gyanesh, Madhu, Manoj, Shalini & Yamini</p>

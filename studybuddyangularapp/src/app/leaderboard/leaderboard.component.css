@@ -60,7 +60,7 @@ html {
   }
   .card-info {
     position: relative;
-    background: linear-gradient(to bottom, #626d82 0%, #343d4d 100%);
+    background: linear-gradient(to bottom, #626d82 15%, #008080 85%);
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
   }
@@ -92,12 +92,12 @@ html {
     border-radius: 50%;
     height: 75px;
     width: 75px;
-    border: 3px solid #e45b6c;
+    border: 3px solid #F37721;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 2px 10px 0 rgba(0, 0, 0, 0.15);
   }
   
   .dial {
-    color: #e45b6c;
+    color: #F37721;
     text-shadow: inset 1px 1px 0 white;
     background: #fff;
     border-radius: 50%;
@@ -105,7 +105,7 @@ html {
     height: 55px;
     margin: 50px 0;
     padding: 40px;
-    box-shadow: 0 4px 15px -10px rgba(0, 0, 0, 0.1), 0 5px 15px 1px rgba(0, 0, 0, 0.18), 0 0 0 15px #fff, 0 0 0 22px #e45b6c, 0 55px 50px -20px rgba(34, 36, 38, 0.25);
+    box-shadow: 0 4px 15px -10px rgba(0, 0, 0, 0.1), 0 5px 15px 1px rgba(0, 0, 0, 0.18), 0 0 0 15px #fff, 0 0 0 22px #F37721, 0 55px 50px -20px rgba(34, 36, 38, 0.25);
   }
   .dial-title {
     font-size: 3.8em;
@@ -135,7 +135,7 @@ html {
     text-align: right;
   }
   .menu-item-active {
-    color: tint(#e45b6c, 20%);
+    color: tint(#F37721, 20%);
   }
   
   .statistics {
@@ -153,7 +153,7 @@ html {
     font-size: 1.5em;
   }
   .statistics .statistic-value {
-    color: #e45b6c;
+    color: #F37721;
     font-size: 2em;
   }
   
@@ -164,7 +164,7 @@ html {
     overflow: hidden;
   }
   .progress-bar {
-    background: tint(#e45b6c, 20%);
+    background: tint(#F37721, 20%);
     min-height: 10px;
   }
   
