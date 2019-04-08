@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import msse.com.studybuddyapp.adapter.MycoursesAdapter;
+import msse.com.studybuddyapp.apiasynctasks.FetchVideosTask;
 import msse.com.studybuddyapp.listener.RecyclerTouchListener;
 import msse.com.studybuddyapp.model.Course;
 
@@ -76,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
       //  frrecRecyclerView = (RecyclerView) findViewById(R.id.rv_in_demand);
         courseList = new ArrayList<Course>();
 
-        fetch();
+        fetchCourse();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(15), true));
@@ -88,8 +89,13 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Course course = courseList.get(position);
                 Toast.makeText(getApplicationContext(), course.getCourse_name() + " is selected!", Toast.LENGTH_SHORT).show();
-                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), VideoPlayerConfig.DEFAULT_VIDEO_URL);
-                startActivity(mIntent);
+                Toast.makeText(getApplicationContext(),  course.getCourse_id() + " is course id",  Toast.LENGTH_SHORT).show();
+           //     Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), VideoPlayerConfig.DEFAULT_VIDEO_URL);
+              //  startActivity(mIntent);
+                Intent intent = new Intent(getApplicationContext(), VideosListActivity.class);
+                startActivity(intent);
+
+
             }
 
             @Override
@@ -185,7 +191,7 @@ public class HomeActivity extends AppCompatActivity {
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-    public void fetch(){
+    public void fetchCourse(){
         FetchCoursesTask fetchCoursesTask = new FetchCoursesTask();
 
         try {
@@ -207,4 +213,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
