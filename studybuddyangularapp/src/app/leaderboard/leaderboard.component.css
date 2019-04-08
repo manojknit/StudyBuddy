@@ -60,7 +60,7 @@ html {
   }
   .card-info {
     position: relative;
-    background: linear-gradient(to bottom, #626d82 15%, #008080 85%);
+    background: linear-gradient(to bottom, #626d82 20%, #006666 80%);
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
   }

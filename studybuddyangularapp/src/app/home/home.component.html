@@ -9,8 +9,10 @@
         <div class="span12">
           <h4 class="title">
             <span class="pull-left"><span class="text"><span class="line">Feature <strong>Courses</strong></span></span></span>
+            
             <span class="pull-right">
-              <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+              <a class="left button" style="color:#eb4800;" href="javascript:void(0)" data-slide="prev"></a>
+              <a class="right button" href="javascript:void(0)" data-slide="next"></a>
             </span>
           </h4>
           <div id="myCarousel" class="myCarousel carousel slide">
@@ -20,7 +22,7 @@
                     <li class="span3" *ngFor="let Course of courses">
                         <div class="product-box">
                             <a [routerLink]="['courseDetail', Course._id]">
-                              <img src="assets/cyber-security.jpg" alt="{{ Course.course_title }}" />
+                              <img src="assets/{{Course.course_title}}" alt="{{ Course.course_title }}" />
                               <b>{{ Course.course_title }}</b>
                               <p class="category" style="color:red"><del>{{ Course.fee }}</del> $10</p>
                             </a>
@@ -67,3 +69,7 @@
     </div>
   </div>
 </section>
+
+<div id="note">
+  <b>Shop any tech course for $10. Hurry, saving ends in 3 days !!! </b> 
+</div>
