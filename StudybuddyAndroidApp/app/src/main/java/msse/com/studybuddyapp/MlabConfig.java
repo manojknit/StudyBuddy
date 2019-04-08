@@ -10,12 +10,13 @@ public class MlabConfig {
     public String getApiKey() {
         return "YOURAPIKEY";
     }
+
     public String getUsernamequery() {
         return "?q={'user_name':'manoj.kumar@sjsu.edu'}&";
     }
 
     public String getCourseidquery() {
-        return "?q={\"CourseId\": \"5c99cc9a8de74e484508cf09\"}&";
+        return "?q={'CourseId':'5c99cc9a8de74e484508cf09'}&";
     }
 
     public String getBaseUrl()

@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyViewHolder> {
-
+    private Context mContext;
     private List<Video> videosList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -32,7 +32,8 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
     }
 
 
-    public MyVideosAdapter(List<Video> videosList) {
+    public MyVideosAdapter(Context mContext,List<Video> videosList) {
+        this.mContext = mContext;
         this.videosList = videosList;
     }
 

@@ -6,7 +6,8 @@ public class Video {
     public String videoTitle;
     public String videoFileName;
 
-
+    public Video() {
+    }
     public Video(String courseId, String videoId, String videoTitle) {
         this.courseId = courseId;
         this.videoId = videoId;
