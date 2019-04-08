@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Course
 let CourseUser = new Schema({
+  user_id: { 
+    type: String
+  },
   user_name: {
     type: String
   },

@@ -1,0 +1,35 @@
+#note {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fde073;
+    text-align: center;
+    line-height: 2.2;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+
+.left {
+    background: url(/assets/arrow-pleft.png) #eee no-repeat center center;
+    margin-right: 2px;
+}
+
+.right {
+    background: url(/assets/arrow-p.png) #eee no-repeat center center;
+    margin-right: 2px;
+}
+
+h4.title {
+    background: url(/assets/line_bar.png) 0 8px repeat-x;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-size: 15px;
+    min-height: 27px;
+    width: 100%;
+}

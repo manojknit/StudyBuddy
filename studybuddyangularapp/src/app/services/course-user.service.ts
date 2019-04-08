@@ -9,8 +9,9 @@ export class CourseUserService {
 
   constructor(private http: HttpClient) { }
 
-  addCourseUser(user_name, course_id, registered_on) {
+  addCourseUser(user_id, user_name, course_id, registered_on) {
     const obj = {
+      user_id: user_id,
       user_name: user_name,
       course_id: course_id,
       registered_on: registered_on
