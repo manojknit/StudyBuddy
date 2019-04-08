@@ -19,6 +19,7 @@ export class CourseDetailComponent implements OnInit {
   finalAmount: number = 10;
   course_id: string;
   user_name: string;
+  user_id: string;
 
 
   course: any = {};
@@ -52,8 +53,9 @@ export class CourseDetailComponent implements OnInit {
         this.course = res;
         this.course_id = params['id'];
         let user = JSON.parse(localStorage.getItem("user")); 
-        this.user_name = user.email;
-        console.log("id : " + this.course_id + "  && user_name : " + this.user_name);
+        this.user_id = user.email;
+        this.user_name = user.name.username;
+        console.log("id : " + this.course_id + "  && user_name : " + this.user_name + " && user_id : " + this.user_id);
       });
     });
   }
@@ -85,7 +87,7 @@ export class CourseDetailComponent implements OnInit {
 
         let date1 = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
         console.log("Again : id : " + this.course_id + "  && user_name : " + this.user_name);
-        this.cus.addCourseUser(this.user_name, this.course_id, date1);
+        this.cus.addCourseUser(this.user_id, this.user_name, this.course_id, date1);
         console.log("date is " + date1);
         console.log("data saved!!!");
         alert("Payment Successful");
