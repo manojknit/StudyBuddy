@@ -43,7 +43,7 @@
             </div>				
         <div class="span9">								
             <video id="my_video_1" class="video-js vjs-fluid vjs-big-play-centered" style="background-color:white;" 
-            controls preload="metadata" width="640" height="468" data-setup='{}'>
+            controls preload="metadata" width="640" height="468" data-setup='{}' (timeupdate)="onTimeUpdate($event)">
                   <source [src]="['https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/'+ selectedvideo +'.m3u8']" type="application/x-mpegURL" >
                 </video>				
          

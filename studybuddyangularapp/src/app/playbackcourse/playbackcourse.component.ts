@@ -48,4 +48,8 @@ export class PlaybackcourseComponent implements OnInit {
     console.log( "myurl="+base_url+myurl);
     window.location.href = base_url+myurl;
   }
+
+  public onTimeUpdate(value){
+    console.log( this.selectedvideo + " : " + value.target.currentTime);
+  }
 }

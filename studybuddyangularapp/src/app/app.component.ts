@@ -37,6 +37,13 @@ export class AppComponent implements OnInit, OnDestroy  {
     bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
     .catch(err => console.log(err));
 
+    this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).gatag('set', 'page', event.urlAfterRedirects);
+        (<any>window).gatag('send', 'pageview');
+      }
+    });
+
     console.log('App Component');
     this.Auth1.authStateChange$
             .subscribe(authState => {
