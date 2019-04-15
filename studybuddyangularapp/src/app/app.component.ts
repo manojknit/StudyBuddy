@@ -40,16 +40,6 @@ export class AppComponent implements OnInit, OnDestroy  {
     bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
     .catch(err => console.log(err));
 
-    // this._router.events.subscribe(event => {
-    //   if (event instanceof NavigationEnd) {
-    //     // console.log("start12");
-    //     (<any>window).gtag('set', 'page', event.urlAfterRedirects);
-    //     (<any>window).gtag('send', 'pageview');
-       
-    //     // console.log("start13");
-    //   }
-    // });
-
     gtag.event('init', { event_label: 'App Init'});
 
     console.log('App Component');

@@ -12,6 +12,9 @@ let CourseUserNested = new Schema({
   course_id: {
     type: String
   },
+  course_title: {
+    type: String
+  },
   registered_on: {
     type: Date
   },

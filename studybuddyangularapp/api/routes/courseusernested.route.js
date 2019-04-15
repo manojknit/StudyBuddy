@@ -29,5 +29,19 @@ courseusernestedRoutes.route('/').get(function (req, res) {
   });
 });
 
+// Get course registered by user_id
+//https://mongoosejs.com/docs/2.7.x/docs/finding-documents.html
+courseusernestedRoutes.route('/getbyuserid/:id').get(function (req, res) {
+  let id = req.params.id;
+  CourseUserNested.find({ 'user_id': id }, function (err, courseusernested){
+    if(err){
+      console.log(err);
+    }
+    else {
+      console.log(courseusernested);
+      res.json(courseusernested);
+    }
+  });
+});
 
 module.exports = courseusernestedRoutes;

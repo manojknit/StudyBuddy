@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'courseDetail/:id',
     component: CourseDetailComponent
   },
-  { path: 'myCourses',
+  { path: 'myCourses/:id',
     component: CourseMybucketComponent
   },
   {
