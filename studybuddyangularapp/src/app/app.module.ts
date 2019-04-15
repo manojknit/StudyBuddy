@@ -25,6 +25,7 @@ import { CourseBuyComponent } from './course-buy/course-buy.component';
 import { CustomReuseStrategy } from './app.customreusestrategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { GtagModule } from 'angular-gtag';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     MatCommonModule,
     MatCardModule,
     MatListModule,
-    AmplifyAngularModule
+    AmplifyAngularModule,
+    GtagModule.forRoot({ trackingId: 'UA-138249129-1', trackPageviews: true, debug: true })
   ],
   providers: [CourseService, AmplifyService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]

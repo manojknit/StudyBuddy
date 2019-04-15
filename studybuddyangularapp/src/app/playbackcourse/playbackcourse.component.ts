@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Video from '../Video';
 import { VideoService } from '../services/video.service';
 import * as $ from 'jquery';
+import { Gtag } from 'angular-gtag';
 
 @Component({
   selector: 'app-playbackcourse',
@@ -18,10 +19,13 @@ export class PlaybackcourseComponent implements OnInit {
     { value: "1", view: "one" },
     { value: "2", view: "Two" }
   ];
+  gtag: Gtag;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private vs: VideoService) { }
+    private vs: VideoService, gtag: Gtag) {
+      this.gtag = gtag;
+     }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -50,6 +54,26 @@ export class PlaybackcourseComponent implements OnInit {
   }
 
   public onTimeUpdate(value){
-    console.log( this.selectedvideo + " : " + value.target.currentTime);
+    console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
+    //tracker.send('event', 'Video', 'play', 'cats.mp4');
+    
+  }
+
+  public onEnded(value) {
+    console.log("Video Ended");
+    
+  }
+
+  public onPause(value) {
+    console.log("Video Paused 111");
+
+    this.gtag.event(this.selectedvideo, {
+      'event_category': 'Video Playback',
+      'event_label': 'test1', 'event_callback': function() {
+        console.log("call back");
+      }
+    });
+
+    console.log("Pause Event Published ");
   }
 }

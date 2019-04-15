@@ -9,6 +9,7 @@ const express = require('express'),
 const courseRoute = require('./routes/course.route');
 const videoRoute = require('./routes/video.route');
 const courseuserRoute = require('./routes/courseuser.route');
+const courseusernestedRoute = require('./routes/courseusernested.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -22,6 +23,7 @@ app.use(cors());
 app.use('/course', courseRoute);
 app.use('/video', videoRoute);
 app.use('/courseuser', courseuserRoute);
+app.use('/courseusernested', courseusernestedRoute);
 
 const port = process.env.PORT || 4000;
 
