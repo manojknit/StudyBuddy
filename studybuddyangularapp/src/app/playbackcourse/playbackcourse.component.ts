@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Video from '../Video';
-import { VideoService } from '../services/video.service';
+import CourseUserNested from '../CourseUserNested';
+import { CourseMybucketService } from '../services/course-mybucket.service';
 import * as $ from 'jquery';
 import { Gtag } from 'angular-gtag';
 
@@ -11,9 +12,11 @@ import { Gtag } from 'angular-gtag';
   styleUrls: ['./playbackcourse.component.css']
 })
 export class PlaybackcourseComponent implements OnInit {
-  videos: Video[];
+  // videos: Video[];
   selectedvideo: string = "";
   selectedcourseid: string = "";
+  courseusernested:  any = {}
+
   items = [
     { value: "0", view: "zero" },
     { value: "1", view: "one" },
@@ -24,7 +27,7 @@ export class PlaybackcourseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private vs: VideoService, gtag: Gtag) {
+    private cbs: CourseMybucketService, gtag: Gtag) {
       this.gtag = gtag;
      }
 
@@ -36,18 +39,22 @@ export class PlaybackcourseComponent implements OnInit {
     this.route.params.subscribe(params => {
     this.selectedcourseid = params['id'];
     this.selectedvideo = params['videoid'];
-    this.vs
-      .getVideos(params['id'])
-      .subscribe((data: Video[]) => {
+    this.cbs
+      .getById(this.selectedcourseid)
+      .subscribe(data => {
         //data.forEach(function (value) {
           //items.add
          // console.log(Array.of(value));
         //}); 
-        this.videos = data;
-        if(data[0] != undefined && data[0] != null && this.selectedvideo == null)
+        // this.courseUserNested = data;
+        this.courseusernested = data[0];
+        if(data != undefined && data != null  
+           && this.selectedvideo == null)
         {
-          let filename = data[0].VideoTitle;
+          console.log(this.courseusernested + ":" + this.courseusernested.user_name + " : " + this.courseusernested.video_details);
+          let filename = this.courseusernested.video_details[0].video_title;
           this.selectedvideo = filename.slice(0, filename.lastIndexOf( '.' ));
+          console.log("selected video " + this.selectedvideo);
         }
     });
   });

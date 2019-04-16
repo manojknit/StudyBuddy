@@ -16,6 +16,12 @@ export class CourseMybucketService {
             .get(`${this.uri}/getbyuserid/${id}`);
   }
 
+  getById(id) {
+    return this
+            .http
+            .get(`${this.uri}/getbyid/${id}`);
+  }
+
 
   addCourseUserNested(user_id, user_name, course_id, course_title, registered_on, videos) {
     let videoArr = [];
@@ -23,8 +29,8 @@ export class CourseMybucketService {
     for(let i=0; i < videos.length; i++) {
       const obj1 = {
         video_id: videos[i]._id,
-        video_title: videos[i].video_title,
-        video_file_name: videos[i].video_file_name,
+        video_title: videos[i].VideoTitle,
+        video_file_name: videos[i].VideoFileName,
         video_length: 0,
         video_is_complete: 0,
         video_progress: 0,

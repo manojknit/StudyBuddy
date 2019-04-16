@@ -32,9 +32,9 @@
               <div class="block">	
                 <ul class="nav nav-list">
                   <li class="nav-header">Course Video</li>
-                  <li *ngFor="let item of videos">
-                    <a routerLinkActive="active" (click)="exit(['/course/video/'+selectedcourseid+'/play/'+  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))])" >
-                      {{item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))}}
+                  <li *ngFor="let item of courseusernested.video_details">
+                    <a routerLinkActive="active" (click)="exit(['/course/video/'+selectedcourseid+'/play/'+  item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))])" >
+                      {{item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))}}
                     </a>
                     </li>
                 </ul>

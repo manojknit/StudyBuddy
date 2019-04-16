@@ -22,7 +22,7 @@
           <li class="span3" *ngFor="let cun of courseUserNested">
               <div class="product-box">
                   <span class="sale_tag"></span> 
-                  <a [routerLink]="['/course/video',cun.course_id]">
+                  <a [routerLink]="['/course/video',cun._id]">
                     <img src="assets/{{cun.course_title}}" alt="{{ cun.course_title }}" />
                     <br/>
                     <b>{{ cun.course_title }}</b>

@@ -44,4 +44,19 @@ courseusernestedRoutes.route('/getbyuserid/:id').get(function (req, res) {
   });
 });
 
+// Get by PK of CourseUserNested
+//https://mongoosejs.com/docs/2.7.x/docs/finding-documents.html
+courseusernestedRoutes.route('/getbyid/:id').get(function (req, res) {
+  let id = req.params.id;
+  CourseUserNested.find({ '_id': id }, function (err, courseusernested){
+    if(err){
+      console.log(err);
+    }
+    else {
+      console.log(courseusernested);
+      res.json(courseusernested);
+    }
+  });
+});
+
 module.exports = courseusernestedRoutes;

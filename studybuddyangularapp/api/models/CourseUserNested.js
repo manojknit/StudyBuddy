@@ -28,10 +28,10 @@ let CourseUserNested = new Schema({
     video_id: {
       type: String
     },
-    VideoTitle: {
+    video_title: {
       type: String
     }, 
-    VideoFileName: {
+    video_file_name: {
       type: String
     },
     video_length: {
