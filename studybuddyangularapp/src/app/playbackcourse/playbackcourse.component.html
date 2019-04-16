@@ -33,9 +33,13 @@
                 <ul class="nav nav-list">
                   <li class="nav-header">Course Video</li>
                   <li *ngFor="let item of courseusernested.video_details">
-                    <a routerLinkActive="active" (click)="exit(['/course/video/'+selectedcourseid+'/play/'+  item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))])" >
+                    <a routerLinkActive="active" 
+                    (click)="exit(['/course/video/'+selectedcourseid+'/play/'+ 
+                     item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))])" >
                       {{item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))}}
+                      <span *ngIf="item.video_is_complete == true" class="fa fa-check-square-o" aria-hidden="true"></span>
                     </a>
+                    <mat-progress-bar mode="determinate" value="{{calcPercent(item.video_progress, item.video_length)}}"></mat-progress-bar>
                     </li>
                 </ul>
                 

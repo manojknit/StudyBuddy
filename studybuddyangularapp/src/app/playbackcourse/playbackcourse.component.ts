@@ -88,4 +88,10 @@ export class PlaybackcourseComponent implements OnInit {
 
     console.log("Pause Event Published ");
   }
+
+  public calcPercent(a,b) {
+    
+    console.log("val is " + a + " : " + b + " : " + (a/b));
+    return (a/b)*100;
+  }
 }
