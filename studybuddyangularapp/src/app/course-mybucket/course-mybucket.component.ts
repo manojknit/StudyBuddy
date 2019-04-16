@@ -21,8 +21,10 @@ export class CourseMybucketComponent implements OnInit {
 
     ngOnInit() {
       this.route.params.subscribe(params => {
-      this.selecteduserid = params['id'];
-      this.cbs.getByUserId(params['id'])
+      //this.selecteduserid = params['id'];
+      let user = JSON.parse(localStorage.getItem("user")); 
+      this.selecteduserid = user.email;
+      this.cbs.getByUserId(this.selecteduserid)
         .subscribe((data: CourseUserNested[]) => {
           //data.forEach(function (value) {
             //items.add

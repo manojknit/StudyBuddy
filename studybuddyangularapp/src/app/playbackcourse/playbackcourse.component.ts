@@ -20,6 +20,7 @@ export class PlaybackcourseComponent implements OnInit {
     { value: "2", view: "Two" }
   ];
   gtag: Gtag;
+  date: any;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -28,6 +29,10 @@ export class PlaybackcourseComponent implements OnInit {
      }
 
   ngOnInit() {
+    var DateObj = new Date();
+
+    this.date = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
+        
     this.route.params.subscribe(params => {
     this.selectedcourseid = params['id'];
     this.selectedvideo = params['videoid'];

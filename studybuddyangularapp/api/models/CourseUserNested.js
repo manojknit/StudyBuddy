@@ -21,8 +21,17 @@ let CourseUserNested = new Schema({
   course_velocity: {
     type: Number
   },
-  course_progress: [{
+  course_progress: {
+    type: Number
+  },
+  video_details: [{
     video_id: {
+      type: String
+    },
+    VideoTitle: {
+      type: String
+    }, 
+    VideoFileName: {
       type: String
     },
     video_length: {

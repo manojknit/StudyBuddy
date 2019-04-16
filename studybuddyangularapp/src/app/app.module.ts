@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule} from '@angular/material';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule, MatProgressBarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UploadcourseComponent } from './uploadcourse/uploadcourse.component';
 import { PlaybackcourseComponent } from './playbackcourse/playbackcourse.component';
@@ -59,6 +59,7 @@ import { GtagModule } from 'angular-gtag';
     MatCommonModule,
     MatCardModule,
     MatListModule,
+    MatProgressBarModule,
     AmplifyAngularModule,
     GtagModule.forRoot({ trackingId: 'UA-138249129-1', trackPageviews: true, debug: true })
   ],
