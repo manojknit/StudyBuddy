@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="quizForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4"> Type the Question </label>
+        <input type="text" class="form-control" formControlName="question" #question />
+      </div>
+      <div *ngIf="quizForm.controls['question'].invalid && (quizForm.controls['question'].dirty || quizForm.controls['question'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['question'].errors.required">
+          Question is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Option 1 </label>
+        <input type="text" class="form-control" formControlName="option1" #option1 />
+      </div>
+      <div *ngIf="quizForm.controls['option1'].invalid && (quizForm.controls['option1'].dirty || quizForm.controls['option1'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['option1'].errors.required">
+          Option 1 is required.
+        </div>
+      </div>
+      <div class="form-group" >
+        <label class="col-md-4">Option 2 </label>
+        <input type="text" class="form-control" formControlName="option2" #option2 />
+      </div>
+      <div *ngIf="quizForm.controls['option2'].invalid && (quizForm.controls['option2'].dirty || quizForm.controls['option2'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['option2'].errors.required">
+          Option 2 is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Option 3 </label>
+        <input type="text" class="form-control" formControlName="option3" #option3 />
+      </div>
+      <div *ngIf="quizForm.controls['option3'].invalid && (quizForm.controls['option3'].dirty || quizForm.controls['option3'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['option3'].errors.required">
+          Option 3 is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Option 4 </label>
+        <input type="text" class="form-control" formControlName="option4" #option4 />
+      </div>
+      <div *ngIf="quizForm.controls['option4'].invalid && (quizForm.controls['option4'].dirty || quizForm.controls['option4'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['option4'].errors.required">
+          Option 4 is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Correct answer</label>
+        <input type="text" class="form-control" formControlName="correct_ans" #correct_ans />
+      </div>
+      <div *ngIf="quizForm.controls['correct_ans'].invalid && (quizForm.controls['correct_ans'].dirty || quizForm.controls['correct_ans'].touched)" class="alert alert-danger">
+        <div *ngIf="quizForm.controls['correct_ans'].errors.required">
+          Correct Answer is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="addQuestion(question.value, option1.value, option2.value, option3.value, option4.value , correct_ans.value)"
+          [disabled]="quizForm.pristine || quizForm.invalid"  class="btn btn-primary">Add Question</button>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create Quiz</button>
+      </div>
+    </form>
+  </div>
+</div> 
+
+
+
+
+ 
+
+

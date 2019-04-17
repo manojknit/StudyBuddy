@@ -15,6 +15,7 @@ import { CourseGetComponent } from './course-get/course-get.component';
 import { CourseAddComponent } from './course-add/course-add.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { CourseService } from './services/course.service';
+import { QuizService } from './services/quiz.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
@@ -25,7 +26,11 @@ import { CourseBuyComponent } from './course-buy/course-buy.component';
 import { CustomReuseStrategy } from './app.customreusestrategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { CSV2JSONModule } from 'angular2-csv2json';
+import { MatRadioModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,10 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     CourseDetailComponent,
     CourseMybucketComponent,
     CourseBuyComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    CreateQuizComponent,
+    TakeQuizComponent,
+    AddQuizComponent
   ],
   imports: [
     SlimLoadingBarModule,
@@ -58,9 +66,11 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     MatCommonModule,
     MatCardModule,
     MatListModule,
-    AmplifyAngularModule
+    AmplifyAngularModule,
+    CSV2JSONModule,
+    MatRadioModule,
   ],
-  providers: [CourseService, AmplifyService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
+  providers: [CourseService, AmplifyService, QuizService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
