@@ -1,3 +1,3 @@
 module.exports = {
-    DB: 'mongodb://quot'
+    DB: 'mongodb://quoteuser:'
  };
