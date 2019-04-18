@@ -32,22 +32,38 @@
               <div class="block">	
                 <ul class="nav nav-list">
                   <li class="nav-header">Course Video</li>
-                  <li *ngFor="let item of videos">
-                    <a routerLinkActive="active" (click)="exit(['/course/video/'+selectedcourseid+'/play/'+  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))])" >
-                      {{item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))}}
+                  <li *ngFor="let item of courseusernested.video_details">
+                    <a routerLinkActive="active" 
+                    (click)="exit(['/course/video/'+selectedcourseid+'/play/'+ 
+                     item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))])" >
+                      {{item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))}}
+                      <span *ngIf="item.video_is_complete == true" class="fa fa-check-square-o" aria-hidden="true"></span>
                     </a>
+                    <mat-progress-bar mode="determinate" value="{{calcPercent(item.video_progress, item.video_length)}}"></mat-progress-bar>
                     </li>
+                    <li class="nav-header">Course Quiz</li>
+                    <li><a  (click)="exit(['/course/video/'+selectedcourseid+'/takequiz/'+ quizid])" routerLinkActive="active"> Take Quiz</a></li>
                 </ul>
                 
               </div>
             </div>				
         <div class="span9">								
             <video id="my_video_1" class="video-js vjs-fluid vjs-big-play-centered" style="background-color:white;" 
-            controls preload="metadata" width="640" height="468" data-setup='{}'>
+            controls preload="metadata" width="640" height="468" tag="gtag" data-setup='{}' 
+            (ended)="onEnded($event)" (timeupdate)="onTimeUpdate($event)" (pause)="onPause($event)">
                   <source [src]="['https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/'+ selectedvideo +'.m3u8']" type="application/x-mpegURL" >
                 </video>				
          
         </div>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138249129-1"></script>
+        <script>
+          videojs('my_video_1', {}, function() {
+            console.log("inside gtag");
+            this.gtag();
+          });
+        </script>
+    
        
       </div>
     </section> 

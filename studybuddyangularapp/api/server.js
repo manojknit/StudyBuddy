@@ -10,6 +10,7 @@ const courseRoute = require('./routes/course.route');
 const videoRoute = require('./routes/video.route');
 const courseuserRoute = require('./routes/courseuser.route');
 const quizRoute = require('./routes/quiz.route');
+const courseusernestedRoute = require('./routes/courseusernested.route');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   () => {console.log('Database is connected') },
@@ -23,6 +24,7 @@ app.use('/course', courseRoute);
 app.use('/video', videoRoute);
 app.use('/courseuser', courseuserRoute);
 app.use('/quiz', quizRoute);
+app.use('/courseusernested', courseusernestedRoute);
 
 const port = process.env.PORT || 4000;
 

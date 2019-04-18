@@ -42,13 +42,26 @@ quizRoutes.route('/addQuestion').post(function (req, res) {
       console.log(err);
     }
     else {
-      console.log(quiz);
+      console.log('quizzzzzz' + quiz[0]._id);
       res.json(quiz);
-      console.log("quiz object " + quiz.quizObject);
+      console.log("quiz object " + quiz['quizObject']);
+      console.log('quiz id ' + quiz._id);
     }
   });
 });
+quizRoutes.route('/getquizIdbycourseid/:id').get(function (req, res) {
+  let id = req.params.id;
+  Quiz.find({ 'CourseId': id }, function (err, quiz){
+    if(err){
+      console.log(err);
+    }
+    else {
+      console.log('quizzzzzzid ' + quiz[0]._id);
+      res.json(quiz[0]._id);
+    }
+  });
 
+});
 quizRoutes.route('/submitQuiz').post(function (req, res) {
     let quizresults = new Quizresults(req.body);
     quizresults.save()

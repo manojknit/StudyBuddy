@@ -1,4 +1,5 @@
 export default class Quizresults {
+    userId: String;
     CourseId: String;
     QuizId: String;
     QuizName: String;

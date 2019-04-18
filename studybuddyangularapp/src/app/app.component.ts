@@ -9,6 +9,8 @@ import { NavigationCancel,
         NavigationStart,
         Router } from '@angular/router';
 
+import { Gtag } from 'angular-gtag';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,7 +26,8 @@ export class AppComponent implements OnInit, OnDestroy  {
   useremail: any;
   Auth1: AmplifyService;
 
-  constructor(private loadingBar: SlimLoadingBarService, private amplifyService: AmplifyService, private _router: Router) {
+  constructor(private loadingBar: SlimLoadingBarService, private amplifyService: AmplifyService, 
+    private _router: Router, gtag: Gtag) {
     
     this.loadingBar.start();
     this.isAdmin = false;
@@ -36,6 +39,8 @@ export class AppComponent implements OnInit, OnDestroy  {
     this.Auth1.auth().currentAuthenticatedUser({
     bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
     .catch(err => console.log(err));
+
+    gtag.event('init', { event_label: 'App Init'});
 
     console.log('App Component');
     this.Auth1.authStateChange$
@@ -50,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     this.useremail = this.user.attributes.email;
                     console.log('Greeting=' + this.greeting + 'email=' + this.useremail);
                     // Set item:
-                    if ( this.useremail == 'yaminivijaya@gmail.com')  //Set Admin
+                    if ( this.useremail == 'ssn1')  //Set Admin
                     {
                       this.role = 'admin';
                       this.isAdmin = true;

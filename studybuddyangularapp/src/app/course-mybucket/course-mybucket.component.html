@@ -19,23 +19,21 @@
         </div>				
     <div class="span9">								
       <ul class="thumbnails listing-products">
-        <li class="span3">
-          <div class="product-box">
-            <span class="sale_tag"></span>												
-            <a href=""><img alt="" src="assets/cyber-security.jpg"></a><br/>
-                              <a href="course/video/:id" class="title">Started on 14 Feb 2019</a><br/>
-            <a href="l" class="category">Complete 40%</a><br/>
-                              
-          </div>
-        </li>       
-        <li class="span3">
-          <div class="product-box">												
-            <a href="product_detail.html"><img alt="" src="assets/cyber-security.jpg"></a><br/>
-            <a href="product_detail.html" class="title">Started on 14 Jan 2019</a><br/>
-            <a href="product_detail.html" class="category">Complete 80%</a><br/>
-          </div>
-        </li>
-        
+          <li class="span3" *ngFor="let cun of courseUserNested">
+              <div class="product-box">
+                  <span class="sale_tag"></span> 
+                  <a [routerLink]="['/course/video',cun._id]">
+                    <img src="assets/{{cun.course_title}}" alt="{{ cun.course_title }}" />
+                    <br/>
+                    <b>{{ cun.course_title }}</b>
+                    <p>Registered on {{ cun.registered_on|date:'MM/dd/yyyy' }}</p>
+                   
+                    <mat-progress-bar mode="determinate" value="{{ cun.course_progress }}"></mat-progress-bar>
+                    
+                    <p>Complete {{ cun.course_progress }}%</p>
+                  </a>
+                </div>
+          </li>
       </ul>								
       <hr>
       <div class="pagination pagination-small pagination-centered">

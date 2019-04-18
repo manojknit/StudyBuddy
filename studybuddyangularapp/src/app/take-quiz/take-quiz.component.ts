@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Quiz from '../Quiz';
 import { QuizService } from '../services/quiz.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-take-quiz',
   templateUrl: './take-quiz.component.html',
@@ -15,12 +17,14 @@ quizzes: Quiz['quizObject'];
   Correct_Ans_array: String [] = [];
   selection: String [] = [];
   selectedAnswers = [];
-  scores = 0;
+  scores = -1;
+  selectedcourseid: string = "";
+  quizid: string = "";
 
 
   
   //constructor(private qs: QuizService) { }
-  constructor(private fb: FormBuilder, private qs: QuizService) {
+  constructor(private fb: FormBuilder, private qs: QuizService, private route: ActivatedRoute, private router: Router, private _location: Location) {
     this.createquizForm();
     
   }
@@ -31,9 +35,15 @@ quizzes: Quiz['quizObject'];
   }
 
   ngOnInit() {
-    this.qs.getQuestions('5c9f12cc456fe90901ac7418').subscribe((data: Quiz[]) => {
+    this.route.params.subscribe(params => {
+    this.selectedcourseid = params['id'];
+    this.quizid = params['quizid'];
+    console.log("selected course id " + this.selectedcourseid + "  selected quiz id " + this.quizid);
+  });
+    this.qs.getQuestions(this.selectedcourseid).subscribe((data: Quiz[]) => {
       console.log("quizzes " + this.quizzes);
       this.quizzes = data[0].quizObject;
+      
      // this.Correct_Ans_array.push(data[0].quizObject[0].correct_ans); 
      // data[0].
       console.log("quiz " + this.quizzes);
@@ -42,11 +52,17 @@ quizzes: Quiz['quizObject'];
      });
       });
       
-  }
+ 
+}
+//submitQuiz(courseId, quizId, correct_ans, selected_ans)
   submitQuiz() {
     console.log('submitting quiz');
-    this.qs.submitQuiz('5c9f12cc456fe90901ac7418', 'fdf', this.Correct_Ans_array, this.selectedAnswers);
-
+    this.scores = this.qs.submitQuiz(this.selectedcourseid, this.quizid, this.Correct_Ans_array, this.selectedAnswers);
+    console.log('scores from ' + this.scores);
+  }
+  backClicked() {
+    this._location.back();
+  }
    // console.log(this.quizzes[0].option1);
    /* for (let i = 0; i < this.quizzes.length; i++) {
       console.log(this.quizzes[i].correct_ans);
@@ -61,7 +77,7 @@ quizzes: Quiz['quizObject'];
       }
       console.log(this.scores);
     }   */
-  }
+  
 /*
   this.vs
       .getVideos(params['id'])

@@ -25,6 +25,11 @@ export class QuizService {
            .http
            .get(`${this.uri}/getquizbycourseid/${courseId}`);
   }
+  getQuizIdbyCourseId(courseId) {
+    return this
+    .http
+    .get(`${this.uri}/getquizIdbycourseid/${courseId}`);
+  }
 
   addQuiz(courseid, filename, jsonObj) {
     //courseid = '5c9f12cc456fe90901ac7418';
@@ -38,7 +43,7 @@ export class QuizService {
     this.http.post(`${this.uri}/addQuiz`, obj)
         .subscribe(res => console.log('Done'));
   }
-  submitQuiz(courseId, quizId, correct_ans, selected_ans) {
+  submitQuiz(courseId, quizId, correct_ans, selected_ans): number {
    let scores = 0;
     // need quiz id, coursie, correct ans array, and selected ans
     // update the quiz results table with user id , course id, quiz id, score , max score , attempts ,best score
@@ -50,6 +55,10 @@ export class QuizService {
         }
     }
    console.log('score is ' + scores);
+   let user = JSON.parse(localStorage.getItem("user")); 
+   let user_id = user.email;
+   let user_name = user.name.username;
+   console.log('user id ' + user.email + "  " + "user name " + user.name.username);
    /* 
     CourseId: String;
     QuizId: String;
@@ -60,18 +69,20 @@ export class QuizService {
     attempts: String;
    */
    const quizResults = {
+        userId: user.email,
         CourseId: courseId,
-        QuizId: 'ff',
+        QuizId: quizId,
         QuizName: 'q1',
         Score: scores,
         maxScore: '50',
-        bestScore: '20',
+        bestScore: scores,
         attempts: '1'
         
       };
-      console.log('object ' + quizResults )
-   this.http.post(`${this.uri}/submitQuiz`, quizResults).subscribe(res => console.log('Done'));
-  
+      console.log('object ' + quizResults );
+      this.http.post(`${this.uri}/submitQuiz`, quizResults).subscribe(res => console.log('Done'));
+      console.log(scores);
+      return scores;
     }
 
 }

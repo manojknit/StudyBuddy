@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule} from '@angular/material';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatCommonModule, MatCardModule, MatListModule, MatProgressBarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UploadcourseComponent } from './uploadcourse/uploadcourse.component';
 import { PlaybackcourseComponent } from './playbackcourse/playbackcourse.component';
@@ -26,11 +26,13 @@ import { CourseBuyComponent } from './course-buy/course-buy.component';
 import { CustomReuseStrategy } from './app.customreusestrategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { CSV2JSONModule } from 'angular2-csv2json';
 import { MatRadioModule } from '@angular/material';
+import { GtagModule } from 'angular-gtag';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,6 @@ import { MatRadioModule } from '@angular/material';
     CourseMybucketComponent,
     CourseBuyComponent,
     LeaderboardComponent,
-    CreateQuizComponent,
     TakeQuizComponent,
     AddQuizComponent
   ],
@@ -69,6 +70,9 @@ import { MatRadioModule } from '@angular/material';
     AmplifyAngularModule,
     CSV2JSONModule,
     MatRadioModule,
+    MatProgressBarModule,
+    AmplifyAngularModule,
+    GtagModule.forRoot({ trackingId: 'UA-138249129-1', trackPageviews: true, debug: true })
   ],
   providers: [CourseService, AmplifyService, QuizService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]

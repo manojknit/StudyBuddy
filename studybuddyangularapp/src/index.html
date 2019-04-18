@@ -33,6 +33,7 @@
   <script src="https://unpkg.com/video.js/dist/video.js"></script>
   <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+  
   <script>
     var global = global || window;
     //var Buffer = Buffer || [];
@@ -41,6 +42,19 @@
       version: []
     };
   </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138249129-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  //gtag('create', 'UA-138249129-1', 'auto');
+  gtag('config', 'UA-138249129-1', { 'send_page_view': true });
+</script>
+
+
 </head>
 <body>
   <app-root></app-root>

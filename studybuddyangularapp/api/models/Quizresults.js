@@ -2,17 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Define collection and schema for quizresults
 
-/*
-CourseId: String;
-    QuizId: String;
-    QuizName: String;
-    Score: String;
-    maxScore: String;
-    bestScore: String;
-    attempts: String;
-*/
-
 let Quizresults = new Schema({
+    userId: {
+      type: String
+    },
     CourseId: {
       type: String
     },
