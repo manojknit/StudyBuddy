@@ -42,10 +42,15 @@ quizRoutes.route('/addQuestion').post(function (req, res) {
       console.log(err);
     }
     else {
-      console.log('quizzzzzz' + quiz[0]._id);
+      console.log('inside quizzzzzz' + JSON.stringify(quiz) );
+      if(quiz == [] || quiz == null || quiz == undefined || quiz == {} || JSON.stringify(quiz) == '[]') {
+        console.log('yes undefined');
+        
+        
+      }
       res.json(quiz);
-      console.log("quiz object " + quiz['quizObject']);
-      console.log('quiz id ' + quiz._id);
+     // console.log("quiz object " + quiz['quizObject']);
+     // console.log('quiz id ' + quiz._id);
     }
   });
 });
@@ -56,8 +61,12 @@ quizRoutes.route('/getquizIdbycourseid/:id').get(function (req, res) {
       console.log(err);
     }
     else {
+      if(quiz[0]!= undefined || quiz[0]!=null) {
       console.log('quizzzzzzid ' + quiz[0]._id);
       res.json(quiz[0]._id);
+      }
+     else
+     res.json();
     }
   });
 

@@ -41,8 +41,8 @@
                     </a>
                     <mat-progress-bar mode="determinate" value="{{calcPercent(item.video_progress, item.video_length)}}"></mat-progress-bar>
                     </li>
-                    <li class="nav-header">Course Quiz</li>
-                    <li><a  (click)="exit(['/course/video/'+selectedcourseid+'/takequiz/'+ quizid])" routerLinkActive="active"> Take Quiz</a></li>
+                    <li  *ngIf="quizid" class="nav-header">Course Quiz</li>
+                    <li *ngIf="quizid"><a  (click)="exit(['/course/video/'+selectedcourseid+'/takequiz/'+ quizid])" routerLinkActive="active"> Take Quiz</a></li>
                 </ul>
                 
               </div>

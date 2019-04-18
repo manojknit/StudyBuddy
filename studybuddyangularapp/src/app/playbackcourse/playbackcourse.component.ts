@@ -18,8 +18,8 @@ export class PlaybackcourseComponent implements OnInit {
   selectedvideo: string = "";
   selectedcourseid: string = "";
   courseusernested:  any = {}
-  quizid: string = "";
-  quizzes: Quiz;
+  quizid: string;
+  //quizzes: Quiz;
   items = [
     { value: "0", view: "zero" },
     { value: "1", view: "one" },
@@ -36,18 +36,25 @@ export class PlaybackcourseComponent implements OnInit {
 
   ngOnInit() {
     var DateObj = new Date();
-
+    //let quizid;
     this.date = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
         
     this.route.params.subscribe(params => {
     this.selectedcourseid = params['id'];
-
     this.selectedvideo = params['videoid'];
-    //this.quizid = '5cb4ec6117e6b47850cbf9eb';
+    
     this.qs.getQuizIdbyCourseId(this.selectedcourseid).subscribe((data: string) => {
-    this.quizid = data;
-    console.log('in  getQuizIdbyCourseId - quiz id ' + data);
-    console.log("quiz obj in get quiz id  " + JSON.stringify(this.quizzes));
+      if(data != null || data!= undefined) {
+        this.quizid = data;
+        console.log('in  getQuizIdbyCourseId - quiz id ' + data);
+      }
+   else
+   {
+      this.quizid = null;
+  //  this.quizid = '5cb4ec6117e6b47850cbf9eb';
+   } 
+   
+   // console.log("quiz obj in get quiz id  " + JSON.stringify(this.quizzes));
    
     });
     this.cbs
