@@ -66,6 +66,18 @@ export class CourseDetailComponent implements OnInit {
         this.user_id = user.email;
         this.user_name = user.name.username;
         console.log("id : " + this.course_id + "  && user_name : " + this.user_name + " && user_id : " + this.user_id);
+
+        this.gtag.event( 'view_item', 
+        { 
+          event_label: this.course.course_title, 
+          "items": [
+          {
+            "id": this.course.course_id,
+            "name": this.course.course_title,
+            "price": '10.0'
+          }
+        ]
+      });
       });
     });
 
@@ -81,17 +93,6 @@ export class CourseDetailComponent implements OnInit {
           console.log("Videos are : " + this.videos);
       });
     });
-
-    this.gtag.event( 'view_item', {
-      "items": [
-        {
-          "id": this.course_id,
-          "name": this.course_title,
-          "price": '10.0'
-        }
-      ]
-    });
-
   }
 
   paypalConfig = {
@@ -128,15 +129,20 @@ export class CourseDetailComponent implements OnInit {
         alert("Payment Successful");
         //save the details in the DB
 
-        this.gtag.event( 'purchase', {
+        this.gtag.event( 'purchase', 
+        {
+          "transaction_id": this.user_id + ":" + date1,
+          "affiliation": this.course_title,
+          "value": 10,
+          "currency": "USD",
           "items": [
             {
               "id": this.course_id,
               "name": this.course_title,
-              "price": '10.0'
+              "price": 10
             }
           ]
-        });
+       });
       })
     }
   };

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
     .catch(err => console.log(err));
 
-    gtag.event('init', { event_label: 'App Init'});
+    // gtag.event('init', { event_label: 'App Init'});
 
     console.log('App Component');
     this.Auth1.authStateChange$

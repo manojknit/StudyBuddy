@@ -27,6 +27,10 @@ export class PlaybackcourseComponent implements OnInit {
   ];
   gtag: Gtag;
   date: any;
+  seventyFive = false;
+  fifty = false;
+  twntyFive = false;
+
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -84,11 +88,46 @@ export class PlaybackcourseComponent implements OnInit {
   }
 
   public onTimeUpdate(value){
-    //console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
-    //telemetry
+    console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
+    let percent = (value.target.currentTime / value.target.duration) * 100;
+    if(percent >= 75 && this.seventyFive == false) {
+      this.seventyFive = true;
+      console.log("seventy five");
+      this.gtag.event(this.selectedvideo, {
+        'event_category': 'Video Playback',
+        'event_label': '75%', 'event_callback': function() {
+          console.log("call back");
+        }
+      });
+
+    }else if(percent >= 50 && this.fifty == false) {
+      this.fifty = true;
+      console.log("fifty");
+      this.gtag.event(this.selectedvideo, {
+        'event_category': 'Video Playback',
+        'event_label': '50%', 'event_callback': function() {
+          console.log("call back");
+        }
+      });
+    }else if(percent >= 25 && this.twntyFive == false) {
+      this.twntyFive = true;
+      console.log("twenty five");
+      this.gtag.event(this.selectedvideo, {
+        'event_category': 'Video Playback',
+        'event_label': '25%', 'event_callback': function() {
+          console.log("call back");
+        }
+      });
+    }
   }
 
   public onEnded(value) {
+    this.gtag.event(this.selectedvideo, {
+      'event_category': 'Video Playback',
+      'event_label': '100%', 'event_callback': function() {
+        console.log("call back");
+      }
+    });
     console.log("Video Ended");
     
   }
@@ -98,7 +137,7 @@ export class PlaybackcourseComponent implements OnInit {
 
     this.gtag.event(this.selectedvideo, {
       'event_category': 'Video Playback',
-      'event_label': 'test1', 'event_callback': function() {
+      'event_label': 'Paused', 'event_callback': function() {
         console.log("call back");
       }
     });
@@ -109,7 +148,7 @@ export class PlaybackcourseComponent implements OnInit {
   public calcPercent(a,b) {
     if(b == 0) 
         return 0;
-    console.log("val is " + a + " : " + b + " : " + (a/b));
+    // console.log("val is " + a + " : " + b + " : " + (a/b));
     return (a/b)*100;
   }
 }
