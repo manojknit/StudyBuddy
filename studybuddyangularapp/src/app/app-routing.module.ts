@@ -10,6 +10,8 @@ import { CourseDetailComponent} from './course-detail/course-detail.component';
 import { CourseMybucketComponent} from './course-mybucket/course-mybucket.component';
 import { CourseBuyComponent} from './course-buy/course-buy.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
 
 const routes: Routes = [
   { path: '',
@@ -49,6 +51,15 @@ const routes: Routes = [
   {
     path: 'leaderboard',
     component: LeaderboardComponent
+  },
+  {
+    path: 'course/video/:id/takequiz/:quizid',
+   // path: 'quiz/takeQuiz',
+    component: TakeQuizComponent
+  },
+  {
+    path: 'course/addquiz/:id',
+    component: AddQuizComponent
   }
 ];
 

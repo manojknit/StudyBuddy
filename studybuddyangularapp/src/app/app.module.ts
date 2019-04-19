@@ -15,6 +15,7 @@ import { CourseGetComponent } from './course-get/course-get.component';
 import { CourseAddComponent } from './course-add/course-add.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { CourseService } from './services/course.service';
+import { QuizService } from './services/quiz.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
@@ -25,7 +26,12 @@ import { CourseBuyComponent } from './course-buy/course-buy.component';
 import { CustomReuseStrategy } from './app.customreusestrategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { CSV2JSONModule } from 'angular2-csv2json';
+import { MatRadioModule } from '@angular/material';
 import { GtagModule } from 'angular-gtag';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +45,9 @@ import { GtagModule } from 'angular-gtag';
     CourseDetailComponent,
     CourseMybucketComponent,
     CourseBuyComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    TakeQuizComponent,
+    AddQuizComponent
   ],
   imports: [
     SlimLoadingBarModule,
@@ -59,11 +67,14 @@ import { GtagModule } from 'angular-gtag';
     MatCommonModule,
     MatCardModule,
     MatListModule,
+    AmplifyAngularModule,
+    CSV2JSONModule,
+    MatRadioModule,
     MatProgressBarModule,
     AmplifyAngularModule,
     GtagModule.forRoot({ trackingId: 'UA-138249129-1', trackPageviews: true, debug: true })
   ],
-  providers: [CourseService, AmplifyService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
+  providers: [CourseService, AmplifyService, QuizService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

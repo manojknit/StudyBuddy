@@ -5,7 +5,9 @@ import CourseUserNested from '../CourseUserNested';
 import { CourseMybucketService } from '../services/course-mybucket.service';
 import * as $ from 'jquery';
 import { Gtag } from 'angular-gtag';
-
+import Quiz from '../Quiz';
+import { QuizService } from '../services/quiz.service';
+import { stringList } from 'aws-sdk/clients/datapipeline';
 @Component({
   selector: 'app-playbackcourse',
   templateUrl: './playbackcourse.component.html',
@@ -16,7 +18,8 @@ export class PlaybackcourseComponent implements OnInit {
   selectedvideo: string = "";
   selectedcourseid: string = "";
   courseusernested:  any = {}
-
+  quizid: string;
+  //quizzes: Quiz;
   items = [
     { value: "0", view: "zero" },
     { value: "1", view: "one" },
@@ -27,18 +30,33 @@ export class PlaybackcourseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private cbs: CourseMybucketService, gtag: Gtag) {
+    private cbs: CourseMybucketService, gtag: Gtag, private qs: QuizService) {
       this.gtag = gtag;
      }
 
   ngOnInit() {
     var DateObj = new Date();
-
+    //let quizid;
     this.date = DateObj.getFullYear() + '-' + ('0' + (DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + DateObj.getDate()).slice(-2);
         
     this.route.params.subscribe(params => {
     this.selectedcourseid = params['id'];
     this.selectedvideo = params['videoid'];
+    
+    this.qs.getQuizIdbyCourseId(this.selectedcourseid).subscribe((data: string) => {
+      if(data != null || data!= undefined) {
+        this.quizid = data;
+        console.log('in  getQuizIdbyCourseId - quiz id ' + data);
+      }
+   else
+   {
+      this.quizid = null;
+  //  this.quizid = '5cb4ec6117e6b47850cbf9eb';
+   } 
+   
+   // console.log("quiz obj in get quiz id  " + JSON.stringify(this.quizzes));
+   
+    });
     this.cbs
       .getById(this.selectedcourseid)
       .subscribe(data => {

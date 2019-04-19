@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="Card-body">
+    Please use this  <a href="https://s3.amazonaws.com/studybuddyquizupload/inputquizfiles/quiz_template.xlsx">Excel template </a> for uploading your Quiz 
+   
+    <br/>
+<label class="btn btn-default">
+    <input type="file" accept=".xlsx" (change)="selectFile($event)">
+  </label>
+  
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadxlsx()">Upload</button>
+
+</div>
+</div>
