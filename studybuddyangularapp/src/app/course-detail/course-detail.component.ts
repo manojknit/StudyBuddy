@@ -5,6 +5,7 @@ import { CourseService } from '../services/course.service';
 import { CourseMybucketService } from '../services/course-mybucket.service';
 import Video from '../Video';
 import { VideoService } from '../services/video.service';
+import { Gtag } from 'angular-gtag';
 
 declare let paypal: any;
 
@@ -27,13 +28,16 @@ export class CourseDetailComponent implements OnInit {
 
 
   course: any = {};
+  gtag: Gtag;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private bs: CourseService,
     private cus: CourseMybucketService,
     private fb: FormBuilder, 
-    private vs: VideoService) {
+    private vs: VideoService,
+    gtag: Gtag) {
+      this.gtag = gtag;
       this.createForm();
      }
 
@@ -78,6 +82,16 @@ export class CourseDetailComponent implements OnInit {
       });
     });
 
+    this.gtag.event( 'view_item', {
+      "items": [
+        {
+          "id": this.course_id,
+          "name": this.course_title,
+          "price": '10.0'
+        }
+      ]
+    });
+
   }
 
   paypalConfig = {
@@ -113,6 +127,16 @@ export class CourseDetailComponent implements OnInit {
         console.log("data saved!!!");
         alert("Payment Successful");
         //save the details in the DB
+
+        this.gtag.event( 'purchase', {
+          "items": [
+            {
+              "id": this.course_id,
+              "name": this.course_title,
+              "price": '10.0'
+            }
+          ]
+        });
       })
     }
   };

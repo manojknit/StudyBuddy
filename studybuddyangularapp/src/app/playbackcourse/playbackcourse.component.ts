@@ -66,9 +66,8 @@ export class PlaybackcourseComponent implements OnInit {
   }
 
   public onTimeUpdate(value){
-    console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
-    //tracker.send('event', 'Video', 'play', 'cats.mp4');
-    
+    //console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
+    //telemetry
   }
 
   public onEnded(value) {
@@ -90,7 +89,8 @@ export class PlaybackcourseComponent implements OnInit {
   }
 
   public calcPercent(a,b) {
-    
+    if(b == 0) 
+        return 0;
     console.log("val is " + a + " : " + b + " : " + (a/b));
     return (a/b)*100;
   }
