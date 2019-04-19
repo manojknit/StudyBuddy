@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVariable } from '../../app.global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
 
-  uri = 'http://localhost:4000/video';
+  // uri = 'http://localhost:4000/video';
+  uri="";
   //ng g service business --spec=false
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.uri = GlobalVariable.BASE_API_URL + "video";
+  }
 
   addVideo(courseid, filename) {
     const obj = {

@@ -3,14 +3,18 @@ import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk';
 import * as S3 from 'aws-sdk/clients/s3';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVariable } from '../../app.global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadquizService {
-  uri = 'http://localhost:4000/quiz';
+//   uri = 'http://localhost:4000/quiz';
+uri="";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+      this.uri = GlobalVariable.BASE_API_URL + "quiz";
+  }
 
   addQuiz(courseid, filename, jsonObj) {
     courseid = '5c9f12cc456fe90901ac7418';

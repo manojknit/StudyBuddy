@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVariable } from '../../app.global';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  uri = 'http://localhost:4000/course';
+  // uri = 'http://localhost:4000/course';
+  uri="";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.uri = GlobalVariable.BASE_API_URL + "course";
+  }
 
   addCourse(user_name, course_title, course_desc, category, course_rating, tenantid, fee, short_text, instructions) {
     const obj = {

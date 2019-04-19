@@ -10,6 +10,7 @@ import { NavigationCancel,
         Router } from '@angular/router';
 
 import { Gtag } from 'angular-gtag';
+import { GlobalVariable } from '../app.global';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     this.useremail = this.user.attributes.email;
                     console.log('Greeting=' + this.greeting + 'email=' + this.useremail);
                     // Set item:
-                    if ( this.useremail == 'ssn1')  //Set Admin
+                    if ( this.useremail == 'admin')  //Set Admin
                     {
                       this.role = 'admin';
                       this.isAdmin = true;
