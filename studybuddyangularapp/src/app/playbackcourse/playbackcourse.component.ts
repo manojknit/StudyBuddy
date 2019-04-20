@@ -16,8 +16,14 @@ import { stringList } from 'aws-sdk/clients/datapipeline';
 export class PlaybackcourseComponent implements OnInit {
   // videos: Video[];
   selectedvideo: string = "";
+  videoStartDate: any ={};
+  videoLastAccessedDate: any= {};
+  user_id: string ="";
+  selectedVideoId: string ="";
+
   selectedcourseid: string = "";
   courseusernested:  any = {}
+
   quizid: string;
   //quizzes: Quiz;
   items = [
@@ -30,7 +36,7 @@ export class PlaybackcourseComponent implements OnInit {
   seventyFive = false;
   fifty = false;
   twntyFive = false;
-
+  progress = 0;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -76,6 +82,15 @@ export class PlaybackcourseComponent implements OnInit {
           console.log(this.courseusernested + ":" + this.courseusernested.user_name + " : " + this.courseusernested.video_details);
           let filename = this.courseusernested.video_details[0].video_title;
           this.selectedvideo = filename.slice(0, filename.lastIndexOf( '.' ));
+
+          localStorage.setItem('videoStartDate' , this.courseusernested.video_details[0].videoStartDate);
+          if(this.courseusernested.video_details[0].videoStartDate == undefined ) {
+            localStorage.setItem('videoStartDate' , this.date);
+          }
+          localStorage.setItem('videoLastAccessedDate', this.date);
+          localStorage.setItem('selectedcourseid1', this.courseusernested.course_id);
+          localStorage.setItem('user_id', this.courseusernested.user_id);
+
           console.log("selected video " + this.selectedvideo);
         }
     });
@@ -92,6 +107,7 @@ export class PlaybackcourseComponent implements OnInit {
     let percent = (value.target.currentTime / value.target.duration) * 100;
     if(percent >= 75 && this.seventyFive == false) {
       this.seventyFive = true;
+      this.progress = 75;
       console.log("seventy five");
       this.gtag.event(this.selectedvideo, {
         'event_category': 'Video Playback',
@@ -102,6 +118,7 @@ export class PlaybackcourseComponent implements OnInit {
 
     }else if(percent >= 50 && this.fifty == false) {
       this.fifty = true;
+      this.progress = 50;
       console.log("fifty");
       this.gtag.event(this.selectedvideo, {
         'event_category': 'Video Playback',
@@ -110,6 +127,7 @@ export class PlaybackcourseComponent implements OnInit {
         }
       });
     }else if(percent >= 25 && this.twntyFive == false) {
+      this.progress = 25;
       this.twntyFive = true;
       console.log("twenty five");
       this.gtag.event(this.selectedvideo, {
@@ -125,10 +143,16 @@ export class PlaybackcourseComponent implements OnInit {
     this.gtag.event(this.selectedvideo, {
       'event_category': 'Video Playback',
       'event_label': '100%', 'event_callback': function() {
-        console.log("call back");
+        console.log("Event call back");
       }
     });
-    console.log("Video Ended");
+    this.cbs.updateVideoProgress(localStorage.getItem('user_id') , 
+                                localStorage.getItem('selectedcourseid1'), 
+                                this.selectedvideo, 
+                                100, true, 
+                                localStorage.getItem('videoStartDate'), 
+                                localStorage.getItem('videoLastAccessedDate')); 
+    console.log("Video Ended updated");
     
   }
 
@@ -137,11 +161,17 @@ export class PlaybackcourseComponent implements OnInit {
 
     this.gtag.event(this.selectedvideo, {
       'event_category': 'Video Playback',
+    
       'event_label': 'Paused', 'event_callback': function() {
-        console.log("call back");
+        console.log("event call back");
       }
     });
-
+    this.cbs.updateVideoProgress(localStorage.getItem('user_id') , 
+                                localStorage.getItem('selectedcourseid1'), 
+                                this.selectedvideo, 
+                                this.progress, false, 
+                                localStorage.getItem('videoStartDate'), 
+                                localStorage.getItem('videoLastAccessedDate'));    
     console.log("Pause Event Published ");
   }
 

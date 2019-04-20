@@ -58,4 +58,14 @@ export class CourseMybucketService {
     this.http.post(`${this.uri}/add`, obj)
         .subscribe(res => console.log('Done'));
   }
+
+
+  updateVideoProgress(user_id, course_id, video_id, progress,complete, start_date, end_date) {
+    this.http.post(`${this.uri}/updateVideoProgress/${user_id}/${course_id}/${video_id}/${progress}/${complete}`,
+    {
+        "start_date" : start_date,
+        "end_date" : end_date
+    })
+        .subscribe(res => console.log('Done'));
+  }
 }
