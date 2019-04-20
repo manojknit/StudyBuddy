@@ -12,7 +12,7 @@ export class AddQuizComponent implements OnInit {
   selectedFiles: FileList;
    
   constructor(private route: ActivatedRoute,
-    private router: Router,private quizService: QuizService) { }
+    private router: Router, private quizService: QuizService) { }
 
   ngOnInit() {
     
