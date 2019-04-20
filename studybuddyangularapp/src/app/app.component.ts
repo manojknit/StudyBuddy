@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     this.useremail = this.user.attributes.email;
                     console.log('Greeting=' + this.greeting + 'email=' + this.useremail);
                     // Set item:
-                    if ( this.useremail == 'admin')  //Set Admin
+                    if ( this.useremail == 'erpatel@gmail.com' || this.useremail.indexOf("admin")>0)  //Set Admin
                     {
                       this.role = 'admin';
                       this.isAdmin = true;
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     localStorage.removeItem('user'); // localStorage.clear();
   }
   onLoginClick() {
-      const URL = 'https://studybuddy.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=3ka7920q49t5u0thkp189u5dma&redirect_uri=' + GlobalVariable.BASE_UI_URL;
+      const URL = GlobalVariable.COGNITO_URL;
       window.location.assign(URL);
   }
 }
