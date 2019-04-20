@@ -29,7 +29,6 @@ export class AppComponent implements OnInit, OnDestroy  {
 
   constructor(private loadingBar: SlimLoadingBarService, private amplifyService: AmplifyService, 
     private _router: Router, gtag: Gtag) {
-    
     this.loadingBar.start();
     this.isAdmin = false;
     this.Auth1 = amplifyService;
@@ -101,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     localStorage.removeItem('user'); // localStorage.clear();
   }
   onLoginClick() {
-      const URL = 'https://studybuddy.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=3ka7920q49t5u0thkp189u5dma&redirect_uri=http://localhost:4200';
+      const URL = 'https://studybuddy.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=3ka7920q49t5u0thkp189u5dma&redirect_uri=' + GlobalVariable.BASE_UI_URL;
       window.location.assign(URL);
   }
 }

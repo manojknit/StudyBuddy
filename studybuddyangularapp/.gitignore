@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /src/aws-exports.js
+/src/app.global.ts
 /api/DB.js
 # Only exists if Bazel was run
 /bazel-out
