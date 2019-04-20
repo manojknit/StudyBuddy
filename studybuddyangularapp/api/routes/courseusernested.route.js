@@ -86,4 +86,21 @@ courseusernestedRoutes.route('/updateVideoProgress/:id1/:id2/:id3/:progress/:com
   });
 });
 
+//Get user velocity based on user_id and course_id
+courseusernestedRoutes.route('/getVelocity/:id1/:id2').post(function (req, res) {
+  let user_id = req.params.id1;
+  let course_id = req.params.id2;
+
+  console.log("Get Velcoity accessed for " + user_id + ": " + course_id);
+
+  //Get the videos associated with the specific user id and course_id, 
+  // compute the velocity by adding progress across videos and dividing by number of days (using course_start_date)
+
+  CourseUserNested.findOneAndUpdate(query, update, options, function(err, doc){
+    if(err) return res.send(500, {error: err});
+
+    return res.send("successfully updated!!!");
+  });
+});
+
 module.exports = courseusernestedRoutes;

@@ -18,6 +18,9 @@ let CourseUserNested = new Schema({
   registered_on: {
     type: Date
   },
+  started_on: {
+    type: Date
+  },
   course_velocity: {
     type: Number
   },
