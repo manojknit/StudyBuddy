@@ -12,6 +12,7 @@ import { CourseBuyComponent} from './course-buy/course-buy.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
 
 const routes: Routes = [
   { path: '',
@@ -60,6 +61,16 @@ const routes: Routes = [
   {
     path: 'course/addquiz/:id',
     component: AddQuizComponent
+  },
+  {
+    path: 'course/admin/:id',
+    component: PlaybackcourseAdminComponent
+
+  },
+  {
+    path: 'course/admin/:id/play/:videoid',
+    component: PlaybackcourseAdminComponent
+
   }
 ];
 

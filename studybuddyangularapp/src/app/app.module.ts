@@ -32,6 +32,7 @@ import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { CSV2JSONModule } from 'angular2-csv2json';
 import { MatRadioModule } from '@angular/material';
 import { GtagModule } from 'angular-gtag';
+import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { GtagModule } from 'angular-gtag';
     CourseBuyComponent,
     LeaderboardComponent,
     TakeQuizComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    PlaybackcourseAdminComponent
   ],
   imports: [
     SlimLoadingBarModule,
