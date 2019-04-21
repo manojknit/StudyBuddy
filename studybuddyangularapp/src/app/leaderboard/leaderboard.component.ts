@@ -17,13 +17,17 @@ export class LeaderboardComponent implements OnInit {
     .getUserVelocityList()
     .subscribe((data: Leaderboard[]) => {
       this.leaderboards = data;
+      console.log("leaderboard " + this.leaderboards[0]["_id"].user_name);
+      console.log("leaderboard " + this.leaderboards[0].totalProgress);
+      console.log("json obj" +  JSON.stringify(this.leaderboards));
   });
 
   }
 
-  getUserVelocityList(){
-    this.bs.getUserVelocityList();
-    console.log("in getUserVelocityList()");
-  }
+  
+  // getUserVelocityList(){
+  //   this.bs.getUserVelocityList();
+  //   console.log("in getUserVelocityList()");
+  // }
 
 }

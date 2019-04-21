@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   leaderboard works!
-</p>
+</p> -->
 
 <table class="table table-hover">
 		<thead>
@@ -10,9 +10,9 @@
 		</tr>
 		</thead>	
 		<tbody>
-				<tr *ngFor="let Leaderboard of Leaderboards">
-						<td>{{ Leaderboard.user_name }}</td>
-						<td>{{ Leaderboard.total_progress }}</td>
+				<tr *ngFor="let leaderboard of leaderboards">
+						<td>{{ leaderboard["_id"].user_name }}</td>
+						<td>{{ leaderboard.totalProgress }}</td>
 				</tr>
 		</tbody>
 	</table>
