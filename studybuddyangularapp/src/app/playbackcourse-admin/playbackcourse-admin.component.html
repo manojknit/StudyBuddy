@@ -19,7 +19,7 @@
  s
  -->
   <!-- [routerLink]="['/course/video/'+selectedcourseid+'/play',  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))]"  -->
-  <div class="sidenav">
+  <!-- <div class="sidenav">
     <a *ngFor="let item of videos" routerLinkActive="active" (click)="exit(['/course/admin/'+selectedcourseid+'/play/'+  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))])" >
         {{item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))}}
     </a>
@@ -32,4 +32,35 @@
         data-setup='{}'>
           <source [src]="['https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/'+ selectedvideo +'.m3u8']" type="application/x-mpegURL" >
         </video>
-  </div>
+  </div> -->
+  <section class="header_text sub">
+      <!--<img class="pageBanner" src="assets/banner5_small.png" height="10%"  width="100%" alt="New products" >-->
+        <h4><span>Now Playing - {{selectedvideo}}</span></h4>
+  </section>
+
+  <section class="main-content" style="padding-bottom: 30px">
+				
+      <div class="row">		
+          <div class="span3 col">
+              <div class="block">	
+                <ul class="nav nav-list">
+                  <li class="nav-header">Course Video</li>
+                  <li *ngFor="let item of videos">
+                    <a routerLinkActive="active" 
+                    (click)="exit(['/course/admin/'+selectedcourseid+'/play/'+  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))])" >
+                    {{item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))}}
+                    </a>
+                    </li>
+                </ul>
+                
+              </div>
+            </div>				
+        <div class="span9">								
+            <video id="my_video_1" class="video-js vjs-fluid vjs-big-play-centered" style="background-color:white;" 
+            controls preload="metadata" width="640" height="468" tag="gtag" data-setup='{}'>
+                  <source [src]="['https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/'+ selectedvideo +'.m3u8']" type="application/x-mpegURL" >
+                </video>				
+         
+        </div>
+      </div>
+    </section> 
