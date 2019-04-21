@@ -1,6 +1,21 @@
-<!-- <p>
+<p>
   leaderboard works!
-</p> -->
+</p>
+
+<table class="table table-hover">
+		<thead>
+		<tr>
+				<td>User Name</td>
+				<td>Progress</td>
+		</tr>
+		</thead>	
+		<tbody>
+				<tr *ngFor="let Leaderboard of Leaderboards">
+						<td>{{ Leaderboard.user_name }}</td>
+						<td>{{ Leaderboard.total_progress }}</td>
+				</tr>
+		</tbody>
+	</table>
 
 <div class="card">
 	<section class="card-info card-section">
@@ -52,14 +67,14 @@
 		
 		<nav class="menu">
 			<article class="menu-item menu-item-active">
-				Global
+				Top Learners
 			</article>
 			<article class="menu-item">
 				Friends
 			</article>
 		</nav>
 		
-		<dl class="leaderboard">
+		<dl class="leaderboard">				
 			<dt>
 				<article class="progress">
 				  <section class="progress-bar" style="width: 85%;"></section>
