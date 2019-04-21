@@ -111,7 +111,11 @@ export class CourseDetailComponent implements OnInit {
         payment: {
           transactions: [
             { amount: { total: this.finalAmount, currency: 'USD' } }
-          ]
+          ],
+          redirect_urls: {
+            return_url: 'https://studybuddyshop.com/myCourses',
+            cancel_url: 'https://studybuddyshop.com'
+          }
         }
       });
     },
@@ -126,7 +130,7 @@ export class CourseDetailComponent implements OnInit {
                                       date1, this.videos);
         console.log("date is " + date1);
         console.log("data saved!!!");
-        alert("Payment Successful");
+        
         //save the details in the DB
 
         this.gtag.event( 'purchase', 
@@ -143,6 +147,10 @@ export class CourseDetailComponent implements OnInit {
             }
           ]
        });
+
+      //  alert("Payment Successful");
+      this.router.navigate(['/myCourses'],);
+
       })
     }
   };
