@@ -103,4 +103,23 @@ courseusernestedRoutes.route('/getVelocity/:id1/:id2').post(function (req, res) 
   });
 });
 
+courseusernestedRoutes.route('/getForVelocity').get(function (req, res) {
+ 
+  CourseUserNested.aggregate(
+    [
+		{ "$unwind": "$video_details" },
+        {
+         $group : {
+            _id:{ user_id: "$user_id", user_name: "$user_name",  started_on: "$started_on", course_id : "$course_id"},
+            totalProgress: { $sum: "$video_details.video_progress" },
+            max_video_date: { $max: "$video_details.video_last_accessed_date" }
+         }
+       }
+    ]).
+    then(function (res1) {
+      console.log(res1); // [ { maxBalance: 98000 } ]
+      return res.send(res1);
+    });
+});
+
 module.exports = courseusernestedRoutes;
