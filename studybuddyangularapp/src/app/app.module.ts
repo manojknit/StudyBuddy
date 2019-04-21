@@ -16,6 +16,7 @@ import { CourseAddComponent } from './course-add/course-add.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { CourseService } from './services/course.service';
 import { QuizService } from './services/quiz.service';
+import { LeaderboardService } from './services/leaderboard.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
@@ -74,7 +75,7 @@ import { GtagModule } from 'angular-gtag';
     AmplifyAngularModule,
     GtagModule.forRoot({ trackingId: 'UA-138249129-1', trackPageviews: true, debug: true })
   ],
-  providers: [CourseService, AmplifyService, QuizService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
+  providers: [LeaderboardService, CourseService, AmplifyService, QuizService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
