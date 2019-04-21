@@ -37,6 +37,7 @@ export class PlaybackcourseComponent implements OnInit {
   fifty = false;
   twntyFive = false;
   progress = 0;
+  current_time = 0;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -105,6 +106,7 @@ export class PlaybackcourseComponent implements OnInit {
   public onTimeUpdate(value){
     console.log( this.selectedvideo + " : " + value.target.currentTime + " : " + value.target.duration);
     let percent = (value.target.currentTime / value.target.duration) * 100;
+    this.current_time = value.target.currentTime;
     if(percent >= 75 && this.seventyFive == false) {
       this.seventyFive = true;
       this.progress = 75;
@@ -151,7 +153,8 @@ export class PlaybackcourseComponent implements OnInit {
                                 this.selectedvideo, 
                                 100, true, 
                                 localStorage.getItem('videoStartDate'), 
-                                localStorage.getItem('videoLastAccessedDate')); 
+                                localStorage.getItem('videoLastAccessedDate'),
+                                this.current_time); 
     console.log("Video Ended updated");
     
   }
@@ -171,7 +174,8 @@ export class PlaybackcourseComponent implements OnInit {
                                 this.selectedvideo, 
                                 this.progress, false, 
                                 localStorage.getItem('videoStartDate'), 
-                                localStorage.getItem('videoLastAccessedDate'));    
+                                localStorage.getItem('videoLastAccessedDate'),
+                                this.current_time);    
     console.log("Pause Event Published ");
   }
 

@@ -46,6 +46,9 @@ let CourseUserNested = new Schema({
     video_progress: {
       type: Number
     },
+    video_progress_sec: {
+      type: Number
+    },
     video_start_date: {
       type: Date
     },
