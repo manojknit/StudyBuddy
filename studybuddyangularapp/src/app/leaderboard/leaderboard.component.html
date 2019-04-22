@@ -1,21 +1,20 @@
 <!-- <p>
   leaderboard works!
 </p> -->
-
-<table class="table table-hover">
+<!-- <table class="table table-hover">
 		<thead>
 		<tr>
 				<td>User Name</td>
-				<td>Progress</td>
+				<td>Learning Velocity</td>
 		</tr>
 		</thead>	
 		<tbody>
 				<tr *ngFor="let leaderboard of leaderboards">
 						<td>{{ leaderboard["_id"].user_name }}</td>
-						<td>{{ leaderboard.totalProgress }}</td>
+						<td>{{ getVelocity(leaderboard["_id"].started_on,leaderboard.max_video_date,leaderboard.totalProgress) }}</td>
 				</tr>
 		</tbody>
-	</table>
+	</table> -->
 
 <div class="card">
 	<section class="card-info card-section">
@@ -27,9 +26,9 @@
 		
 		<section class="user row">
 			<h1 class="user-header">
-				Gyanesh Pandey
+				{{getUser()}}
 				<h2 class="sub header">
-					20 hours
+					{{getTotalProgress()}} mins
 				</h2>
 			</h1>
 		</section>
@@ -40,7 +39,7 @@
 					Rank
 				</h4>
 				<h3 class="statistic-value">
-					360
+					11
 				</h3>
 			</article>
 			
@@ -49,14 +48,14 @@
 					Learning Velocity
 				</h4>
 				<h3 class="statistic-value">
-					3.2
+						{{getUserVelocity()}}
 				</h3>
 			</article>
 		</section>
 		
 		<div class="dial">
 			<h2 class="dial-title">
-				35
+				{{getLevel()}}
 			</h2>
 			<h3 class="dial-value">
 				Level
@@ -73,8 +72,20 @@
 				Friends
 			</article>
 		</nav>
-		
-		<dl class="leaderboard">				
+
+		<dl *ngFor="let leaderboard of leaderboards">	
+				<dt>
+					<article class="progress">
+						<section class="progress-bar" style="width: 85%;"></section>
+					</article>
+				</dt>
+				<dd>
+					<div class="leaderboard-name">Name: {{ leaderboard["_id"].user_name }}</div>
+					<div class="leaderboard-value">Learning Velocity: {{ getVelocity(leaderboard["_id"].user_name, leaderboard["_id"].started_on,leaderboard.max_video_date,leaderboard.totalProgress) }}</div>
+				</dd>
+		</dl>
+			
+		<!-- <dl class="leaderboard">				
 			<dt>
 				<article class="progress">
 				  <section class="progress-bar" style="width: 85%;"></section>
@@ -84,43 +95,8 @@
 				<div class="leaderboard-name">Bryan Smith</div>
 				<div class="leaderboard-value">20.123</div>
 			</dd>
-			<dt>
-				<article class="progress">
-				  <section class="progress-bar" style="width: 65%;"></section>
-				</article>
-			</dt>
-			<dd>
-				<div class="leaderboard-name">Kevin Johnson</div>
-				<div class="leaderboard-value">16.354</div>
-			</dd>
-			<dt>
-				<article class="progress">
-				  <section class="progress-bar" style="width: 60%;"></section>
-				</article>
-			</dt>
-			<dd>
-				<div class="leaderboard-name">Glen Howie</div>
-				<div class="leaderboard-value">15.873</div>
-			</dd>
-			<dt>
-				<article class="progress">
-				  <section class="progress-bar" style="width: 55%;"></section>
-				</article>
-			</dt>
-			<dd>
-				<div class="leaderboard-name">Mark Desa</div>
-				<div class="leaderboard-value">12.230</div>
-			</dd>
-			<dt>
-				<article class="progress">
-				  <section class="progress-bar" style="width: 35%;"></section>
-				</article>
-			</dt>
-			<dd>
-				<div class="leaderboard-name">Martin Geiger</div>
-				<div class="leaderboard-value">10.235</div>
-			</dd>
-		</dl>
+
+		</dl> -->
 	</section>
 </div>
 <!-- <app-userservice></app-userservice>
