@@ -26,13 +26,13 @@ public class MycoursesAdapter extends RecyclerView.Adapter<MycoursesAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView coursetitle, course_author;
-        public com.joooonho.SelectableRoundedImageView thumbnail;
+        public ImageView thumbnail;
 
         public MyViewHolder(View view) {
             super(view);
             coursetitle = (TextView) view.findViewById(R.id.course_name);
             course_author = (TextView) view.findViewById(R.id.course_author);
-            thumbnail = (com.joooonho.SelectableRoundedImageView) view.findViewById(R.id.courseImageview);
+            thumbnail = (ImageView) view.findViewById(R.id.courseImageview);
 
         }
     }
@@ -53,7 +53,7 @@ public class MycoursesAdapter extends RecyclerView.Adapter<MycoursesAdapter.MyVi
         holder.coursetitle.setText(course.getCourse_name());
         holder.course_author.setText(course.getAuthor());
         holder.thumbnail.setImageResource(course.getThumbnail());
-      //  holder.count.setText(course.getNumOfSongs() + " songs");
+
 
 
     }
