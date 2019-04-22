@@ -76,8 +76,8 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rv_free_courses);
       //  frrecRecyclerView = (RecyclerView) findViewById(R.id.rv_in_demand);
         courseList = new ArrayList<Course>();
-
-        fetchCourse();
+        prepareCourses();
+       // fetchCourse();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(15), true));
@@ -110,29 +110,29 @@ public class HomeActivity extends AppCompatActivity {
 
     private void prepareCourses() {
         int[] covers = new int[]{
-                R.drawable.catalog,
-                R.drawable.my_enrollment,
-                R.drawable.mobile_development,
-                R.drawable.udacity_logo,
-                R.drawable.facebook_logo
+                R.drawable.course_img1,
+                R.drawable.course_img3,
+                R.drawable.course_img9,
+                R.drawable.course_img7,
+                R.drawable.course_img11
                 };
 
-        Course a = new Course("True Romance", "ANC", covers[0]);
+        Course a = new Course("Angular 7", "Manoj", covers[0]);
         courseList.add(a);
 
-        a = new Course("Xscpae", "and", covers[1]);
+        a = new Course("SpringBoot", "Shalini", covers[1]);
         courseList.add(a);
 
-        a = new Course("Maroon 5", "Jan", covers[2]);
+            a = new Course("Product Management", "Gyanesh", covers[2]);
         courseList.add(a);
 
-        a = new Course("Born to Die", "qwew", covers[3]);
+        a = new Course("Android", "Yamini", covers[3]);
         courseList.add(a);
 
-        a = new Course("Honeymoon", "fvv", covers[4]);
+        a = new Course("Cybersecurity", "Madhu", covers[4]);
         courseList.add(a);
 
-
+        courseadapter = new MycoursesAdapter(this, courseList);
         courseadapter.notifyDataSetChanged();
     }
 
@@ -203,7 +203,7 @@ public class HomeActivity extends AppCompatActivity {
             editText_phonenumber.setText(FetchedData.getPhone_nubmer());
             */
             Log.d("log fetch value", courseList.toString() + courseList.size() );
-            Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
             courseadapter = new MycoursesAdapter(this, courseList);
             courseadapter.notifyDataSetChanged();
         } catch (InterruptedException e) {

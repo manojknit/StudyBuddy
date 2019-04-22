@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,7 +30,8 @@ public class VideosListActivity extends AppCompatActivity {
     private List<Video> videoList = new ArrayList<>();
     private RecyclerView videorecyclerView;
     private MyVideosAdapter vAdapter;
-
+    private ProgressBar progressBar;
+    private ImageView checkImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +52,17 @@ public class VideosListActivity extends AppCompatActivity {
         videorecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), videorecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
+                progressBar =  view.findViewById(R.id.progressBar_item);
+                checkImage = view.findViewById(R.id.checkMarkImgview);
+                checkImage.setVisibility(View.VISIBLE);
                 Video v = videoList.get(position);
+
                 Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
                 String videoUrl = VideoPlayerConfig.getDefaultVideoUrl() + v.getVideoTitle().split("\\.")[0] +".m3u8";
                 Log.d("videourl",videoUrl);
                 Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl);
                 startActivity(mIntent);
+                progressBar.setProgress(progressBar.getProgress() + 20);
             }
 
             @Override
@@ -102,6 +110,25 @@ public class VideosListActivity extends AppCompatActivity {
 
     public void fetchVideos(){
         FetchVideosTask fetchVideosTask = new FetchVideosTask();
+        List<Integer> videothumnails = new ArrayList<Integer>();
+        videothumnails.add(R.drawable.course_img9);
+        videothumnails.add(R.drawable.course_img10);
+        videothumnails.add(R.drawable.course_img18);
+        videothumnails.add(R.drawable.course_img4);
+        videothumnails.add(R.drawable.course_img5);
+
+        List<String> videoTitlelist = new ArrayList<String>();
+        videoTitlelist.add("Features of Single Page Apps");
+        videoTitlelist.add("Examine a Framework's Source");
+        videoTitlelist.add("Introduction to Angular");
+        videoTitlelist.add("Routing");
+        videoTitlelist.add("Optimizations");
+        List<String>  videoDescription = new ArrayList<String>();
+        videoDescription.add("The advantages of the single page application is presented in the video ");
+        videoDescription.add("Learn to build a Single Page Application ");
+        videoDescription.add("Components are basically classes that interact with the .html file of the component, which gets displayed on the browser.");
+        videoDescription.add("Routing basically means navigating between pages. You have seen many sites with links that direct you to a new page. ");
+        videoDescription.add("Materials offer a lot of built-in modules for your project. Features such as autocomplete, datepicker, slider, menus, grids, and toolbar are available for use with materials in Angular");
 
         try {
             videoList = fetchVideosTask.execute().get();
@@ -113,7 +140,7 @@ public class VideosListActivity extends AppCompatActivity {
             */
             Log.d("log fetch value", videoList.toString() + videoList.size() );
             Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
-            vAdapter = new MyVideosAdapter(this, videoList);
+            vAdapter = new MyVideosAdapter(this, videoList, videothumnails, videoTitlelist, videoDescription);
             vAdapter.notifyDataSetChanged();
         } catch (InterruptedException e) {
             e.printStackTrace();
