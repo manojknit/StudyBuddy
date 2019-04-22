@@ -98,7 +98,8 @@ export class CourseDetailComponent implements OnInit {
   paypalConfig = {
     env: 'sandbox',
     client: {
-      sandbox: 'AaO01fmAlA9twTeHBnPnMo6Yj5xSHEfUhPE_qNAJ9sJQuxNx_fCJEqX23bZEhFC5v1Fx_EWVBl2rCaAn',
+      //sandbox: 'AaO01fmAlA9twTeHBnPnMo6Yj5xSHEfUhPE_qNAJ9sJQuxNx_fCJEqX23bZEhFC5v1Fx_EWVBl2rCaAn',
+      sandbox: 'AcdNp1HApF9K_l39FSYPbOg-TvdHzQkm3ohI1_W2wyptBQddf3oa5COJeZx0qRRslC_TZbVn02oJVzvE',
       production: '<your-production-key here>'
     },
     style: {
