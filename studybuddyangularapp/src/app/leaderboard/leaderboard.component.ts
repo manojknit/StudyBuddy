@@ -13,7 +13,7 @@ export class LeaderboardComponent implements OnInit {
   userTotalProgress: number;
   userRank: number;
   userLevel: number;
-  userVelocity: number;
+  userVelocity: any;
   user_name: String = "ssn1";
 
   constructor(private bs: LeaderboardService) { }
@@ -41,8 +41,10 @@ export class LeaderboardComponent implements OnInit {
       days = diff;
     };
         
-    let velocity = 100*totalProgress/(days*60); // velocity in min per day
+    let velocity: any = 100*totalProgress/(days*60); // velocity in min per day
     // console.log("Learning Velocity: " +  velocity * 100);
+
+    velocity = velocity.toFixed(2);
 
     if (user_name == this.user_name){
       this.userVelocity = velocity;
@@ -58,7 +60,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getTotalProgress(){
-    return this.userTotalProgress;
+    return this.userTotalProgress.toFixed(2);
   }
 
   getUserVelocity(){
