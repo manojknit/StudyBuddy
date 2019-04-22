@@ -28,9 +28,9 @@
                     <b>{{ cun.course_title }}</b>
                     <p>Registered on {{ cun.registered_on|date:'MM/dd/yyyy' }}</p>
                    
-                    <mat-progress-bar mode="determinate" value="{{ cun.course_progress }}"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" value="{{calcCourseProgress(cun.course_id)}}"></mat-progress-bar>
                     
-                    <p>Complete {{ cun.course_progress }}%</p>
+                    <p>Complete {{ calcCourseProgress(cun.course_id) }}%</p>
                   </a>
                 </div>
           </li>

@@ -107,13 +107,43 @@ courseusernestedRoutes.route('/getForVelocity').get(function (req, res) {
             _id:{ user_id: "$user_id", user_name: "$user_name",  started_on: "$started_on", course_id : "$course_id"},
             totalProgress: { $sum: "$video_details.video_progress_sec" },
             max_video_date: { $max: "$video_details.video_last_accessed_date" }
-         }
-       }
+         } 
+       },
+       { $sort : { totalProgress : -1 } }
     ]).
     then(function (res1) {
       console.log(res1); // [ { maxBalance: 98000 } ]
       return res.send(res1);
     });
+});
+
+courseusernestedRoutes.route('/getCourseProgress/:id1').get(function (req, res) {
+  let user_id1 = req.params.id1;
+  
+  console.log("userid : " + user_id1 );
+
+  CourseUserNested.aggregate([
+      
+		    { "$unwind": "$video_details" },
+        {
+         $group : {
+            _id:{ user_id: "$user_id", course_id : "$course_id"},
+            totalProgress: { $sum: "$video_details.video_progress" },
+            total_videos: { $sum : 1 }
+         } ,
+       },
+       {
+        '$match': {"_id.user_id": user_id1}
+       }
+      ], function (err, res1){
+        if(err){
+          console.log(err);
+        }
+        else {
+          console.log(res1);
+          res.json(res1);
+        }
+      });
 });
 
 module.exports = courseusernestedRoutes;

@@ -14,26 +14,43 @@ export class CourseMybucketComponent implements OnInit {
 
   courseUserNested: CourseUserNested[];
   selecteduserid: string = "";
+  progress_data: any =  {} ;
+
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private cbs: CourseMybucketService) { }
+    private cbs: CourseMybucketService) {
+      this.route.params.subscribe(params => {
+        //this.selecteduserid = params['id'];
+        let user = JSON.parse(localStorage.getItem("user")); 
+        this.selecteduserid = user.email;
+        this.cbs.getByUserId(this.selecteduserid)
+          .subscribe((data: CourseUserNested[]) => {
+            this.courseUserNested = data;
+            console.log("course user nested " + this.courseUserNested[0]);
+
+            this.cbs.getcourseProgress(this.selecteduserid)
+            .subscribe((data1) => {
+              console.log("progress data " + data1);
+              this.progress_data = data1;
+            });
+        });
+    });
+     }
 
     ngOnInit() {
-      this.route.params.subscribe(params => {
-      //this.selecteduserid = params['id'];
-      let user = JSON.parse(localStorage.getItem("user")); 
-      this.selecteduserid = user.email;
-      this.cbs.getByUserId(this.selecteduserid)
-        .subscribe((data: CourseUserNested[]) => {
-          //data.forEach(function (value) {
-            //items.add
-           // console.log(Array.of(value));
-          //}); 
-          this.courseUserNested = data;
-          console.log("course user nested " + this.courseUserNested[0]);
-      });
-    });
+      
     }
 
+    calcCourseProgress(course_id) {
+      if(this.progress_data[0] != undefined) {
+        let i=0;
+        for( i = 0; i < this.progress_data.length ; i++) {
+          if(this.progress_data[i]._id.course_id == course_id) {
+            let progress = this.progress_data[i].totalProgress/this.progress_data[i].total_videos;
+            return progress;
+          }
+        }
+      }
+    }
 }

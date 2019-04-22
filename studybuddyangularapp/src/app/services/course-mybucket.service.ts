@@ -69,4 +69,10 @@ export class CourseMybucketService {
     })
         .subscribe(res => console.log('Done'));
   }
+
+  getcourseProgress(user_id) {
+    return this
+            .http
+            .get(`${this.uri}/getCourseProgress/${user_id}`);
+  }
 }
