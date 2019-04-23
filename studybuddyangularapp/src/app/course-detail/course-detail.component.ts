@@ -135,6 +135,7 @@ export class CourseDetailComponent implements OnInit {
 
         this.gtag.event( 'purchase', 
         {
+          event_label: this.course_title,
           "transaction_id": this.user_id + ":" + date1,
           "affiliation": this.course_title,
           "value": 10,
