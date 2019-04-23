@@ -159,12 +159,12 @@ html {
   
   .progress {
     display: flex;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(100, 0, 0, 0.1);
     min-height: 12px;
     overflow: hidden;
   }
   .progress-bar {
-    background: tint(#F37721, 20%);
+    background: tint(#008000, 80%);
     min-height: 10px;
   }
   
