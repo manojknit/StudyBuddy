@@ -14,45 +14,38 @@ import java.util.List;
 import msse.com.studybuddyapp.R;
 import msse.com.studybuddyapp.model.Course;
 
-public class MycoursesAdapter extends RecyclerView.Adapter<MycoursesAdapter.MyViewHolder> {
-
+public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyCourseViewHolder> {
     private Context mContext;
-    private List<Course> courseList;
+    private List<Course> mycourseList;
 
-    public MycoursesAdapter(Context mContext, List<Course> courseList) {
-        this.mContext = mContext;
-        this.courseList = courseList;
-    }
+    public class MyCourseViewHolder extends RecyclerView.ViewHolder {
+        public TextView mycoursetitle, mycourse_author;
+        public ImageView mythumbnail;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView coursetitle, course_author;
-        public ImageView thumbnail;
-
-        public MyViewHolder(View view) {
+        public MyCourseViewHolder(View view) {
             super(view);
-            coursetitle = (TextView) view.findViewById(R.id.course_name);
-            course_author = (TextView) view.findViewById(R.id.course_author);
-            thumbnail = (ImageView) view.findViewById(R.id.courseImageview);
+            mycoursetitle = (TextView) view.findViewById(R.id.course_TitleTxtview);
+            mycourse_author = (TextView) view.findViewById(R.id.course_description);
+            mythumbnail = (ImageView) view.findViewById(R.id.cimageView);
 
         }
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-
+    public MyCourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_free_courses, parent, false);
+                .inflate(R.layout.course_list_item, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MyCourseViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Course course = courseList.get(position);
-        holder.coursetitle.setText(course.getCourse_name());
-        holder.course_author.setText(course.getAuthor());
-        holder.thumbnail.setImageResource(course.getThumbnail());
+    public void onBindViewHolder(final MyCourseViewHolder holder, int position) {
+        Course course = mycourseList.get(position);
+        holder.mycoursetitle.setText(course.getCourse_name());
+        holder.mycourse_author.setText(course.getAuthor());
+        holder.mythumbnail.setImageResource(course.getThumbnail());
 
 
 
@@ -60,11 +53,8 @@ public class MycoursesAdapter extends RecyclerView.Adapter<MycoursesAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return courseList.size();
+        return mycourseList.size();
     }
-
-
-
 
 
 }

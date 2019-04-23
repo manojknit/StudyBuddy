@@ -34,6 +34,7 @@ import { MatRadioModule } from '@angular/material';
 import { GtagModule } from 'angular-gtag';
 import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
 import { ChatComponent } from './chat/chat.component';
+import { FaqChatbotComponent } from './faq-chatbot/faq-chatbot.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ChatComponent } from './chat/chat.component';
     TakeQuizComponent,
     AddQuizComponent,
     PlaybackcourseAdminComponent,
-    ChatComponent
+    ChatComponent,
+    FaqChatbotComponent
   ],
   imports: [
     SlimLoadingBarModule,

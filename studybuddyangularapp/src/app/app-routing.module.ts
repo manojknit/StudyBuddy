@@ -14,6 +14,7 @@ import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
 import { ChatComponent } from './chat/chat.component';
+import { FaqChatbotComponent } from './faq-chatbot/faq-chatbot.component';
 
 const routes: Routes = [
   { path: '',
@@ -76,7 +77,10 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatComponent
-
+  },
+  {
+    path: 'faq/chatbot',
+    component: FaqChatbotComponent
   }
 ];
 

@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import msse.com.studybuddyapp.adapter.MyVideosAdapter;
-import msse.com.studybuddyapp.adapter.MycoursesAdapter;
 import msse.com.studybuddyapp.apiasynctasks.FetchVideosTask;
 import msse.com.studybuddyapp.listener.RecyclerTouchListener;
 import msse.com.studybuddyapp.model.Course;
@@ -113,7 +112,7 @@ public class VideosListActivity extends AppCompatActivity {
         List<Integer> videothumnails = new ArrayList<Integer>();
         videothumnails.add(R.drawable.course_img9);
         videothumnails.add(R.drawable.course_img10);
-        videothumnails.add(R.drawable.course_img18);
+        videothumnails.add(R.drawable.course_img16);
         videothumnails.add(R.drawable.course_img4);
         videothumnails.add(R.drawable.course_img5);
 

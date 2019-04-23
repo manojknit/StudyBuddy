@@ -12,6 +12,7 @@
     "importHelpers": true,
     "target": "es5",
     "allowJs": true,
+    "types": ["node"],
     "typeRoots": [
       "node_modules/@types"
     ],
