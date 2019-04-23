@@ -1,0 +1,66 @@
+<section class="header_text sub">
+  <!--<img class="pageBanner" src="assets/banner5_small.png" height="10%"  width="100%" alt="New products" >-->
+    <h4><span>Buddy Chat</span></h4>
+</section>
+
+<section class="main-content" style="padding-bottom: 30px">
+    
+  <div class="row">		
+      <div class="span3 col">
+          <div class="block">	
+            <ul class="nav nav-list">
+              <li class="nav-header">My Buddies</li>
+              <li *ngFor="let item of chatUser">
+                  <a *ngIf="item.active" (click)="loadChat(item.user_name)" 
+                    routerLinkActive="active-link"><b>{{item.user_name}}</b>
+                    </a>
+
+                    <a *ngIf="!item.active"
+                    href="javascript:void(0)">{{item.user_name}}
+                    </a>
+                </li>
+                
+            </ul>
+            
+          </div>
+        </div>				
+    <div class="span8" style="height:300px; overflow-y:scroll;">
+      <tr *ngFor="let item of chat">
+          <td *ngIf="isSameUser(item.sender)"></td>
+        <td *ngIf="!isSameUser(item.sender)">
+          <div class="span3"
+          style="border-radius: 15px;border-style: solid;border-width: thin;border-color: rgb(240, 235, 235);padding-top: 2px; padding-right: 2px; padding-bottom: 2px;padding-left:7px;margin-bottom: 10px">
+             <p align="left"> <font color="Orange"><b style>{{item.sender}}</b></font></p>
+                 {{item.message}}
+                 <br/>
+                 <div class="text-muted" style="text-align-last: right; font-size: 8px">{{item.date | date : format : mediumTime }}</div>	
+         </div>
+        </td>
+        <td  *ngIf="isSameUser(item.sender)">
+            <div class="span3"
+            style="background:rgb(81, 206, 206);border-radius: 15px;border-style: solid;border-width: thin;border-color: rgb(240, 235, 235);padding-top: 2px; padding-right: 2px; padding-bottom: 2px;padding-left:7px;margin-bottom: 10px">
+               <p align="left"> <b style>{{item.sender}}</b></p>
+                   {{item.message}}
+                   <br/>
+                   <div class="text-muted" style="text-align-last: right; font-size: 8px">{{item.date | date : format : mediumTime }}</div>	
+           </div>
+          </td>
+      </tr>
+    </div>
+    <div class="row">		
+        <div class="span3 col">
+          </div>				
+        <div class="span8 col">
+
+            <div class="control-group">
+              <div class="control">
+              <input [(ngModel)] = "message" type="text" class="input-xxlarge"/>
+              <a  (click)="saveChat()"><span class="fa fa-arrow-circle-right fa-2x btn-success"></span></a>
+                </div>
+          </div>
+    
+        
+        </div>
+  </div>
+  </div>
+</section> 

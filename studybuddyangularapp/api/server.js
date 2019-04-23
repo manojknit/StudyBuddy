@@ -11,9 +11,12 @@ const videoRoute = require('./routes/video.route');
 const courseuserRoute = require('./routes/courseuser.route');
 const quizRoute = require('./routes/quiz.route');
 const courseusernestedRoute = require('./routes/courseusernested.route');
+const chatUserRoute = require('./routes/chatUser.route');
+const chatRoute = require('./routes/chat.route');
+
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
-  () => {console.log('Database is connected') },
+  () => {console.log('Database is connected11') },
   err => { console.log('Can not connect to the database'+ err)}
 );
 
@@ -25,6 +28,8 @@ app.use('/video', videoRoute);
 app.use('/courseuser', courseuserRoute);
 app.use('/quiz', quizRoute);
 app.use('/courseusernested', courseusernestedRoute);
+app.use('/chatuser', chatUserRoute);
+app.use('/chat', chatRoute);
 
 const port = process.env.PORT || 4000;
 

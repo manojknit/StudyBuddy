@@ -33,7 +33,7 @@ import { CSV2JSONModule } from 'angular2-csv2json';
 import { MatRadioModule } from '@angular/material';
 import { GtagModule } from 'angular-gtag';
 import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
-
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcou
     LeaderboardComponent,
     TakeQuizComponent,
     AddQuizComponent,
-    PlaybackcourseAdminComponent
+    PlaybackcourseAdminComponent,
+    ChatComponent
   ],
   imports: [
     SlimLoadingBarModule,

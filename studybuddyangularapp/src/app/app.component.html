@@ -50,7 +50,7 @@
       <nav id="menu" class="pull-right">
         <ul>
           <li>
-            <a routerLink="myCourses" *ngIf="signedIn" >My Courses</a>
+            <a routerLink="myCourses" *ngIf="signedIn">My Courses</a>
           </li>
           <!---<li><a href="">All Courses</a></li>-->
           <li class="nav-item">
@@ -58,10 +58,10 @@
               Manage Courses
             </a>
           </li> 
-          <li><a href="">Chat</a>
+          <li><a *ngIf="signedIn" routerLink="chat" class="nav-link" routerLinkActive="active">Chat</a>
 
           </li>
-          <li><a href="" routerLink="leaderboard" class="nav-link" routerLinkActive="active"> Leaderboard</a></li>
+          <li><a *ngIf="signedIn" href="" routerLink="leaderboard" class="nav-link" routerLinkActive="active"> Leaderboard</a></li>
          
         </ul>
       </nav>
