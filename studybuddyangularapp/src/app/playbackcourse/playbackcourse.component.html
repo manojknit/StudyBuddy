@@ -35,8 +35,8 @@
                   <li *ngFor="let item of courseusernested.video_details">
                     <a routerLinkActive="active" 
                     (click)="exit(['/course/video/'+selectedcourseid+'/play/'+ 
-                     item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))])" >
-                      {{item.video_title.slice(0, item.video_title.lastIndexOf( '.' ))}}
+                     item.video_file_name.slice(0, item.video_file_name.lastIndexOf( '.' ))])" >
+                      {{item.video_title}}
                       <span *ngIf="item.video_is_complete == true" class="fa fa-check-square-o" aria-hidden="true"></span>
                     </a>
                     <mat-progress-bar mode="determinate" value="{{item.video_progress}}"></mat-progress-bar>
