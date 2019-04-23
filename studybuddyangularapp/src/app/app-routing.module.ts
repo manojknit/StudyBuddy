@@ -13,6 +13,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { PlaybackcourseAdminComponent } from './playbackcourse-admin/playbackcourse-admin.component';
+import { FaqChatbotComponent } from './faq-chatbot/faq-chatbot.component';
 
 const routes: Routes = [
   { path: '',
@@ -71,6 +72,10 @@ const routes: Routes = [
     path: 'course/admin/:id/play/:videoid',
     component: PlaybackcourseAdminComponent
 
+  },
+  {
+    path: 'faq/chatbot',
+    component: FaqChatbotComponent
   }
 ];
 
