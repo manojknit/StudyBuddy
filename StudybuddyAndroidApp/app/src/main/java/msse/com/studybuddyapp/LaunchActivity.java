@@ -25,8 +25,8 @@ public class LaunchActivity extends AppCompatActivity {
         Registerbutton = (Button) findViewById(R.id.btn_register);
         if(!isOnline())  {
             showAlertDialogButtonClicked();
-            Loginbutton.setEnabled(false);
-            Registerbutton.setEnabled(false);
+           // Loginbutton.setEnabled(false);
+          //  Registerbutton.setEnabled(false);
 
         }
 

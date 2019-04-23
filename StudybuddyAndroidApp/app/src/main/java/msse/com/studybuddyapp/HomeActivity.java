@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
@@ -18,12 +19,14 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import msse.com.studybuddyapp.adapter.AvailablecoursesAdapter;
 import msse.com.studybuddyapp.apiasynctasks.FetchCoursesTask;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import msse.com.studybuddyapp.adapter.MycoursesAdapter;
+import msse.com.studybuddyapp.adapter.AvailablecoursesAdapter;
 import msse.com.studybuddyapp.apiasynctasks.FetchVideosTask;
 import msse.com.studybuddyapp.listener.RecyclerTouchListener;
 import msse.com.studybuddyapp.model.Course;
@@ -31,7 +34,7 @@ import msse.com.studybuddyapp.model.Course;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView, frrecRecyclerView;
-    private MycoursesAdapter courseadapter;
+    private AvailablecoursesAdapter courseadapter;
     private List<Course> courseList;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
@@ -62,6 +65,8 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, "Full Catalog",Toast.LENGTH_SHORT).show();
                     case R.id.mycart:
                         Toast.makeText(HomeActivity.this, "My courses",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MyCoursesActivity.class);
+                        startActivity(intent);
                     default:
                         return true;
                 }
@@ -87,13 +92,10 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView,  new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Course course = courseList.get(position);
-                Toast.makeText(getApplicationContext(), course.getCourse_name() + " is selected!", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),  course.getCourse_id() + " is course id",  Toast.LENGTH_SHORT).show();
-           //     Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), VideoPlayerConfig.DEFAULT_VIDEO_URL);
-              //  startActivity(mIntent);
-                Intent intent = new Intent(getApplicationContext(), VideosListActivity.class);
-                startActivity(intent);
+                showAlertDialogButtonClicked();
+
+               // Intent intent = new Intent(getApplicationContext(), VideosListActivity.class);
+              //  startActivity(intent);
 
 
             }
@@ -107,10 +109,22 @@ public class HomeActivity extends AppCompatActivity {
       //  prepareCourses();
 
     }
+    public void showAlertDialogButtonClicked() {
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("AlertDialog");
+        builder.setMessage("Please enroll this course through Studybuddyshop.com website ");
+        // add the buttons
+        builder.setPositiveButton("OK", null);
+       // builder.setNegativeButton("Cancel", null);
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     private void prepareCourses() {
         int[] covers = new int[]{
-                R.drawable.course_img1,
+                R.drawable.course_img18,
                 R.drawable.course_img3,
                 R.drawable.course_img9,
                 R.drawable.course_img7,
@@ -132,7 +146,7 @@ public class HomeActivity extends AppCompatActivity {
         a = new Course("Cybersecurity", "Madhu", covers[4]);
         courseList.add(a);
 
-        courseadapter = new MycoursesAdapter(this, courseList);
+        courseadapter = new AvailablecoursesAdapter(this, courseList);
         courseadapter.notifyDataSetChanged();
     }
 
@@ -204,7 +218,7 @@ public class HomeActivity extends AppCompatActivity {
             */
             Log.d("log fetch value", courseList.toString() + courseList.size() );
             //Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
-            courseadapter = new MycoursesAdapter(this, courseList);
+            courseadapter = new AvailablecoursesAdapter(this, courseList);
             courseadapter.notifyDataSetChanged();
         } catch (InterruptedException e) {
             e.printStackTrace();
