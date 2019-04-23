@@ -13,6 +13,8 @@ export class PlaybackcourseAdminComponent implements OnInit {
 
   videos: Video[];
   selectedvideo: string = "";
+  selectedvideoTitle: String = "";
+
   selectedcourseid: string = "";
   items = [
     { value: "0", view: "zero" },
@@ -40,6 +42,7 @@ export class PlaybackcourseAdminComponent implements OnInit {
         {
           let filename = data[0].VideoTitle;
           this.selectedvideo = filename.slice(0, filename.lastIndexOf( '.' ));
+          this.selectedvideoTitle = data[0].VideoTitle;
         }
     });
   });

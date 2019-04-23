@@ -35,7 +35,7 @@
   </div> -->
   <section class="header_text sub">
       <!--<img class="pageBanner" src="assets/banner5_small.png" height="10%"  width="100%" alt="New products" >-->
-        <h4><span>Now Playing - {{selectedvideo}}</span></h4>
+        <h4><span></span></h4>
   </section>
 
   <section class="main-content" style="padding-bottom: 30px">
@@ -46,9 +46,10 @@
                 <ul class="nav nav-list">
                   <li class="nav-header">Course Video</li>
                   <li *ngFor="let item of videos">
+                    
                     <a routerLinkActive="active" 
-                    (click)="exit(['/course/admin/'+selectedcourseid+'/play/'+  item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))])" >
-                    {{item.VideoTitle.slice(0, item.VideoTitle.lastIndexOf( '.' ))}}
+                    (click)="exit(['/course/admin/'+selectedcourseid+'/play/'+  item.VideoFileName.slice(0, item.VideoFileName.lastIndexOf( '.' ))])" >
+                    {{item.VideoTitle}}
                     </a>
                     </li>
                 </ul>
