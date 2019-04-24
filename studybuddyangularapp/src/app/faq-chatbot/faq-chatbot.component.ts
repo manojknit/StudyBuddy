@@ -54,7 +54,13 @@ export class FaqChatbotComponent implements OnInit {
         this.lexResponse = data.message;
       }
       let user = JSON.parse(localStorage.getItem("user")); 
+      if (user == null) {
+      console.log(" guest user");
+      this.username = "Guest";
+      }
+      else {
       this.username = user.name.username;
+      }
       this.messages.push(new Message(this.userInput, this.username));
         this.userInput="";
       this.messages.push(new Message(this.lexResponse,this.botname));
