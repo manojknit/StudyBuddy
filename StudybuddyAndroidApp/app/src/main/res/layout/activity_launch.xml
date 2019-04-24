@@ -11,8 +11,6 @@
         android:id="@+id/appCompatImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/udacity_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +31,7 @@
         android:layout_height="85dp"
         android:layout_marginBottom="5dp"
         android:foreground="@drawable/image_overlay"
-        android:src="@drawable/studybuddy"
+        android:src="@drawable/studybuddy_logo"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

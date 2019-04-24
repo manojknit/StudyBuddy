@@ -29,9 +29,10 @@
                 android:id="@+id/iv_detail_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_referral_banner"
+                android:scaleType="fitCenter"
+                android:src="@drawable/main_banner"
                 app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar

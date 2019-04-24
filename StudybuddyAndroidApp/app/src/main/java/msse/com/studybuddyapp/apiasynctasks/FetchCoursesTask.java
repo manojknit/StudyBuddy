@@ -18,13 +18,13 @@ import msse.com.studybuddyapp.MlabConfig;
 import msse.com.studybuddyapp.R;
 import msse.com.studybuddyapp.model.Course;
 
-public class FetchCoursesTask extends AsyncTask<Course, Void, ArrayList<Course>> {
+public class FetchCoursesTask extends AsyncTask<String, Void, ArrayList<Course>> {
     static String server_output = null;
     static String temp_output = null;
 
 
     @Override
-    protected ArrayList<Course> doInBackground(Course... objects) {
+    protected ArrayList<Course> doInBackground(String... arg0) {
 
         ArrayList<Course> courseList = new ArrayList<Course>();
 
@@ -35,9 +35,10 @@ public class FetchCoursesTask extends AsyncTask<Course, Void, ArrayList<Course>>
 
                 MlabConfig ml = new MlabConfig();
         try {
-            Log.d("urls ", ml.getCoursesFetchURL());
+            Log.d("urls ", arg0[0]);
+         //   Log.d("urls ", ml.getCoursesFetchURL());
           //  url = new URL("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={%22user_name%22:%20%22manoj.kumar@sjsu.edu%22}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM");
-            url = new URL(ml.getCoursesFetchURL());
+            url = new URL(arg0[0]);
             HttpURLConnection conn = (HttpURLConnection) url
                     .openConnection();
             conn.setRequestMethod("GET");
@@ -69,7 +70,7 @@ public class FetchCoursesTask extends AsyncTask<Course, Void, ArrayList<Course>>
 
                 temp.setCourse_name(title);
                 temp.setAuthor(courseDesc);
-                temp.setThumbnail(R.drawable.mobile_development);
+                temp.setThumbnail(R.drawable.android_course);
                 courseList.add(temp);
             }
           //  JSONObject jsonobject = reader.getJSONObject(0);

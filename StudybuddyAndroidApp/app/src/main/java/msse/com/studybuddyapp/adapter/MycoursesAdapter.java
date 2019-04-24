@@ -18,6 +18,12 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.MyCo
     private Context mContext;
     private List<Course> mycourseList;
 
+    public MyCoursesAdapter(Context mContext, List<Course> courseList) {
+        this.mContext = mContext;
+        this.mycourseList = courseList;
+    }
+
+
     public class MyCourseViewHolder extends RecyclerView.ViewHolder {
         public TextView mycoursetitle, mycourse_author;
         public ImageView mythumbnail;

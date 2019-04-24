@@ -29,6 +29,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,8 +97,15 @@ public class LoginActivity extends AppCompatActivity  {
         signInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(myIntent);
+
+              //  if(emailEdittext.getText().toString() == "yaminivijaya@gmail.com" && pswdEdittext.getText().toString() =="yamini") {
+                    Intent myIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(myIntent);
+             //   }
+              /*  else
+                {
+                    Toast.makeText(getApplicationContext(), "Incorrect user name or password", Toast.LENGTH_SHORT).show();
+                } */
             }
         });
 

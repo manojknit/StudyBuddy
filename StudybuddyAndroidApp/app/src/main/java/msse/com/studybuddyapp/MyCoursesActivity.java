@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import msse.com.studybuddyapp.adapter.AvailablecoursesAdapter;
+import msse.com.studybuddyapp.adapter.MyCoursesAdapter;
 import msse.com.studybuddyapp.adapter.MyVideosAdapter;
 import msse.com.studybuddyapp.apiasynctasks.FetchCoursesTask;
 import msse.com.studybuddyapp.listener.RecyclerTouchListener;
@@ -22,7 +23,7 @@ import msse.com.studybuddyapp.model.Course;
 
 public class MyCoursesActivity extends AppCompatActivity {
     private RecyclerView courserecyclerView;
-    private AvailablecoursesAdapter cAdapter;
+    private MyCoursesAdapter cAdapter;
     private List<Course> courseList;
 
     @Override
@@ -59,9 +60,9 @@ public class MyCoursesActivity extends AppCompatActivity {
     }
     public void fetchCourse(){
     FetchCoursesTask fetchCoursesTask = new FetchCoursesTask();
-
+    MlabConfig mlabConfig = new MlabConfig();
         try {
-        courseList = fetchCoursesTask.execute().get();
+        courseList = fetchCoursesTask.execute("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={'course_title':'Android'}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM").get();
           /*  MyContact FetchedData = (MyContact) returnValues.toArray()[0];
 
             editText_fname.setText(FetchedData.getFirst_name());
@@ -70,7 +71,7 @@ public class MyCoursesActivity extends AppCompatActivity {
             */
         Log.d("log fetch value", courseList.toString() + courseList.size() );
         //Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
-        cAdapter = new AvailablecoursesAdapter(this, courseList);
+        cAdapter = new MyCoursesAdapter(this, courseList);
         cAdapter.notifyDataSetChanged();
     } catch (InterruptedException e) {
         e.printStackTrace();

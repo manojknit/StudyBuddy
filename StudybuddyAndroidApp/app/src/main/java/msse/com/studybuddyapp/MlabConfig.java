@@ -8,18 +8,24 @@ public class MlabConfig {
     }
 
 
-
+//https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={"user_name": "Admin-User"}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM
 
     public String getApiKey() {
-        return "APIKEY";
-    }
+        return "";
+    } 
+
+
 
     public String getUsernamequery() {
-        return "?q={'user_name':'manoj.kumar@sjsu.edu'}&";
+        return "?q={'user_name':'shalini.narang@sjsu.edu'}&";
+    }
+
+    public String getAdminUsernamequery() {
+        return "?q={'user_name':'Admin-User'}&";
     }
 
     public String getCourseidquery() {
-        return "?q={'CourseId':'5c99cc9a8de74e484508cf09'}&";
+        return "?q={'CourseId':'5cbf625a4d689136b4bc39f6'}&";
     }
 
     public String getBaseUrl()
@@ -50,6 +56,10 @@ public class MlabConfig {
     public String getCoursesFetchURL()
     {
         return getBaseUrl()+getCoursecollectionName()+ getUsernamequery() + apiKeyUrl();
+    }
+    public String getAllCoursesFetchURL()
+    {
+        return getBaseUrl()+getCoursecollectionName()+ getAdminUsernamequery() + apiKeyUrl();
     }
 
     public String getVidoesFetchURL()

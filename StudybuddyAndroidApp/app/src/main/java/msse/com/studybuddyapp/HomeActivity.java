@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView, frrecRecyclerView;
     private AvailablecoursesAdapter courseadapter;
-    private List<Course> courseList;
+    private List<Course> courseList,crList;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
       //  frrecRecyclerView = (RecyclerView) findViewById(R.id.rv_in_demand);
         courseList = new ArrayList<Course>();
         prepareCourses();
-       // fetchCourse();
+        fetchCourse();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(15), true));
@@ -124,31 +124,30 @@ public class HomeActivity extends AppCompatActivity {
 
     private void prepareCourses() {
         int[] covers = new int[]{
-                R.drawable.course_img18,
-                R.drawable.course_img3,
-                R.drawable.course_img9,
-                R.drawable.course_img7,
-                R.drawable.course_img11
+                R.drawable.android_course,
+                R.drawable.cysec_course,
                 };
 
-        Course a = new Course("Angular 7", "Manoj", covers[0]);
+       /* Course a = new Course("Angular 7", "Manoj", covers[0]);
         courseList.add(a);
 
         a = new Course("SpringBoot", "Shalini", covers[1]);
         courseList.add(a);
 
             a = new Course("Product Management", "Gyanesh", covers[2]);
+        courseList.add(a); */
+
+       Course   a = new Course("Android", "$10", covers[0]);
         courseList.add(a);
 
-        a = new Course("Android", "Yamini", covers[3]);
-        courseList.add(a);
-
-        a = new Course("Cybersecurity", "Madhu", covers[4]);
+        a = new Course("Cybersecurity", "$10", covers[1]);
         courseList.add(a);
 
         courseadapter = new AvailablecoursesAdapter(this, courseList);
         courseadapter.notifyDataSetChanged();
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -207,19 +206,14 @@ public class HomeActivity extends AppCompatActivity {
 
     public void fetchCourse(){
         FetchCoursesTask fetchCoursesTask = new FetchCoursesTask();
-
+        MlabConfig ml = new MlabConfig();
         try {
-            courseList = fetchCoursesTask.execute().get();
-          /*  MyContact FetchedData = (MyContact) returnValues.toArray()[0];
-
-            editText_fname.setText(FetchedData.getFirst_name());
-            editText_lname.setText(FetchedData.getLast_name());
-            editText_phonenumber.setText(FetchedData.getPhone_nubmer());
-            */
-            Log.d("log fetch value", courseList.toString() + courseList.size() );
+            //crList = fetchCoursesTask.execute("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={\"user_name\": \"Admin-User\"}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM").get();
+            crList = fetchCoursesTask.execute(ml.getAllCoursesFetchURL()).get();
+            Log.d("log fetch value", crList.toString() + crList.size() );
             //Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
-            courseadapter = new AvailablecoursesAdapter(this, courseList);
-            courseadapter.notifyDataSetChanged();
+           // courseadapter = new AvailablecoursesAdapter(this, courseList);
+          //  courseadapter.notifyDataSetChanged();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

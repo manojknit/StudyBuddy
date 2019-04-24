@@ -55,10 +55,10 @@ public class VideosListActivity extends AppCompatActivity {
                 checkImage = view.findViewById(R.id.checkMarkImgview);
                 checkImage.setVisibility(View.VISIBLE);
                 Video v = videoList.get(position);
-
+                String videoUrl = VideoPlayerConfig.getDefaultVideoUrl() + v.getVideoFileName().split("\\.")[0] +".m3u8";
                 Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
-                String videoUrl = VideoPlayerConfig.getDefaultVideoUrl() + v.getVideoTitle().split("\\.")[0] +".m3u8";
-                Log.d("videourl",videoUrl);
+
+                Log.d("videourlssssss",videoUrl);
                 Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl);
                 startActivity(mIntent);
                 progressBar.setProgress(progressBar.getProgress() + 20);
@@ -110,8 +110,8 @@ public class VideosListActivity extends AppCompatActivity {
     public void fetchVideos(){
         FetchVideosTask fetchVideosTask = new FetchVideosTask();
         List<Integer> videothumnails = new ArrayList<Integer>();
-        videothumnails.add(R.drawable.course_img9);
-        videothumnails.add(R.drawable.course_img10);
+        videothumnails.add(R.drawable.course_img7);
+        videothumnails.add(R.drawable.course_img3);
         videothumnails.add(R.drawable.course_img16);
         videothumnails.add(R.drawable.course_img4);
         videothumnails.add(R.drawable.course_img5);
@@ -146,6 +146,11 @@ public class VideosListActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
 

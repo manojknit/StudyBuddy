@@ -11,6 +11,7 @@ public class Course {
     private String course_instruction;
     private String course_category;
     private String short_text;
+    private String fee;
 
 
     public Course() {

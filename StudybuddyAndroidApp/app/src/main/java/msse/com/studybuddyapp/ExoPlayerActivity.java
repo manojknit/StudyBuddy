@@ -7,15 +7,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -49,6 +52,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     private static final String TAG = "ExoPlayerActivity";
 
     private static final String KEY_VIDEO_URI = "video_uri";
+    private boolean durationSet = false;
 
     @BindView(R.id.videoFullScreenPlayer)
     PlayerView videoFullScreenPlayer;
@@ -79,13 +83,15 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
         getSupportActionBar().hide();
 
         if (getIntent().hasExtra(KEY_VIDEO_URI)) {
-            videoUri = getIntent().getStringExtra(KEY_VIDEO_URI);
+           videoUri = getIntent().getStringExtra(KEY_VIDEO_URI);
+           // videoUri=  "https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/AndroidLecture1.m3u8";
         }
-
+        Log.d("exo player postion"," " + " inside create");
         setUp();
     }
 
     private void setUp() {
+        Log.d("exo player postion"," " + " inside setup");
         initializePlayer();
         if (videoUri == null) {
             return;
@@ -136,9 +142,11 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
         player.prepare(videoSource);
         player.setPlayWhenReady(true);
         player.addListener(this);
+
     }
 
     private void releasePlayer() {
+        Log.d("exo player postion"," " + player.getContentPosition());
         if (player != null) {
             player.release();
             player = null;
@@ -146,6 +154,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     }
 
     private void pausePlayer() {
+        Log.d("exo player postion"," " + " inside pause player");
         if (player != null) {
             player.setPlayWhenReady(false);
             player.getPlaybackState();
@@ -153,6 +162,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     }
 
     private void resumePlayer() {
+        Log.d("exo player postion"," " + " inside resume player");
         if (player != null) {
             player.setPlayWhenReady(true);
             player.getPlaybackState();
@@ -162,6 +172,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     @Override
     protected void onPause() {
         super.onPause();
+
         pausePlayer();
         if (mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
@@ -203,6 +214,8 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
                 spinnerVideoDetails.setVisibility(View.VISIBLE);
                 break;
             case Player.STATE_ENDED:
+                Log.d("video postiton watched",  " w" + player.getCurrentPosition());
+                Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
                 // Activate the force enable
                 break;
             case Player.STATE_IDLE:
@@ -210,7 +223,10 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
                 break;
             case Player.STATE_READY:
                 spinnerVideoDetails.setVisibility(View.GONE);
-
+                long realDurationMillis = player.getDuration();
+                Log.d("video duration", " s" + realDurationMillis);
+                Toast.makeText(this, "video duration" + " s" + realDurationMillis, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 // status = PlaybackStatus.IDLE;
