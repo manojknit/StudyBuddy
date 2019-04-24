@@ -25,7 +25,7 @@ export class LeaderboardComponent implements OnInit {
       // this.user_name = user.user_name;
       // console.log("LB Constructor: " +  this.user_name + " : " +this.userid);
     }
-      
+
   ngOnInit() {
     this.bs
     .getUserVelocityList()
@@ -45,7 +45,7 @@ export class LeaderboardComponent implements OnInit {
       days = diff;
     };
         
-    let velocity: any = totalProgress/(days*60); // velocity in min per day
+    let velocity: any = totalProgress/(days); // velocity in min per day
     // console.log("Learning Velocity: " +  velocity * 100);
 
     velocity = velocity.toFixed(2);
@@ -64,7 +64,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getTotalProgress(){
-    return (this.userTotalProgress/60).toFixed(2);
+    return (this.userTotalProgress).toFixed(2);
   }
 
   getUserVelocity(){
