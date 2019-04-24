@@ -12,8 +12,7 @@ public class MlabConfig {
 
     public String getApiKey() {
         return "";
-    } 
-
+    }
 
 
     public String getUsernamequery() {

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,10 @@ public class VideosListActivity extends AppCompatActivity {
     private MyVideosAdapter vAdapter;
     private ProgressBar progressBar;
     private ImageView checkImage;
+    private List<Integer> percentList = new ArrayList<>();
+    private int percent =0;
+    private int lasttouched = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,17 +62,19 @@ public class VideosListActivity extends AppCompatActivity {
                 Video v = videoList.get(position);
                 String videoUrl = VideoPlayerConfig.getDefaultVideoUrl() + v.getVideoFileName().split("\\.")[0] +".m3u8";
                 Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
-
+                //progressBar.setProgress(progressBar.getProgress() + percent);
+                lasttouched = position;
                 Log.d("videourlssssss",videoUrl);
                 Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl);
-                startActivity(mIntent);
-                progressBar.setProgress(progressBar.getProgress() + 20);
+                startActivityForResult(mIntent, 100);
+
             }
 
             @Override
             public void onLongClick(View view, int position) {
 
             }
+
         }));
 
     }
@@ -117,18 +124,22 @@ public class VideosListActivity extends AppCompatActivity {
         videothumnails.add(R.drawable.course_img5);
 
         List<String> videoTitlelist = new ArrayList<String>();
-        videoTitlelist.add("Features of Single Page Apps");
-        videoTitlelist.add("Examine a Framework's Source");
-        videoTitlelist.add("Introduction to Angular");
-        videoTitlelist.add("Routing");
+        videoTitlelist.add("Life Cycle Events");
+        videoTitlelist.add("Android Services");
+        videoTitlelist.add("Introduction to Android");
+        videoTitlelist.add("Intents");
         videoTitlelist.add("Optimizations");
         List<String>  videoDescription = new ArrayList<String>();
-        videoDescription.add("The advantages of the single page application is presented in the video ");
-        videoDescription.add("Learn to build a Single Page Application ");
+        videoDescription.add("  ");
+        videoDescription.add(" ");
         videoDescription.add("Components are basically classes that interact with the .html file of the component, which gets displayed on the browser.");
         videoDescription.add("Routing basically means navigating between pages. You have seen many sites with links that direct you to a new page. ");
         videoDescription.add("Materials offer a lot of built-in modules for your project. Features such as autocomplete, datepicker, slider, menus, grids, and toolbar are available for use with materials in Angular");
-
+        percentList.add(0,0);
+        percentList.add(1,0);
+        percentList.add(2,0);
+        percentList.add(3,0);
+        percentList.add(4,0);
         try {
             videoList = fetchVideosTask.execute().get();
           /*  MyContact FetchedData = (MyContact) returnValues.toArray()[0];
@@ -139,7 +150,7 @@ public class VideosListActivity extends AppCompatActivity {
             */
             Log.d("log fetch value", videoList.toString() + videoList.size() );
             Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
-            vAdapter = new MyVideosAdapter(this, videoList, videothumnails, videoTitlelist, videoDescription);
+            vAdapter = new MyVideosAdapter(this, videoList, videothumnails, videoTitlelist, videoDescription,percentList);
             vAdapter.notifyDataSetChanged();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -151,6 +162,18 @@ public class VideosListActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Check that it is the SecondActivity with an OK result
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+
+                // Get String data from Intent
+                 percent = data.getIntExtra("percent",0);
+                 percentList.set(lasttouched, percent);
+                 vAdapter.notifyDataSetChanged();
+                //Toast.makeText(this, "percent postiton watched" +percent     , Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
 

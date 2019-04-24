@@ -44,6 +44,8 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -53,7 +55,8 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
     private static final String KEY_VIDEO_URI = "video_uri";
     private boolean durationSet = false;
-
+    public long total_seconds, watch_seconds;
+    public int percentwatched;
     @BindView(R.id.videoFullScreenPlayer)
     PlayerView videoFullScreenPlayer;
     @BindView(R.id.spinnerVideoDetails)
@@ -101,6 +104,9 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
     @OnClick(R.id.imageViewExit)
     public void onViewClicked() {
+        Intent intent = new Intent();
+        intent.putExtra("percent", percentwatched);
+        setResult(RESULT_OK, intent);
         finish();
     }
 
@@ -155,6 +161,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
     private void pausePlayer() {
         Log.d("exo player postion"," " + " inside pause player");
+
         if (player != null) {
             player.setPlayWhenReady(false);
             player.getPlaybackState();
@@ -214,8 +221,8 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
                 spinnerVideoDetails.setVisibility(View.VISIBLE);
                 break;
             case Player.STATE_ENDED:
-                Log.d("video postiton watched",  " w" + player.getCurrentPosition());
-                Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
+             //   Log.d("video postiton watched",  " w" + player.getCurrentPosition());
+               // Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
                 // Activate the force enable
                 break;
             case Player.STATE_IDLE:
@@ -223,10 +230,16 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
                 break;
             case Player.STATE_READY:
                 spinnerVideoDetails.setVisibility(View.GONE);
-                long realDurationMillis = player.getDuration();
-                Log.d("video duration", " s" + realDurationMillis);
-                Toast.makeText(this, "video duration" + " s" + realDurationMillis, Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
+                long total_duration = player.getDuration();
+                 total_seconds = TimeUnit.MILLISECONDS.toSeconds(total_duration);
+                long watched_duration = player.getCurrentPosition();
+                Log.d("video duration", " s" + total_duration);
+                Toast.makeText(this, "total video duration" + " s" + total_duration, Toast.LENGTH_SHORT).show();
+                watch_seconds = TimeUnit.MILLISECONDS.toSeconds(watched_duration);
+
+                Toast.makeText(this, "video postiton watched" + watched_duration + " in seconds =" + watch_seconds    , Toast.LENGTH_SHORT).show();
+                percentwatched = (int) ((watch_seconds * 100) / total_seconds);
+                Toast.makeText(this,  total_seconds + " in seconds " + watch_seconds + " percent postiton watched " + percentwatched    , Toast.LENGTH_SHORT).show();
                 break;
             default:
                 // status = PlaybackStatus.IDLE;

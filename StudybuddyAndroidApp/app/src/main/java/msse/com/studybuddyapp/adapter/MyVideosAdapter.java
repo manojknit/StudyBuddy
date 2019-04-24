@@ -22,12 +22,13 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
     private List<Integer> videothumbnailImg;
     private  List<String> videoTitlelist;
     private  List<String> videoDesclist;
-
+    private  List<Integer> percentcompleted;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView videotitle;
         public ImageView videothumbnail;
         public TextView videodescription;
         private ImageView courseCompleted;
+
         private ProgressBar progressBar;
 
         public MyViewHolder(View view) {
@@ -42,12 +43,13 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
     }
 
 
-    public MyVideosAdapter(Context mContext,List<Video> videosList,List<Integer> videothumbnail, List<String> videotitleList, List<String> videoDescList) {
+    public MyVideosAdapter(Context mContext,List<Video> videosList,List<Integer> videothumbnail, List<String> videotitleList, List<String> videoDescList,List<Integer> percent) {
         this.mContext = mContext;
         this.videosList = videosList;
         this.videothumbnailImg = videothumbnail;
         this.videoTitlelist = videotitleList;
         this.videoDesclist = videoDescList;
+        this.percentcompleted = percent;
     }
 
     @Override
@@ -66,6 +68,7 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
         holder.videothumbnail.setImageResource(videothumbnailImg.get(position));
         holder.courseCompleted.setImageResource(R.drawable.blue_tick);
         holder.videodescription.setText(videoDesclist.get(position));
+        holder.progressBar.setProgress(percentcompleted.get(position));
        // holder.progressBar.setProgress(position);
       //  holder.progressBar.setProgress(25);
         //holder.year.setText(movie.getYear());

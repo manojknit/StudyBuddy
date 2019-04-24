@@ -98,14 +98,14 @@ public class LoginActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-              //  if(emailEdittext.getText().toString() == "yaminivijaya@gmail.com" && pswdEdittext.getText().toString() =="yamini") {
+                if(emailEdittext.getText().toString().equals("yaminivijaya@gmail.com") && pswdEdittext.getText().toString().equals("yamini")) {
                     Intent myIntent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(myIntent);
-             //   }
-              /*  else
+                }
+                else
                 {
                     Toast.makeText(getApplicationContext(), "Incorrect user name or password", Toast.LENGTH_SHORT).show();
-                } */
+                }
             }
         });
 
