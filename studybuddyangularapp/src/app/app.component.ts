@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     console.log('Greeting=' + this.greeting + 'email=' + this.useremail);
                     // Set item:
                     if ( this.useremail == 'shalini.narang@sjsu.edu' || this.useremail.indexOf("admin")>0 || 
-                        this.useremail == 'studybuddy.auser@gmail.com' )  //Set Admin
+                        this.useremail == 'studybuddy.auser@gmail.com' ||  this.useremail.indexOf("auser")>0 )  //Set Admin
                     {
                       this.role = 'admin';
                       this.isAdmin = true;
