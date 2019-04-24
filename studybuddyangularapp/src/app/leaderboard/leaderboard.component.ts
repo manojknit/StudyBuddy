@@ -11,19 +11,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LeaderboardComponent implements OnInit {
   leaderboards: Leaderboard[];
+  leaderboard_temp:Leaderboard[] = new Array(); 
   userTotalProgress: number;
   userRank: number;
   userLevel: number;
   userVelocity: any;
-  user_name: String = "Gyanesh Pandey";
+  user_name: String = "";
   userid: String;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private bs: LeaderboardService) { 
       let user = JSON.parse(localStorage.getItem("user")); 
-      // this.userid = user.email;
-      // this.user_name = user.user_name;
-      // console.log("LB Constructor: " +  this.user_name + " : " +this.userid);
+      this.userid = user.email;
+      this.user_name = user.name.username;
+      console.log("LB Constructor: " +  this.user_name + " : " +this.userid);
     }
 
   ngOnInit() {
@@ -31,6 +32,14 @@ export class LeaderboardComponent implements OnInit {
     .getUserVelocityList()
     .subscribe((data: Leaderboard[]) => {
       this.leaderboards = data;    
+
+      for (var i = 0; i < this.leaderboards.length; i++)
+      {
+        if (this.leaderboards[i].max_video_date != null){
+          this.leaderboard_temp.push(this.leaderboards[i]);
+        }
+      }
+      this.leaderboards = this.leaderboard_temp;
   });
 
   }
