@@ -39,7 +39,7 @@
 					Rank
 				</h4>
 				<h3 class="statistic-value">
-					11
+					{{getRank()}}
 				</h3>
 			</article>
 			
@@ -82,6 +82,7 @@
 				<dd>
 					<div class="leaderboard-name">Name: {{ leaderboard["_id"].user_name }}</div>
 					<div class="leaderboard-value">Learning Velocity: {{ getVelocity(leaderboard["_id"].user_name, leaderboard["_id"].started_on,leaderboard.max_video_date,leaderboard.totalProgress) }}</div>
+					<!-- <div class="leaderboard-value">Total Progress: {{ leaderboard.totalProgress }}</div> -->
 				</dd>
 		</dl>
 			

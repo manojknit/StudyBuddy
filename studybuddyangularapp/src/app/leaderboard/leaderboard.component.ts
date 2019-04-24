@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LeaderboardService} from '../services/leaderboard.service';
 import Leaderboard from '../Leaderboard';
 import { LEAVE_SELECTOR } from '@angular/animations/browser/src/util';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaderboard',
@@ -14,19 +15,22 @@ export class LeaderboardComponent implements OnInit {
   userRank: number;
   userLevel: number;
   userVelocity: any;
-  user_name: String = "ssn1";
+  user_name: String = "Gyanesh Pandey";
+  userid: String;
 
-  constructor(private bs: LeaderboardService) { }
-
+  constructor(private route: ActivatedRoute,
+    private router: Router, private bs: LeaderboardService) { 
+      let user = JSON.parse(localStorage.getItem("user")); 
+      // this.userid = user.email;
+      // this.user_name = user.user_name;
+      // console.log("LB Constructor: " +  this.user_name + " : " +this.userid);
+    }
+      
   ngOnInit() {
     this.bs
     .getUserVelocityList()
     .subscribe((data: Leaderboard[]) => {
-      this.leaderboards = data;
-    
-      console.log("LeaderboardComponent " + this.leaderboards[0]["_id"].user_name);
-      console.log("LeaderboardComponent " + this.leaderboards[0].totalProgress);
-      console.log("json obj" +  JSON.stringify(this.leaderboards));
+      this.leaderboards = data;    
   });
 
   }
@@ -41,7 +45,7 @@ export class LeaderboardComponent implements OnInit {
       days = diff;
     };
         
-    let velocity: any = 100*totalProgress/(days*60); // velocity in min per day
+    let velocity: any = totalProgress/(days*60); // velocity in min per day
     // console.log("Learning Velocity: " +  velocity * 100);
 
     velocity = velocity.toFixed(2);
@@ -54,13 +58,13 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getUser(){
-    let user = JSON.parse(localStorage.getItem("user")); 
-    console.log("User: " +  user);
+    // let user = JSON.parse(localStorage.getItem("user")); 
+    // console.log("User: " +  user);
     return this.user_name;
   }
 
   getTotalProgress(){
-    return this.userTotalProgress.toFixed(2);
+    return (this.userTotalProgress/60).toFixed(2);
   }
 
   getUserVelocity(){
@@ -69,6 +73,20 @@ export class LeaderboardComponent implements OnInit {
 
   //Relative rank in the ordered set of Learning Velocity
   getRank(){
+    let vel:number[];
+
+    for (var i = 0; i < this.leaderboards.length; i++)
+      {
+        let v = this.getVelocity(
+            this.leaderboards[i]["_id"].user_name,
+            this.leaderboards[i]["_id"].started_on, 
+            this.leaderboards[i].max_video_date, 
+            this.leaderboards[i].totalProgress);
+        if (this.userVelocity == v){
+          this.userRank = i+1;
+        }
+      }
+    console.log("User Rank: " +  this.userRank);
     return this.userRank;
   }
 
