@@ -38,7 +38,8 @@ export class AppComponent implements OnInit, OnDestroy  {
   //this.Auth1.setAuthState({ state: 'signIn', user: null });
   
     this.Auth1.auth().currentAuthenticatedUser({
-    bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
+    bypassCache: true  }).then(user => {console.log('data' + JSON.stringify(user.attributes.email));
+    })
     .catch(err => console.log(err));
 
     // gtag.event('init', { event_label: 'App Init'});
@@ -52,6 +53,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     localStorage.clear();
                     this.user = null;
                     this.useremail = null;
+                    //this.Auth1.setAuthState({ state: 'signIn', user: null });
                 } else {
                     this.user = authState.user;
                     this.useremail = this.user.attributes.email;
@@ -107,12 +109,13 @@ export class AppComponent implements OnInit, OnDestroy  {
       window.location.assign(URL);
   }
   onLogoutClick() {
+    this.Auth1.setAuthState({ state: 'signedOut', user: null });
     this.signedIn=false;
-    console.log("Signed in false");
+    //console.log("Signed in false");
     localStorage.removeItem('user'); 
-    console.log("User removed from local storage");
-    let item = JSON.parse(localStorage.getItem('user'));
-    console.log("Confirming user removed " + item); 
+    //console.log("User removed from local storage");
+    //let item = JSON.parse(localStorage.getItem('user'));
+    //console.log("Confirming user removed " + item); 
     const URL = GlobalVariable.COGNITO_LOGOUT_URL;
     window.location.assign(URL);
 }

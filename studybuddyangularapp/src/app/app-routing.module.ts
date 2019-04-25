@@ -21,6 +21,10 @@ const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full'
   },
+  { path: 'index',
+    component: HomeComponent,
+    pathMatch: 'full'
+  },
   { path: 'courseDetail/:id',
     component: CourseDetailComponent
   },
