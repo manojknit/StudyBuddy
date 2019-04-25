@@ -113,7 +113,8 @@ export class AppComponent implements OnInit, OnDestroy  {
     console.log("User removed from local storage");
     let item = JSON.parse(localStorage.getItem('user'));
     console.log("Confirming user removed " + item); 
-    const URL = GlobalVariable.COGNITO_LOGOUT_URL;
-    window.location.assign(URL);
+    //const URL = GlobalVariable.COGNITO_LOGOUT_URL;
+    //window.location.assign(URL);
+    this.Auth1.auth().signOut();
 }
 }
