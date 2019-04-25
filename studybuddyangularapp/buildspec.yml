@@ -6,6 +6,8 @@ environment_variables:
 phases:
     install:
         commands:
+            - echo change dir to - studybuddyangularapp
+            - cd studybuddyangularapp
             - echo Installing source NPM dependencies...
             - npm install
             - npm install -g @angular/cli
