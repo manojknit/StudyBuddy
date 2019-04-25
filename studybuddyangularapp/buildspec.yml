@@ -10,21 +10,27 @@ phases:
             - ls
             - cd studybuddyangularapp
             - echo Installing source NPM dependencies...
+            - pwd
             - npm install
+            - pwd
             - npm install -g @angular/cli
     pre_build:
         commands:
           - pwd
+          - cd studybuddyangularapp
+          - ls
           - echo copy private files from s3...
           - aws s3 cp s3://private-config-files/secret ./StudyBuddy/studybuddyangularapp/ --recursive
     build:
         commands:
           - pwd
+          - cd studybuddyangularapp
+          - ls
           - echo Build started on `date`
           - ng build --env=${BUILD_ENV}
     post_build:
         commands:
-          - aws s3 cp dist s3://${S3_BUCKET} --recursive
+          - aws s3 cp studybuddyangularapp/dist s3://${S3_BUCKET} --recursive
           - echo Build completed on `date`
 artifacts:
     files:
