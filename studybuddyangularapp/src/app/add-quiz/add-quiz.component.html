@@ -9,5 +9,6 @@
   
   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadxlsx()">Upload</button>
 
+  <div  *ngIf="quizida" class="nav-header"> Quiz already exists for this course. Uploading a new quiz will override the existing Quiz </div>
 </div>
 </div>

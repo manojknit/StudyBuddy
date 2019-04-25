@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Quiz from '../Quiz';
 import { QuizService } from '../services/quiz.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,11 +11,30 @@ import * as XLSX from 'xlsx';
 })
 export class AddQuizComponent implements OnInit {
   selectedFiles: FileList;
-   
+  quizida: String;
   constructor(private route: ActivatedRoute,
     private router: Router, private quizService: QuizService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+     
+      this.quizService.getQuizIdbyCourseId(params['id']).subscribe((data: String) => {
+        this.quizida = data;
+        if( this.quizida == undefined ||  this.quizida == null) {
+
+          console.log("quiz object is " +  this.quizida);
+        }
+        else
+        {
+          console.log("quiz object is " +  this.quizida);
+        }
+       
+      
+      
+        });
+
+    });
+    
     
   }
   upload() {
