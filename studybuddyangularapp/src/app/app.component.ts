@@ -35,7 +35,8 @@ export class AppComponent implements OnInit, OnDestroy  {
   //   this.Auth1.auth().currentAuthenticatedUser()
   // .then(data => console.log('data' + JSON.stringify(data)))
   // .catch(err => console.log(err));
-
+  //this.Auth1.setAuthState({ state: 'signIn', user: null });
+  
     this.Auth1.auth().currentAuthenticatedUser({
     bypassCache: true  }).then(user => console.log('data' + JSON.stringify(user.attributes.email)))
     .catch(err => console.log(err));
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     console.log('App Component');
     this.Auth1.authStateChange$
             .subscribe(authState => {
+              console.log('Auth state changed.='+authState.state);
                 this.signedIn = authState.state === 'signedIn';
                 if (!authState.user) {
                     localStorage.clear();
@@ -104,4 +106,9 @@ export class AppComponent implements OnInit, OnDestroy  {
       const URL = GlobalVariable.COGNITO_URL;
       window.location.assign(URL);
   }
+  onLogoutClick() {
+    localStorage.removeItem('user'); 
+    const URL = GlobalVariable.COGNITO_LOGOUT_URL;
+    window.location.assign(URL);
+}
 }

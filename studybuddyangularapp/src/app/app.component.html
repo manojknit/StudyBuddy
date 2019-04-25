@@ -33,7 +33,7 @@
       <div class="account pull-right">
         <ul class="user-menu">
           <li *ngIf="!signedIn" ><a (click)="onLoginClick()">Login</a></li>
-          <li *ngIf="signedIn">Logout</li>
+          <li *ngIf="signedIn"><a (click)="onLogoutClick()">Logout</a></li>
           <li><i *ngIf="signedIn" class="fa fa-users"></i>
             {{useremail}}</li>
         </ul>
