@@ -32,7 +32,10 @@
               "src/styles/themes/css/flexslider.css",
               "src/styles/themes/css/main.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.js"],
+            "scripts": ["node_modules/jquery/dist/jquery.js",
+              "app.global.ts",
+              "aws-exports.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
