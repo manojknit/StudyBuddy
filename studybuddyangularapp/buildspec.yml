@@ -21,7 +21,7 @@ phases:
         commands:
           - pwd
           - echo Build started on `date`
-          - cd studybuddyangularapp && ng build --prod --verbose=true --progress=true
+          - pushd studybuddyangularapp && ng build --prod --verbose=true --progress=true && popd
     post_build:
         commands:
           - ls studybuddyangularapp/dist
