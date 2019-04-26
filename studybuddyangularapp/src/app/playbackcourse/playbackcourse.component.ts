@@ -88,6 +88,13 @@ export class PlaybackcourseComponent implements OnInit {
           if(this.courseusernested.video_details[0].videoStartDate == undefined ) {
             localStorage.setItem('videoStartDate' , this.date);
           }
+
+          localStorage.setItem('courseStartDate' , this.courseusernested.courseStartDate);
+          if(this.courseusernested.courseStartDate == undefined || this.courseusernested.courseStartDate == null ||
+            this.courseusernested.courseStartDate == "") {
+            localStorage.setItem('courseStartDate' , this.date);
+          }
+
           localStorage.setItem('videoLastAccessedDate', this.date);
           localStorage.setItem('selectedcourseid1', this.courseusernested.course_id);
           localStorage.setItem('user_id', this.courseusernested.user_id);
@@ -154,7 +161,7 @@ export class PlaybackcourseComponent implements OnInit {
                                 100, true, 
                                 localStorage.getItem('videoStartDate'), 
                                 localStorage.getItem('videoLastAccessedDate'),
-                                this.current_time); 
+                                this.current_time, localStorage.getItem('courseStartDate')); 
     console.log("Video Ended updated");
     
   }
@@ -175,7 +182,7 @@ export class PlaybackcourseComponent implements OnInit {
                                 this.progress, false, 
                                 localStorage.getItem('videoStartDate'), 
                                 localStorage.getItem('videoLastAccessedDate'),
-                                this.current_time);    
+                                this.current_time,localStorage.getItem('courseStartDate'));    
     console.log("Pause Event Published ");
   }
 

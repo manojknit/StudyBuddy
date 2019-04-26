@@ -40,7 +40,8 @@ export class CourseMybucketService {
         video_is_complete: 0,
         video_progress: 0,
         video_start_date: "",
-        video_last_accessed_date: ""
+        video_last_accessed_date: "",
+        video_progress_sec: 0,
       }
       videoArr.push(obj1);
     }
@@ -50,6 +51,7 @@ export class CourseMybucketService {
       course_id: course_id,
       course_title: course_title,
       registered_on: registered_on,
+      started_on: "",
       course_velocity: 0,
       course_progress: 0,
       video_details: videoArr
@@ -60,12 +62,13 @@ export class CourseMybucketService {
   }
 
 
-  updateVideoProgress(user_id, course_id, video_id, progress,complete, start_date, end_date, progess_sec) {
+  updateVideoProgress(user_id, course_id, video_id, progress,complete, start_date, end_date, progess_sec, courseStartDate) {
     this.http.post(`${this.uri}/updateVideoProgress/${user_id}/${course_id}/${video_id}/${progress}/${complete}`,
     {
         "start_date" : start_date,
         "end_date" : end_date,
-        "progress_sec": progess_sec
+        "progress_sec": progess_sec,
+        "courseStartDate" : courseStartDate
     })
         .subscribe(res => console.log('Done'));
   }

@@ -69,16 +69,18 @@ courseusernestedRoutes.route('/updateVideoProgress/:id1/:id2/:id3/:progress/:com
   let start_date = req.body.start_date;
   let last_date = req.body.end_date;
   let progress_sec = req.body.progress_sec;
+  let started_on = req.body.courseStartDate;
 
   console.log("values are " + user_id + ": " + course_id + " : " + video_name + " : " + progress + " : " + complete + " : " + start_date + " : " + last_date + "progress in sec " + progress_sec);
  
-  var query = { "user_id": user_id, "course_id": course_id, "video_details.video_title": new RegExp(video_name, 'i')  },
+  var query = { "user_id": user_id, "course_id": course_id, "video_details.video_file_name": new RegExp(video_name, 'i')  },
     update = { "$set": { 
       "video_details.$.video_is_complete": complete,
       "video_details.$.video_progress": progress,
       "video_details.$.video_progress_sec": progress_sec,
       "video_details.$.video_start_date": start_date,
       "video_details.$.video_last_accessed_date": last_date,
+      "started_on": started_on,
     } },
     options = { "upsert": false };
 
