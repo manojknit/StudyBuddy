@@ -20,7 +20,7 @@ phases:
         commands:
           - pwd
           - echo Build started on `date`
-          - cd \studybuddyangularapp && ng build
+          - pushd studybuddyangularapp && ng build && popd
     post_build:
         commands:
           - ls studybuddyangularapp/dist
