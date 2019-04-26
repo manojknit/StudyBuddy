@@ -16,7 +16,7 @@ phases:
         commands:
           - pwd
           - echo copy private files from s3...
-          - aws s3 cp s3://private-config-files/secret ./studybuddyangularapp/ --recursive
+          - aws s3 cp s3://private-config-files/secret ./studybuddyangularapp/src/ --recursive
           - ls \studybuddyangularapp
     build:
         commands:
