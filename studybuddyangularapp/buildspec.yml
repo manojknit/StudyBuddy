@@ -20,11 +20,11 @@ phases:
         commands:
           - pwd
           - echo Build started on `date`
-          - cd \studybuddyangularapp && ng build --env=${BUILD_ENV}
+          - cd \studybuddyangularapp && ng build
     post_build:
         commands:
           - ls studybuddyangularapp/dist
-          - aws s3 cp studybuddyangularapp/dist s3://${S3_BUCKET} --recursive
+          - aws s3 cp studybuddyangularapp/dist s3://studybuddyshop.com --recursive
           - echo Build completed on `date`
 artifacts:
     files:
