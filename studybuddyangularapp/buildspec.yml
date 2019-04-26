@@ -20,8 +20,9 @@ phases:
     build:
         commands:
           - pwd
+          - echo $SHELL
           - echo Build started on `date`
-          - pushd studybuddyangularapp && ng build --prod --verbose=true --progress=true && popd
+          - npm run prod-build --prefix studybuddyangularapp
     post_build:
         commands:
           - ls studybuddyangularapp/dist
