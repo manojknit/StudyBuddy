@@ -21,8 +21,10 @@
 		<i class="ion-navicon menu"></i>
 		<i class="ion-ios-search search"></i>
 		
-		<div class="avatar row">
+		<div  *ngIf="isAdmin" class="avatar_admin row">
 		</div>
+
+	
 		
 		<section class="user row">
 			<h1 class="user-header">

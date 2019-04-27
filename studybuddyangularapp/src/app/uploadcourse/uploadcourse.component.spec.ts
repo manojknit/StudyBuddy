@@ -1,25 +1,36 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadcourseComponent } from './uploadcourse.component';
+// import { UploadcourseComponent } from './uploadcourse.component';
 
-describe('UploadcourseComponent', () => {
-  let component: UploadcourseComponent;
-  let fixture: ComponentFixture<UploadcourseComponent>;
+// import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute, Router } from '@angular/router';
+// import { UploadService } from '../services/upload.service';
+// import { FormGroup, FormControl } from '@angular/forms';
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UploadcourseComponent ]
-    })
-    .compileComponents();
-  }));
+// describe('UploadcourseComponent', () => {
+//   let component: UploadcourseComponent;
+//   let fixture: ComponentFixture<UploadcourseComponent>;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UploadcourseComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   const fakeActivatedRoute = {
+//     snapshot: { data: { } }
+//   } as ActivatedRoute;
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   beforeEach((() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ UploadcourseComponent ],
+//       providers: [UploadService, {provide: ActivatedRoute, useValue: fakeActivatedRoute} ] 
+//       // imports: [Component, Router, FormGroup, FormControl]
+//     })
+//     .compileComponents();
+//   }));
+
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(UploadcourseComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
