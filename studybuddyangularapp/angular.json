@@ -32,7 +32,10 @@
               "src/styles/themes/css/flexslider.css",
               "src/styles/themes/css/main.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.js"],
+            "scripts": ["node_modules/jquery/dist/jquery.js",
+              "src/app.global.ts",
+              "src/aws-exports.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -55,8 +58,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "7mb"
                 }
               ]
             }
