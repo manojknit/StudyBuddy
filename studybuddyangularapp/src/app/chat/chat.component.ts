@@ -3,6 +3,7 @@ import { ChatService } from '../services/chat.service';
 import ChatUser  from '../ChatUser';
 import Chat from '../Chat';
 
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -19,9 +20,9 @@ export class ChatComponent implements OnInit {
   message: String;
 
   constructor(private cs : ChatService) { 
-    let user = JSON.parse(localStorage.getItem("user")); 
-    this.user_id = user.email;
-    this.user_name = user.name.username;
+    // let user = JSON.parse(localStorage.getItem("user")); 
+    // this.user_id = user.email;
+    // this.user_name = user.name.username;
   }
 
   ngOnInit() {
