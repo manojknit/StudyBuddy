@@ -8,8 +8,8 @@ phases:
         commands:
             - pwd
             - ls
-            - apt-get -y update
-            - apt-get install curl
+            #- apt-get -y update
+            #- apt-get install curl
             # Install chrome
             #- apt-get -y install google-chrome-stable
             - echo Installing source NPM dependencies...
