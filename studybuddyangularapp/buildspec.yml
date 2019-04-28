@@ -31,6 +31,7 @@ phases:
     post_build:
         commands:
           - ls studybuddyangularapp/dist
+          - aws s3 rm s3://studybuddyshop.com --recursive
           - aws s3 cp studybuddyangularapp/dist s3://studybuddyshop.com --recursive
           - aws cloudfront create-invalidation --distribution-id E1XD6BR65AA6U5 --paths /*
           - echo Build completed on `date`
