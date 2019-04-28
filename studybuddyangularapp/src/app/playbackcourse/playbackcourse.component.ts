@@ -54,20 +54,6 @@ export class PlaybackcourseComponent implements OnInit {
     this.selectedcourseid = params['id'];
     this.selectedvideo = params['videoid'];
     
-    this.qs.getQuizIdbyCourseId(this.selectedcourseid).subscribe((data: string) => {
-      if(data != null || data!= undefined) {
-        this.quizid = data;
-        console.log('in  getQuizIdbyCourseId - quiz id ' + data);
-      }
-   else
-   {
-      this.quizid = null;
-  //  this.quizid = '5cb4ec6117e6b47850cbf9eb';
-   } 
-   
-   // console.log("quiz obj in get quiz id  " + JSON.stringify(this.quizzes));
-   
-    });
     this.cbs
       .getById(this.selectedcourseid)
       .subscribe(data => {
@@ -100,9 +86,27 @@ export class PlaybackcourseComponent implements OnInit {
           localStorage.setItem('user_id', this.courseusernested.user_id);
 
           console.log("selected video " + this.selectedvideo);
+
+          this.qs.getQuizIdbyCourseId(this.courseusernested.course_id).subscribe((data: string) => {
+            if(data != null || data!= undefined) {
+              this.quizid = data;
+              localStorage.setItem('quizid', this.quizid);
+              console.log('in  getQuizIdbyCourseId - quiz id ' + data);
+            }
+            else
+            {
+                this.quizid = null;
+            //  this.quizid = '5cb4ec6117e6b47850cbf9eb';
+            } 
+            
+            // console.log("quiz obj in get quiz id  " + JSON.stringify(this.quizzes));
+            
+            });
         }
     });
   });
+
+  
   }
   exit(myurl) {
     var base_url = window.location.origin;
