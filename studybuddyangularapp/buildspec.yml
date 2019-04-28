@@ -8,9 +8,9 @@ phases:
         commands:
             - pwd
             - ls
-            #- apt-get -y update
+            - apt-get -y update
             # Install chrome
-            #- apt-get -y install google-chrome-stable
+            - apt-get -y install google-chrome-stable
             - echo Installing source NPM dependencies...
             - cd \studybuddyangularapp && npm install
             - npm install -g @angular/cli
