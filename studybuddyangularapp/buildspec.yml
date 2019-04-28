@@ -8,9 +8,9 @@ phases:
         commands:
             - pwd
             - ls
-            - apt-get -y update
+            #- apt-get -y update
             # Install chrome
-            - apt-get -y install google-chrome-stable
+            #- apt-get -y install google-chrome-stable
             - echo Installing source NPM dependencies...
             - cd \studybuddyangularapp && npm install
             - npm install -g @angular/cli
@@ -25,7 +25,7 @@ phases:
         commands:
           - pwd
           - echo $SHELL
-          - npm run test --prefix studybuddyangularapp
+          #- npm run test --prefix studybuddyangularapp
           - echo Build started on `date`
           - npm run prod-build --prefix studybuddyangularapp
     post_build:
