@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/account"
-        android:icon="@drawable/ic_icon_search_white"
-        android:title="Search Catalog"/>
-    <item android:id="@+id/settings"
-        android:icon="@drawable/ic_icon_catalog"
-        android:title="Full Catalog"/>
+
+    <item android:id="@+id/chatbot"
+        android:icon="@drawable/sblogo"
+        android:title="Buddy Bot"/>
     <item android:id="@+id/mycart"
         android:icon="@drawable/ic_icon_star"
         android:title="My Courses"/>

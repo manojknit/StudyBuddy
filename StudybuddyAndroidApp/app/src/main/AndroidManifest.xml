@@ -32,7 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".VideosListActivity" />
-        <activity android:name=".MyCoursesActivity"></activity>
+        <activity android:name=".MyCoursesActivity" />
+        <activity android:name=".ChatBotActivity"></activity>
     </application>
 
 </manifest>

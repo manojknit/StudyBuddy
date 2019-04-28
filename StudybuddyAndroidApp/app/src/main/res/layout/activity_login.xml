@@ -129,28 +129,12 @@ tools:context=".LoginActivity">
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
         android:text="@string/facebook"
-        app:layout_constraintEnd_toStartOf="@+id/btn_google"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"/>
 
-    <Button
-        android:id="@+id/btn_google"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_border"
-        android:drawablePadding="8dp"
-        android:drawableStart="@drawable/google_logo"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:text="@string/google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_facebook"
-        app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"/>
+
 
     <TextView
         android:id="@+id/textView4"

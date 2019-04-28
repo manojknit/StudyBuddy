@@ -36,8 +36,6 @@ public class FetchCoursesTask extends AsyncTask<String, Void, ArrayList<Course>>
                 MlabConfig ml = new MlabConfig();
         try {
             Log.d("urls ", arg0[0]);
-         //   Log.d("urls ", ml.getCoursesFetchURL());
-          //  url = new URL("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={%22user_name%22:%20%22manoj.kumar@sjsu.edu%22}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM");
             url = new URL(arg0[0]);
             HttpURLConnection conn = (HttpURLConnection) url
                     .openConnection();
