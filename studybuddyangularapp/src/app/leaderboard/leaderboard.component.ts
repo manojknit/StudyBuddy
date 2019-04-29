@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LeaderboardComponent implements OnInit {
   leaderboards: Leaderboard[];
   leaderboard_temp:Leaderboard[] = new Array(); 
+  leaderboard_sort:Leaderboard[] = new Array(); 
+
   userTotalProgress: number;
   userRank: number;
   userLevel: number;
@@ -42,20 +44,21 @@ export class LeaderboardComponent implements OnInit {
     this.bs
     .getUserVelocityList()
     .subscribe((data: Leaderboard[]) => {
-      this.leaderboards = data;    
+      this.leaderboards = data;
 
       for (var i = 0; i < this.leaderboards.length; i++)
       {
         if (this.leaderboards[i].max_video_date != null){
           this.leaderboard_temp.push(this.leaderboards[i]);
+          // console.log("Main Leaderboard : " + this.leaderboards[i]["_id"].user_name);
         }
       }
       this.sortLeaderBoard();
   });
 
   }
-  
-    sortLeaderBoard(){
+
+  sortLeaderBoard(){
       let maxIndex:number;
       let leader: Leaderboard;
       let iVel:number;
@@ -122,8 +125,12 @@ export class LeaderboardComponent implements OnInit {
     return velocity;
   }
 
-
   getVelocity(user_name,started_on, max_video_date, totalProgress){
+    // console.log("getVelocity : " + "user_name: " + user_name +
+    // " started_on: " + started_on + 
+    // " max_video_date: " + max_video_date + 
+    // " totalProgress: " + totalProgress);
+
     let diff = (new Date(max_video_date).getTime() - new Date(started_on).getTime())/(24 * 60 * 60 * 1000);
     let days = 0;
 
@@ -152,7 +159,8 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getTotalProgress(){
-    return (this.userTotalProgress).toFixed(2);
+    // return (this.userTotalProgress).toFixed(2);
+    return this.userTotalProgress;
   }
 
   getUserVelocity(){
@@ -194,5 +202,4 @@ export class LeaderboardComponent implements OnInit {
     }
     return this.userLevel;
   }
-
 }
