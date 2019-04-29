@@ -6,13 +6,10 @@ public class MlabConfig {
     public String getDatabaseName() {
         return "studybuddydb";
     }
-
-
-//https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={"user_name": "Admin-User"}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM
-
     public String getApiKey() {
-        return "";
+        return "APIKEY";
     }
+
 
 
     public String getUsernamequery() {

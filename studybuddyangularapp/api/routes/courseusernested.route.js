@@ -106,8 +106,8 @@ courseusernestedRoutes.route('/getForVelocity').get(function (req, res) {
 		{ "$unwind": "$video_details" },
         {
          $group : {
-            _id:{ user_id: "$user_id", user_name: "$user_name",  started_on: "$started_on", 
-            course_id : "$course_id","course_title":"$course_title"},
+            _id:{ user_id: "$user_id", user_name: "$user_name",  started_on: "$started_on", "course_title":"$course_title"},
+//             _id:{ user_id: "$user_id", user_name: "$user_name",  started_on: "$started_on", course_id : "$course_id","course_title":"$course_title"},
             totalProgress: { $sum: "$video_details.video_progress_sec" },
             max_video_date: { $max: "$video_details.video_last_accessed_date" }
          } 

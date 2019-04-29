@@ -9,6 +9,7 @@ phases:
             - pwd
             - ls
             #- apt-get -y update
+            #- apt-get install curl
             # Install chrome
             #- apt-get -y install google-chrome-stable
             - echo Installing source NPM dependencies...
@@ -25,15 +26,17 @@ phases:
         commands:
           - pwd
           - echo $SHELL
-          #- npm run test
+          #- npm run test --prefix studybuddyangularapp
           - echo Build started on `date`
           - npm run prod-build --prefix studybuddyangularapp
     post_build:
         commands:
           - ls studybuddyangularapp/dist
+          - aws s3 rm s3://studybuddyshop.com --recursive
           - aws s3 cp studybuddyangularapp/dist s3://studybuddyshop.com --recursive
-          - aws cloudfront create-invalidation --distribution-id E1XD6BR65AA6U5 --paths /*
+          - aws cloudfront create-invalidation --distribution-id E1XD6BR65AA6U5 --paths "/*"
           - echo Build completed on `date`
+          - curl -Is http://studybuddyshop.com | head -n 1
 artifacts:
     files:
         - '**/*'

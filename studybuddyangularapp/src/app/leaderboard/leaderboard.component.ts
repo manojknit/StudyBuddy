@@ -50,10 +50,78 @@ export class LeaderboardComponent implements OnInit {
           this.leaderboard_temp.push(this.leaderboards[i]);
         }
       }
-      this.leaderboards = this.leaderboard_temp;
+      this.sortLeaderBoard();
   });
 
   }
+  
+    sortLeaderBoard(){
+      let maxIndex:number;
+      let leader: Leaderboard;
+      let iVel:number;
+      let jVel:number;
+
+      console.log("Learning LeaderBoard Length: " + this.leaderboard_temp.length);
+
+      for (var i = 0; i < this.leaderboard_temp.length; i++)
+      {
+        maxIndex = i;
+        // iVel = this.getVelocity(this.leaderboard_temp[i]["_id"].user_name, this.leaderboard_temp[i]["_id"].started_on, this.leaderboard_temp[i].max_video_date, this.leaderboard_temp[i].totalProgress);
+        iVel = this.getLeaderVelocity(this.leaderboard_temp[i]);
+
+        let temp:Leaderboard;
+
+        for (var j = i+1; j < this.leaderboard_temp.length; j++)
+        {
+          // jVel = this.getVelocity(this.leaderboard_temp[j]["_id"].user_name, this.leaderboard_temp[j]["_id"].started_on, this.leaderboard_temp[j].max_video_date, this.leaderboard_temp[j].totalProgress);
+          jVel = this.getLeaderVelocity(this.leaderboard_temp[j]);
+          if (+jVel > +iVel){
+            maxIndex = j;
+            // console.log("jVel > iVel: " + i + " : "+ j + " : "+ iVel + " : " + jVel + " : " + "maxIndex : " + maxIndex);
+            iVel = jVel;
+            temp = this.leaderboard_temp[i];
+            this.leaderboard_temp[i] = this.leaderboard_temp[j];
+            this.leaderboard_temp[j] = temp;
+          }   
+        }
+        leader = this.leaderboard_temp[i];  
+        this.leaderboard_sort.push(leader);
+      }
+      this.leaderboards = this.leaderboard_sort;
+  }
+
+  getLeaderVelocity(uleader: Leaderboard){
+    let user_name = uleader["_id"].user_name;
+    let started_on = uleader["_id"].started_on; 
+    let max_video_date = uleader.max_video_date; 
+    let totalProgress:Number = uleader.totalProgress;
+
+    // console.log("getLeaderVelocity : " + "user_name: " + user_name +
+    // " started_on: " + started_on + 
+    // " max_video_date: " + max_video_date + 
+    // " totalProgress: " + totalProgress);
+
+    let diff = (new Date(max_video_date).getTime() - new Date(started_on).getTime())/(24 * 60 * 60 * 1000);
+    let days = 0;
+
+    if (diff == 0){
+      days = 1;
+    } else {
+      days = diff;
+    };
+        
+    let velocity: any = totalProgress.valueOf()/(days); // velocity in min per day
+    // console.log("Learning Velocity: " +  velocity * 100);
+
+    velocity = velocity.toFixed(2);
+
+    if (user_name == this.user_name){
+      this.userVelocity = velocity;
+      this.userTotalProgress = totalProgress.valueOf();
+    }
+    return velocity;
+  }
+
 
   getVelocity(user_name,started_on, max_video_date, totalProgress){
     let diff = (new Date(max_video_date).getTime() - new Date(started_on).getTime())/(24 * 60 * 60 * 1000);

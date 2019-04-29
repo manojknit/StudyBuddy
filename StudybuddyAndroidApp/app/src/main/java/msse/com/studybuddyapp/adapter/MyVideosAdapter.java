@@ -1,6 +1,7 @@
 package msse.com.studybuddyapp.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Movie;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,8 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
     private  List<String> videoTitlelist;
     private  List<String> videoDesclist;
     private  List<Integer> percentcompleted;
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView videotitle;
         public ImageView videothumbnail;
@@ -50,6 +53,7 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
         this.videoTitlelist = videotitleList;
         this.videoDesclist = videoDescList;
         this.percentcompleted = percent;
+        sharedpreferences = this.mContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -68,10 +72,9 @@ public class MyVideosAdapter extends RecyclerView.Adapter<MyVideosAdapter.MyView
         holder.videothumbnail.setImageResource(videothumbnailImg.get(position));
         holder.courseCompleted.setImageResource(R.drawable.blue_tick);
         holder.videodescription.setText(videoDesclist.get(position));
-        holder.progressBar.setProgress(percentcompleted.get(position));
+      //  holder.progressBar.setProgress(percentcompleted.get(position));
+        holder.progressBar.setProgress(sharedpreferences.getInt(Integer.toString(position),0));
        // holder.progressBar.setProgress(position);
-      //  holder.progressBar.setProgress(25);
-        //holder.year.setText(movie.getYear());
     }
 
 

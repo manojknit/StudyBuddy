@@ -87,7 +87,7 @@ html {
   
   .avatar {
     display: inline-block;
-    background-image: url("/assets/myAvatar1.png");
+    background-image: url("https://s3-us-west-1.amazonaws.com/bcartmedia/avatar-1577909_640.png");
     background-size: cover;
     border-radius: 50%;
     height: 75px;
@@ -98,7 +98,7 @@ html {
 
   .avatar_admin {
     display: inline-block;
-    background-image: url("/assets/myAvatar2.png");
+    background-image: url("https://s3-us-west-1.amazonaws.com/bcartmedia/avatar-1577909_640.png");
     background-size: cover;
     border-radius: 50%;
     height: 95px;
