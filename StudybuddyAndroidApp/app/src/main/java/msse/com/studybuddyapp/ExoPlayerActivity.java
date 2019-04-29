@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -54,6 +55,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     private static final String TAG = "ExoPlayerActivity";
 
     private static final String KEY_VIDEO_URI = "video_uri";
+    private static final String KEY_VIDEO_POS = "video_pos";
     private boolean durationSet = false;
     public long total_seconds, watch_seconds;
     public int percentwatched;
@@ -65,13 +67,16 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     ImageView imageViewExit;
 
     String videoUri;
+    int video_position;
     SimpleExoPlayer player;
     Handler mHandler;
     Runnable mRunnable;
-
-    public static Intent getStartIntent(Context context, String videoUri) {
+    long total_duration;
+    boolean haveStartPosition;
+    public static Intent getStartIntent(Context context, String videoUri, int position) {
         Intent intent = new Intent(context, ExoPlayerActivity.class);
         intent.putExtra(KEY_VIDEO_URI, videoUri);
+        intent.putExtra(KEY_VIDEO_POS, position);
         return intent;
     }
 
@@ -87,15 +92,22 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
         if (getIntent().hasExtra(KEY_VIDEO_URI)) {
            videoUri = getIntent().getStringExtra(KEY_VIDEO_URI);
+
            // videoUri=  "https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/AndroidLecture1.m3u8";
+        }
+        if (getIntent().hasExtra(KEY_VIDEO_POS)) {
+            video_position = getIntent().getIntExtra(KEY_VIDEO_POS,0);
+
         }
         Log.d("exo player postion"," " + " inside create");
         setUp();
+        haveStartPosition = false;
     }
 
     private void setUp() {
         Log.d("exo player postion"," " + " inside setup");
         initializePlayer();
+        player.seekToDefaultPosition();
         if (videoUri == null) {
             return;
         }
@@ -145,9 +157,13 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
     //            .createMediaSource(mUri);
         MediaSource videoSource = new HlsMediaSource.Factory(dataSourceFactory).setExtractorFactory(defaultHlsExtractorFactory).createMediaSource(mUri);
         // Prepare the player with the source.
+
+      //  boolean haveStartPosition = video_position != C.INDEX_UNSET;
+
         player.prepare(videoSource);
         player.setPlayWhenReady(true);
         player.addListener(this);
+
 
     }
 
@@ -213,25 +229,37 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
     }
 
+
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         switch (playbackState) {
 
             case Player.STATE_BUFFERING:
                 spinnerVideoDetails.setVisibility(View.VISIBLE);
+
+               // player.seekTo(5 * 1000);
                 break;
             case Player.STATE_ENDED:
-             //   Log.d("video postiton watched",  " w" + player.getCurrentPosition());
-               // Toast.makeText(this, "video postiton watched" + player.getCurrentPosition(), Toast.LENGTH_SHORT).show();
-                // Activate the force enable
+                player.seekTo(0);
+                player.setPlayWhenReady(true);
                 break;
             case Player.STATE_IDLE:
 
                 break;
             case Player.STATE_READY:
                 spinnerVideoDetails.setVisibility(View.GONE);
-                long total_duration = player.getDuration();
-                 total_seconds = TimeUnit.MILLISECONDS.toSeconds(total_duration);
+                total_duration = player.getDuration();
+                total_seconds = TimeUnit.MILLISECONDS.toSeconds(total_duration);
+                if (!haveStartPosition) {
+
+                    Log.d("totalduration" ,total_duration + " ");
+                    long watch_time_sec  = (long)((video_position * total_seconds)/100);
+                    Log.d("watched", " " + watch_time_sec + " video_position " +  video_position  + " total " + total_seconds );
+
+                    player.seekTo((watch_time_sec + 1) * 1000);
+                    haveStartPosition = true;
+                }
+
                 long watched_duration = player.getCurrentPosition();
                 Log.d("video duration", " s" + total_duration);
                 Toast.makeText(this, "total video duration" + " s" + total_duration, Toast.LENGTH_SHORT).show();

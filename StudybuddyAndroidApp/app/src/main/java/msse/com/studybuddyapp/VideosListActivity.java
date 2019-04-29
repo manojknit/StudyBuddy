@@ -71,7 +71,7 @@ public class VideosListActivity extends AppCompatActivity {
                 Log.d("percentage", "position " + String.valueOf(lasttouched) + " value " + sharedpreferences.getInt(Integer.toString(lasttouched),0));
                 Log.d("percentage" , "percent fr that position" + sharedpreferences.getInt(String.valueOf(lasttouched),0));
                 Log.d("videourlssssss",videoUrl);
-                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl);
+                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl,sharedpreferences.getInt(String.valueOf(lasttouched),0) );
                 startActivityForResult(mIntent, 100);
 
             }
