@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 showDialogPrompt();
                 break;
             case R.id.buttonPlayDefaultVideo:
-                Intent mIntent = ExoPlayerActivity.getStartIntent(this, VideoPlayerConfig.DEFAULT_VIDEO_URL);
+                Intent mIntent = ExoPlayerActivity.getStartIntent(this, VideoPlayerConfig.DEFAULT_VIDEO_URL, 0);
                 startActivity(mIntent);
                 break;
         }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 boolean isURL = Patterns.WEB_URL.matcher(userInputURL.getText().toString().trim()).matches();
                                 if (isURL) {
-                                    Intent mIntent = ExoPlayerActivity.getStartIntent(MainActivity.this, userInputURL.getText().toString().trim());
+                                    Intent mIntent = ExoPlayerActivity.getStartIntent(MainActivity.this, userInputURL.getText().toString().trim(),0);
                                     startActivity(mIntent);
                                 } else {
                                     Toast.makeText(MainActivity.this, getString(R.string.error_message_url_not_valid), Toast.LENGTH_SHORT).show();
