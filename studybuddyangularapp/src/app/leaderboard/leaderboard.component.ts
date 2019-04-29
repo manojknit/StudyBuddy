@@ -28,16 +28,6 @@ export class LeaderboardComponent implements OnInit {
       this.userid = user.email;
       this.user_name = user.name.username;
       console.log("LB Constructor: " +  this.user_name + " : " +this.userid);
-
-      if ( this.userid == 'shalini.narang@sjsu.edu' || this.userid.indexOf("admin")>0 || this.userid == 'erpatel@gmail.com' ||
-                        this.userid == 'studybuddy.auser@gmail.com' ||  this.userid.indexOf("auser")>0 )  //Set Admin
-      {
-        this.isAdmin = true;
-      }
-      else
-      { 
-        this.isAdmin = false;
-      }
     }
 
   ngOnInit() {
