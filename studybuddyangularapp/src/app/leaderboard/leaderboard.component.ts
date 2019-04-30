@@ -149,8 +149,8 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getTotalProgress(){
-    // return (this.userTotalProgress).toFixed(2);
-    return this.userTotalProgress;
+    return (this.userTotalProgress).toFixed(2);
+    //return this.userTotalProgress;
   }
 
   getUserVelocity(){
