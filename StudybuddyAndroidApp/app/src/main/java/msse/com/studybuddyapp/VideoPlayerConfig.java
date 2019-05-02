@@ -4,13 +4,22 @@ import android.content.SharedPreferences;
 
 public class VideoPlayerConfig {
     //Minimum Video you want to buffer while Playing
-    public static final int MIN_BUFFER_DURATION = 500;
+  /*  public static final int MIN_BUFFER_DURATION = 500;
     //Max Video you want to buffer during PlayBack
     public static final int MAX_BUFFER_DURATION = 1000;
     //Min Video you want to buffer before start Playing it
     public static final int MIN_PLAYBACK_START_BUFFER = 500;
     //Min video You want to buffer when user resumes video
-    public static final int MIN_PLAYBACK_RESUME_BUFFER = 1000;
+    public static final int MIN_PLAYBACK_RESUME_BUFFER = 1000; */
+
+    //Minimum Video you want to buffer while Playing
+    public static final int MIN_BUFFER_DURATION = 3000;
+    //Max Video you want to buffer during PlayBack
+    public static final int MAX_BUFFER_DURATION = 5000;
+    //Min Video you want to buffer before start Playing it
+    public static final int MIN_PLAYBACK_START_BUFFER = 1500;
+    //Min video You want to buffer when user resumes video
+    public static final int MIN_PLAYBACK_RESUME_BUFFER = 5000;
 
     public static String getDefaultVideoUrl() {
         return DEFAULT_VIDEO_URL;

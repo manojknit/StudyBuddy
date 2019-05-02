@@ -65,7 +65,7 @@ public class VideosListActivity extends AppCompatActivity {
                 checkImage.setVisibility(View.VISIBLE);
                 Video v = videoList.get(position);
                 String videoUrl = VideoPlayerConfig.getDefaultVideoUrl() + v.getVideoFileName().split("\\.")[0] +".m3u8";
-                Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
                 //progressBar.setProgress(progressBar.getProgress() + percent);
                 lasttouched = position;
                 Log.d("percentage", "position " + String.valueOf(lasttouched) + " value " + sharedpreferences.getInt(Integer.toString(lasttouched),0));
@@ -125,14 +125,14 @@ public class VideosListActivity extends AppCompatActivity {
         List<Integer> videothumnails = new ArrayList<Integer>();
         videothumnails.add(R.drawable.course_img7);
         videothumnails.add(R.drawable.course_img3);
-        videothumnails.add(R.drawable.course_img16);
+        videothumnails.add(R.drawable.course_img1);
         videothumnails.add(R.drawable.course_img4);
         videothumnails.add(R.drawable.course_img5);
 
         List<String> videoTitlelist = new ArrayList<String>();
+        videoTitlelist.add("Introduction to Android");
         videoTitlelist.add("Life Cycle Events");
         videoTitlelist.add("Android Services");
-        videoTitlelist.add("Introduction to Android");
         videoTitlelist.add("Intents");
         videoTitlelist.add("Optimizations");
         List<String>  videoDescription = new ArrayList<String>();
@@ -155,7 +155,7 @@ public class VideosListActivity extends AppCompatActivity {
             editText_phonenumber.setText(FetchedData.getPhone_nubmer());
             */
             Log.d("log fetch value", videoList.toString() + videoList.size() );
-            Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(this, "Fetched from MongoDB!!", Toast.LENGTH_SHORT).show();
             vAdapter = new MyVideosAdapter(this, videoList, videothumnails, videoTitlelist, videoDescription,percentList);
             vAdapter.notifyDataSetChanged();
         } catch (InterruptedException e) {

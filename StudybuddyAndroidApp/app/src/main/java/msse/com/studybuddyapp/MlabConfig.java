@@ -63,6 +63,17 @@ public class MlabConfig {
         return getBaseUrl()+getVideocollectionName()+ getCourseidquery() + apiKeyUrl();
     }
 
+    public String getQuerywithvalidApiKey() {
+
+        return getBaseUrl() + "?" + apiKeyUrl();
+    }
+
+    public String getQuerywithinvalidApiKey() {
+
+        return getBaseUrl() + "?" + "apiKey=yourapi";
+    }
+
+
    /* public String createContact(Course course) {
         return String
                 .format("{\"first_name\": \"%s\", "

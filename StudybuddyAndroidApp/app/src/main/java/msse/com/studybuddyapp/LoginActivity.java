@@ -3,7 +3,9 @@ package msse.com.studybuddyapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -64,9 +66,8 @@ public class LoginActivity extends AppCompatActivity  {
     private EditText pswdEdittext;
     private Button signInButton;
     private Button fbButton;
-  //  private View mProgressView;
- //   private View mLoginFormView;
-
+    public static final String MyPREFERENCES = "MyPrefs";
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity  {
         pswdEdittext = (EditText) findViewById(R.id.edt_password);
         signInButton =(Button)  findViewById(R.id.btn_login);
         pswdEdittext = (EditText) findViewById(R.id.edt_password);
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         // Set up the login form.
        /* mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -98,13 +99,16 @@ public class LoginActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                if(emailEdittext.getText().toString().equals("yaminivijaya@gmail.com") && pswdEdittext.getText().toString().equals("yamini")) {
+                if((emailEdittext.getText().toString().equals("Yamini")) || (emailEdittext.getText().toString().equals("Shalini")) || (emailEdittext.getText().toString().equals("Gyanesh")) && pswdEdittext.getText().toString().equals("Pass@123")) {
+                    final SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString("username", emailEdittext.getText().toString());
+                    editor.commit();
                     Intent myIntent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(myIntent);
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(), "Incorrect user name or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Incorrect User name or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

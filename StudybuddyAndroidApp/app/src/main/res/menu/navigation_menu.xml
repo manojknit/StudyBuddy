@@ -3,10 +3,13 @@
 
 
     <item android:id="@+id/chatbot"
-        android:icon="@drawable/sblogo"
+        android:icon="@drawable/bot"
         android:title="Buddy Bot"/>
     <item android:id="@+id/mycart"
-        android:icon="@drawable/ic_icon_star"
+        android:icon="@drawable/my_courses"
         android:title="My Courses"/>
+    <item android:id="@+id/fchat"
+        android:icon="@drawable/ic_chat_room"
+        android:title="Chat Room"/>
 
 </menu>

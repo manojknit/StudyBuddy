@@ -30,6 +30,7 @@ import msse.com.studybuddyapp.adapter.AvailablecoursesAdapter;
 import msse.com.studybuddyapp.apiasynctasks.FetchVideosTask;
 import msse.com.studybuddyapp.listener.RecyclerTouchListener;
 import msse.com.studybuddyapp.model.Course;
+import msse.com.studybuddyapp.model.FriendlyMessage;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -61,14 +62,19 @@ public class HomeActivity extends AppCompatActivity {
                 {
 
                     case R.id.chatbot:
-                        Toast.makeText(HomeActivity.this, "Buddy Bot",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(HomeActivity.this, "Buddy Bot",Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), ChatBotActivity.class);
                         startActivity(i);
                         break;
                     case R.id.mycart:
-                        Toast.makeText(HomeActivity.this, "My courses",Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(HomeActivity.this, "My courses",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MyCoursesActivity.class);
                         startActivity(intent);
+                        break;
+                    case R.id.fchat:
+                    //    Toast.makeText(HomeActivity.this, "Chat",Toast.LENGTH_SHORT).show();
+                        Intent i2 = new Intent(getApplicationContext(), FirebaseChatActivity.class);
+                        startActivity(i2);
                         break;
                     default:
                         return true;

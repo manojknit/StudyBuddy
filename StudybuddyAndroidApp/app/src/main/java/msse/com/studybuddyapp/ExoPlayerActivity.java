@@ -155,7 +155,7 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
         // This is the MediaSource representing the media to be played.
       //  MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
     //            .createMediaSource(mUri);
-        MediaSource videoSource = new HlsMediaSource.Factory(dataSourceFactory).setExtractorFactory(defaultHlsExtractorFactory).createMediaSource(mUri);
+        HlsMediaSource videoSource = new HlsMediaSource.Factory(dataSourceFactory).setExtractorFactory(defaultHlsExtractorFactory).createMediaSource(mUri);
         // Prepare the player with the source.
 
       //  boolean haveStartPosition = video_position != C.INDEX_UNSET;
@@ -236,12 +236,15 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
 
             case Player.STATE_BUFFERING:
                 spinnerVideoDetails.setVisibility(View.VISIBLE);
+                Log.d("stateend" ,"buffering"  + percentwatched + " ");
 
                // player.seekTo(5 * 1000);
                 break;
             case Player.STATE_ENDED:
-                player.seekTo(0);
-                player.setPlayWhenReady(true);
+                Log.d("stateend","player ended");
+                percentwatched = 100;
+                player.seekTo(player.getDuration());
+                player.setPlayWhenReady(false);
                 break;
             case Player.STATE_IDLE:
 
@@ -256,18 +259,18 @@ public class ExoPlayerActivity extends AppCompatActivity implements Player.Event
                     long watch_time_sec  = (long)((video_position * total_seconds)/100);
                     Log.d("watched", " " + watch_time_sec + " video_position " +  video_position  + " total " + total_seconds );
 
-                    player.seekTo((watch_time_sec + 1) * 1000);
+                    player.seekTo((watch_time_sec ) * 1000);
                     haveStartPosition = true;
                 }
 
                 long watched_duration = player.getCurrentPosition();
                 Log.d("video duration", " s" + total_duration);
-                Toast.makeText(this, "total video duration" + " s" + total_duration, Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(this, "total video duration" + " s" + total_duration, Toast.LENGTH_SHORT).show();
                 watch_seconds = TimeUnit.MILLISECONDS.toSeconds(watched_duration);
 
-                Toast.makeText(this, "video postiton watched" + watched_duration + " in seconds =" + watch_seconds    , Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(this, "video postiton watched" + watched_duration + " in seconds =" + watch_seconds    , Toast.LENGTH_SHORT).show();
                 percentwatched = (int) ((watch_seconds * 100) / total_seconds);
-                Toast.makeText(this,  total_seconds + " in seconds " + watch_seconds + " percent postiton watched " + percentwatched    , Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(this,  total_seconds + " in seconds " + watch_seconds + " percent postiton watched " + percentwatched    , Toast.LENGTH_SHORT).show();
                 break;
             default:
                 // status = PlaybackStatus.IDLE;

@@ -21,7 +21,7 @@
     <string name="new_to_udacity">New to StudyBuddy</string>
     <string name="existing_student">Existing student</string>
     <string name="udacity_desc">Learn from the industry\'s very best only \n found in Studybuddy\'s world class offerings.</string>
-    <string name="email_id">Email Id</string>
+    <string name="email_id">User Name</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="signin">Sign in</string>

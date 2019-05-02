@@ -43,8 +43,8 @@ public class MyCoursesActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
 
                 Course course = courseList.get(position);
-                Toast.makeText(getApplicationContext(), course.getCourse_name() + " is selected!", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),  course.getCourse_id() + " is course id",  Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), course.getCourse_name() + " is selected!", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),  course.getCourse_id() + " is course id",  Toast.LENGTH_SHORT).show();
                 //     Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), VideoPlayerConfig.DEFAULT_VIDEO_URL);
                 //  startActivity(mIntent);
                 Intent intent = new Intent(getApplicationContext(), VideosListActivity.class);
@@ -62,7 +62,7 @@ public class MyCoursesActivity extends AppCompatActivity {
     FetchCoursesTask fetchCoursesTask = new FetchCoursesTask();
     MlabConfig mlabConfig = new MlabConfig();
         try {
-        courseList = fetchCoursesTask.execute("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={'course_title':'Android'}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM").get();
+        courseList = fetchCoursesTask.execute("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={'course_title':'Android'}&apiKey=Apikey").get();
           /*  MyContact FetchedData = (MyContact) returnValues.toArray()[0];
 
             editText_fname.setText(FetchedData.getFirst_name());
