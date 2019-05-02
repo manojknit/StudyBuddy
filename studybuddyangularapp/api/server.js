@@ -23,6 +23,9 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.get('/', (req, res) => {
+  return res.send('Received a GET HTTP method');
+});
 app.use('/course', courseRoute);
 app.use('/video', videoRoute);
 app.use('/courseuser', courseuserRoute);
