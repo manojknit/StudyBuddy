@@ -60,7 +60,7 @@ html {
   }
   .card-info {
     position: relative;
-    background: linear-gradient(to top, #626d82 20%, #006666 80%);
+    background: linear-gradient(to bottom, #626d82 0%, #343d4d 100%);
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
   }
@@ -108,7 +108,7 @@ html {
   }
   
   .dial {
-    color: #F37721;
+    color: #76D7C4;
     text-shadow: inset 1px 1px 0 white;
     background: #fff;
     border-radius: 50%;
@@ -121,7 +121,7 @@ html {
   .dial-title {
     font-size: 3.8em;
     font-weight: 400;
-    line-height: 0.8;
+    line-height: 0.8; 
   }
   .dial-value {
     font-size: 1.8em;
@@ -207,4 +207,3 @@ html {
   .leaderboard-value {
     font-weight: 700;
   }
-  

@@ -2,7 +2,9 @@ package msse.com.studybuddyapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Movie;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,23 +37,25 @@ public class VideosListActivity extends AppCompatActivity {
     private List<Integer> percentList = new ArrayList<>();
     private int percent =0;
     private int lasttouched = 0;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos_list);
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
-
 
         videorecyclerView = (RecyclerView) findViewById(R.id.vrecycler_view);
         videoList = new ArrayList<Video>();
         fetchVideos();
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
       //  vAdapter = new MyVideosAdapter(videoList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         videorecyclerView.setLayoutManager(mLayoutManager);
         videorecyclerView.setItemAnimator(new DefaultItemAnimator());
         videorecyclerView.setAdapter(vAdapter);
+       // final SharedPreferences prefs = PreferenceManager.get(this);
        // prepareVideoData();
         videorecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), videorecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -64,8 +68,10 @@ public class VideosListActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), v.getVideoTitle() + " is selected!", Toast.LENGTH_SHORT).show();
                 //progressBar.setProgress(progressBar.getProgress() + percent);
                 lasttouched = position;
+                Log.d("percentage", "position " + String.valueOf(lasttouched) + " value " + sharedpreferences.getInt(Integer.toString(lasttouched),0));
+                Log.d("percentage" , "percent fr that position" + sharedpreferences.getInt(String.valueOf(lasttouched),0));
                 Log.d("videourlssssss",videoUrl);
-                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl);
+                Intent mIntent = ExoPlayerActivity.getStartIntent(getApplicationContext(), videoUrl,sharedpreferences.getInt(String.valueOf(lasttouched),0) );
                 startActivityForResult(mIntent, 100);
 
             }
@@ -169,7 +175,12 @@ public class VideosListActivity extends AppCompatActivity {
 
                 // Get String data from Intent
                  percent = data.getIntExtra("percent",0);
+                 Log.d("percentage", "percent from activtiy" + percent);
                  percentList.set(lasttouched, percent);
+
+                final SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putInt(String.valueOf(lasttouched), percent);
+                editor.commit();
                  vAdapter.notifyDataSetChanged();
                 //Toast.makeText(this, "percent postiton watched" +percent     , Toast.LENGTH_SHORT).show();
             }

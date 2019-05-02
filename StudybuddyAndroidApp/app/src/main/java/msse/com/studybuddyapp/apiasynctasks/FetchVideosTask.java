@@ -28,16 +28,11 @@ public class FetchVideosTask extends AsyncTask<Video, Void, ArrayList<Video>> {
     protected ArrayList<Video> doInBackground(Video... objects) {
 
         ArrayList<Video> videoList = new ArrayList<Video>();
-
-
-
-
         URL url = null;
 
         MlabConfig ml = new MlabConfig();
         try {
             Log.d("urls ", ml.getCoursesFetchURL());
-            //  url = new URL("https://api.mlab.com/api/1/databases/studybuddydb/collections/course?q={%22user_name%22:%20%22manoj.kumar@sjsu.edu%22}&apiKey=duEozg9yLd3XprCPPvh1zzOfRddpTcRM");
             url = new URL(ml.getVidoesFetchURL());
             HttpURLConnection conn = (HttpURLConnection) url
                     .openConnection();

@@ -1,5 +1,7 @@
 package msse.com.studybuddyapp;
 
+import android.content.SharedPreferences;
+
 public class VideoPlayerConfig {
     //Minimum Video you want to buffer while Playing
     public static final int MIN_BUFFER_DURATION = 500;
@@ -16,4 +18,5 @@ public class VideoPlayerConfig {
 
     // public static final String DEFAULT_VIDEO_URL = "https://androidwave.com/media/androidwave-video-3.mp4";
    public static final String DEFAULT_VIDEO_URL = "https://didxxojhwcpu7.cloudfront.net/outputfiles/hls/";
+
 }

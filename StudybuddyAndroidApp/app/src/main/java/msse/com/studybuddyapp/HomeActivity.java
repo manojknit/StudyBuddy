@@ -59,20 +59,23 @@ public class HomeActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id)
                 {
-                    case R.id.account:
-                        Toast.makeText(HomeActivity.this, "Search Catalog",Toast.LENGTH_SHORT).show();
-                    case R.id.settings:
-                        Toast.makeText(HomeActivity.this, "Full Catalog",Toast.LENGTH_SHORT).show();
+
+                    case R.id.chatbot:
+                        Toast.makeText(HomeActivity.this, "Buddy Bot",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), ChatBotActivity.class);
+                        startActivity(i);
+                        break;
                     case R.id.mycart:
                         Toast.makeText(HomeActivity.this, "My courses",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MyCoursesActivity.class);
                         startActivity(intent);
+                        break;
                     default:
                         return true;
                 }
 
 
-
+                return true;
 
             }
         });
@@ -85,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         fetchCourse();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(15), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(15), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(courseadapter);
@@ -126,6 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         int[] covers = new int[]{
                 R.drawable.android_course,
                 R.drawable.cysec_course,
+                R.drawable.java_course
                 };
 
        /* Course a = new Course("Angular 7", "Manoj", covers[0]);
@@ -142,6 +146,10 @@ public class HomeActivity extends AppCompatActivity {
 
         a = new Course("Cybersecurity", "$10", covers[1]);
         courseList.add(a);
+
+        a = new Course("Java", "$10", covers[2]);
+        courseList.add(a);
+
 
         courseadapter = new AvailablecoursesAdapter(this, courseList);
         courseadapter.notifyDataSetChanged();
@@ -221,6 +229,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }
