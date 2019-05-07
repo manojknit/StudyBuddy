@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy  {
                     //let item = JSON.parse(localStorage.getItem(key)); //in ngOnInit() 
                 }
                 this.loadingBar.complete();
-                this._router.navigate(['']);
+                this._router.navigate(['http://www.google.com'],);
         });
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
