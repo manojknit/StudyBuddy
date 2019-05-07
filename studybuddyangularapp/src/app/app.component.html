@@ -35,7 +35,7 @@
           <li *ngIf="!signedIn" ><a (click)="onLoginClick()">Login</a></li>
           <li *ngIf="signedIn"><a (click)="onLogoutClick()">Logout</a></li>
           <li><i *ngIf="signedIn" class="fa fa-users"></i>
-            {{useremail}}</li>
+            {{this.useremail}}</li>
         </ul>
       </div>
     </div>
