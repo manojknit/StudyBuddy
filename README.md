@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 #### Architecture Diagram:
-![System Architecture](https://github.com/manojknit/kinesis-elasticsearch-kibana/raw/master/images/architecture.png)
+![System Architecture](https://github.com/manojknit/StudyBuddy/raw/master/images/architecture.png)
 
 ## Development server
 
