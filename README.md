@@ -14,7 +14,7 @@ A MOOC project generated with [Angular CLI](https://github.com/angular/angular-c
   - Bot Assistance: Lex & Alexa
   - Security: AWS WAF & SSL
 
-#### Architecture Diagram:
+## Architecture Diagram:
 ![System Architecture](https://github.com/manojknit/StudyBuddy/raw/master/images/architecture.png)
 
 ## Media Streaming Engine
