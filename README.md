@@ -1,10 +1,27 @@
 # Study Buddy - A Open Source MOOC project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+A MOOC project generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+## Business Process 
+![Business Process](https://github.com/manojknit/StudyBuddy/raw/master/images/BusinessProcess.png)
 
+## Technical Highlights
+  - Serverless Architecture
+  - User Analytics : Google
+  - Monitoring
+    - Grafana
+    - Cloudwatch
+  - Site Load Testing: Apache JMeter
+  - Bot Assistance: Lex & Alexa
+  - Security: AWS WAF & SSL
 
 #### Architecture Diagram:
 ![System Architecture](https://github.com/manojknit/StudyBuddy/raw/master/images/architecture.png)
+
+## Media Streaming Engine
+![Media Streaming Engine](https://github.com/manojknit/StudyBuddy/raw/master/images/MediaStreamingEngine.png)
+
+## CICD
+![CICD](https://github.com/manojknit/StudyBuddy/raw/master/images/CICD.png)
 
 ## Development server
 
