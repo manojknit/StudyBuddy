@@ -1,4 +1,4 @@
-# Study Buddy - A open Source MOOC project
+# Study Buddy - A Open Source MOOC project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
